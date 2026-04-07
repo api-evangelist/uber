@@ -1,14 +1,13 @@
 aid: uber
-url: 
-  https://raw.githubusercontent.com/api-evangelist/uber/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/uber/refs/heads/main/apis.yml
 apis:
   - aid: uber:uber
     name: Uber
     tags:
-      - Transportation
-      - Taxis
       - Ride-Sharing
       - Rides
+      - Taxis
+      - Transportation
     humanURL: ' https://developer.uber.com/'
     properties:
       - url: ' https://developer.uber.com/'
@@ -21,10 +20,10 @@ apis:
       groups, UberPOOL for carpooling, and Uber Eats for food delivery.
 name: Uber
 tags:
-  - Transportation
-  - Taxis
   - Ride-Sharing
   - Rides
+  - Taxis
+  - Transportation
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
