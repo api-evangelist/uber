@@ -1,0 +1,125 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Uber Direct API"
+  description: "On-demand delivery API leveraging Uber's courier network for merchant delivery."
+  tags:
+    - Uber
+    - Uber Direct
+    - Delivery
+    - Logistics
+    - Courier
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      UBER_DIRECT_ACCESS_TOKEN: UBER_DIRECT_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: uber-direct
+      baseUri: https://api.uber.com/v1
+      description: "Uber Direct delivery API for on-demand courier dispatching."
+      authentication:
+        type: bearer
+        token: "{{UBER_DIRECT_ACCESS_TOKEN}}"
+      resources:
+        - name: delivery-quote
+          path: /eats/deliveries/quote
+          description: "Delivery price quotes."
+          operations:
+            - name: get-delivery-quote
+              method: POST
+              description: "Get a price quote for a delivery before creating the order."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  pickup_address: "{{tools.pickup_address}}"
+                  dropoff_address: "{{tools.dropoff_address}}"
+
+        - name: deliveries
+          path: /eats/deliveries
+          description: "Delivery order creation."
+          operations:
+            - name: create-delivery
+              method: POST
+              description: "Create a new delivery request using Uber's courier network."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  pickup_name: "{{tools.pickup_name}}"
+                  pickup_address: "{{tools.pickup_address}}"
+                  dropoff_name: "{{tools.dropoff_name}}"
+                  dropoff_address: "{{tools.dropoff_address}}"
+
+        - name: delivery
+          path: /eats/deliveries/{order_id}
+          description: "Individual delivery order management."
+          operations:
+            - name: get-delivery
+              method: GET
+              description: "Returns the current status of a delivery order."
+              inputParameters:
+                - name: order_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Unique identifier for the delivery order."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: cancel-delivery
+              method: DELETE
+              description: "Cancel an active delivery order."
+              inputParameters:
+                - name: order_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Unique identifier for the delivery order."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: business-locations
+          path: /business-locations
+          description: "Business pickup location management."
+          operations:
+            - name: list-business-locations
+              method: GET
+              description: "Returns all business locations for the authenticated merchant."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-business-location
+              method: POST
+              description: "Create a new business pickup location."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  address: "{{tools.address}}"

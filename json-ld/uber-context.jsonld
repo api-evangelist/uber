@@ -1,0 +1,53 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "uber": "https://developer.uber.com/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Product": "schema:Product",
+    "RideRequest": "uber:RideRequest",
+    "Delivery": "uber:Delivery",
+    "RiderProfile": "schema:Person",
+    "DriverProfile": "schema:Person",
+    "Order": "schema:Order",
+    "Store": "schema:FoodEstablishment",
+    "BusinessLocation": "schema:Place",
+
+    "product_id": { "@id": "schema:identifier", "@type": "xsd:string" },
+    "display_name": { "@id": "schema:name", "@type": "xsd:string" },
+    "description": { "@id": "schema:description", "@type": "xsd:string" },
+    "capacity": { "@id": "uber:capacity", "@type": "xsd:integer" },
+    "image": { "@id": "schema:image", "@type": "@id" },
+
+    "request_id": { "@id": "schema:identifier", "@type": "xsd:string" },
+    "status": { "@id": "schema:orderStatus", "@type": "xsd:string" },
+    "eta": { "@id": "uber:estimatedTimeOfArrival", "@type": "xsd:integer" },
+    "surge_multiplier": { "@id": "uber:surgeMultiplier", "@type": "xsd:double" },
+
+    "start_latitude": { "@id": "uber:startLatitude", "@type": "xsd:double" },
+    "start_longitude": { "@id": "uber:startLongitude", "@type": "xsd:double" },
+    "end_latitude": { "@id": "uber:endLatitude", "@type": "xsd:double" },
+    "end_longitude": { "@id": "uber:endLongitude", "@type": "xsd:double" },
+
+    "tracking_url": { "@id": "schema:url", "@type": "@id" },
+    "pickup_eta": { "@id": "uber:pickupEta", "@type": "xsd:dateTime" },
+    "dropoff_eta": { "@id": "uber:dropoffEta", "@type": "xsd:dateTime" },
+    "fee": { "@id": "schema:price", "@type": "xsd:integer" },
+    "currency": { "@id": "schema:priceCurrency", "@type": "xsd:string" },
+    "currency_code": { "@id": "schema:priceCurrency", "@type": "xsd:string" },
+
+    "first_name": { "@id": "schema:givenName", "@type": "xsd:string" },
+    "last_name": { "@id": "schema:familyName", "@type": "xsd:string" },
+    "email": { "@id": "schema:email", "@type": "xsd:string" },
+    "phone_number": { "@id": "schema:telephone", "@type": "xsd:string" },
+    "picture": { "@id": "schema:image", "@type": "@id" },
+    "promo_code": { "@id": "uber:promoCode", "@type": "xsd:string" },
+    "uuid": { "@id": "schema:identifier", "@type": "xsd:string" },
+
+    "store_id": { "@id": "schema:identifier", "@type": "xsd:string" },
+    "address": { "@id": "schema:address", "@type": "xsd:string" },
+    "placed_at": { "@id": "schema:orderDate", "@type": "xsd:dateTime" },
+    "total": { "@id": "schema:totalPrice", "@type": "xsd:double" }
+  }
+}

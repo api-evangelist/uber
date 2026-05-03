@@ -1,0 +1,113 @@
+extends: spectral:oas
+rules:
+  # Uber API Naming Conventions
+  uber-operation-id-camel-case:
+    description: Operation IDs must use camelCase.
+    message: "Operation ID '{{value}}' must use camelCase (e.g., createRideRequest, listProducts)."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  uber-path-kebab-case:
+    description: API paths must use kebab-case segments.
+    message: "Path segment '{{path}}' must use kebab-case."
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*|/\\{[a-zA-Z_]+\\})*)*$"
+
+  uber-summary-title-case:
+    description: Operation summaries must use Title Case.
+    message: "Summary '{{value}}' should use Title Case."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]+$"
+
+  uber-has-tags:
+    description: All operations must have at least one tag.
+    message: Operation is missing tags.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  uber-has-operation-id:
+    description: All operations must have an operationId.
+    message: Operation is missing operationId.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  uber-has-description:
+    description: All operations must have a description.
+    message: Operation is missing a description.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: description
+      function: truthy
+
+  uber-200-response-body:
+    description: Successful GET operations should return a response body schema.
+    message: GET operation at '{{path}}' should define a response body for 200.
+    severity: warn
+    given: "$.paths[*].get.responses.200"
+    then:
+      field: content
+      function: truthy
+
+  uber-bearer-auth-required:
+    description: Uber APIs require OAuth 2.0 bearer token authentication.
+    message: Operation should specify security with BearerAuth.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: security
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+
+  uber-version-prefix:
+    description: Uber server URLs should include a version prefix.
+    message: "Server URL '{{value}}' should include a version path (e.g., /v1, /v1.2)."
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://.*uber\\.com/v[0-9]"
+
+  uber-no-trailing-slash:
+    description: API paths must not have trailing slashes.
+    message: "Path '{{path}}' must not end with a trailing slash."
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  uber-required-info-fields:
+    description: API info block must include title, description, version, and contact.
+    message: "Info block is missing required field."
+    severity: error
+    given: "$.info"
+    then:
+      - field: title
+        function: truthy
+      - field: description
+        function: truthy
+      - field: version
+        function: truthy

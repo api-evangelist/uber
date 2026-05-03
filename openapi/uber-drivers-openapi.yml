@@ -1,0 +1,245 @@
+openapi: 3.0.0
+info:
+  title: Uber Drivers API
+  description: >-
+    The Uber Drivers API allows partners to access driver profile information,
+    payment history, and trip records. Provides data on driver earnings,
+    completed trips, and partner program data.
+  version: 1.0.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+  - url: https://api.uber.com/v1
+    description: Production
+  - url: https://sandbox-api.uber.com/v1
+    description: Sandbox
+security:
+  - BearerAuth: []
+tags:
+  - name: Partners
+    description: Driver partner profile and activity data
+paths:
+  /partners/me:
+    get:
+      operationId: getDriverProfile
+      summary: Get Driver Profile
+      description: Returns information about a driver who has authorized with the application.
+      tags:
+        - Partners
+      responses:
+        '200':
+          description: Driver profile information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverProfile'
+        '401':
+          description: Unauthorized.
+  /partners/payments:
+    get:
+      operationId: getDriverPayments
+      summary: Get Driver Payments
+      description: Returns a list of payments made to a driver over the lifetime of their account with Uber.
+      tags:
+        - Partners
+      parameters:
+        - name: from_time
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Unix timestamp of the start of the query time range.
+        - name: to_time
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Unix timestamp of the end of the query time range.
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 5
+          description: Number of items to return. Default is 5, maximum is 50.
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+          description: Offset the list of returned results by this amount.
+      responses:
+        '200':
+          description: Payment history for the driver.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentsResponse'
+  /partners/trips:
+    get:
+      operationId: getDriverTrips
+      summary: Get Driver Trips
+      description: Returns trip history for a driver partner.
+      tags:
+        - Partners
+      parameters:
+        - name: from_time
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Unix timestamp of the start of the query time range.
+        - name: to_time
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Unix timestamp of the end of the query time range.
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 5
+          description: Number of items to return. Default is 5, maximum is 50.
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+          description: Offset the list of returned results by this amount.
+      responses:
+        '200':
+          description: An array of trips for the authenticated driver.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripsResponse'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token
+  schemas:
+    DriverProfile:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the driver.
+        first_name:
+          type: string
+          description: First name of the driver.
+        last_name:
+          type: string
+          description: Last name of the driver.
+        email:
+          type: string
+          format: email
+          description: Email address of the driver.
+        phone_number:
+          type: string
+          description: Phone number of the driver.
+        picture:
+          type: string
+          format: uri
+          description: Profile picture URL for the driver.
+        promo_code:
+          type: string
+          description: Driver's referral promo code.
+        activation_status:
+          type: string
+          description: Driver activation status.
+    PaymentsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of payments.
+        limit:
+          type: integer
+          description: Number of payments per page.
+        offset:
+          type: integer
+          description: Offset of the current page.
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+    Payment:
+      type: object
+      properties:
+        category:
+          type: string
+          description: Payment category type.
+        cash_collected:
+          type: number
+          description: Cash amount collected from rider.
+        breakdown:
+          type: object
+          description: Breakdown of payment components.
+        rider_fees:
+          type: object
+          description: Fees charged to the rider.
+        event_time:
+          type: integer
+          description: Unix timestamp of when the payment event occurred.
+        trip_id:
+          type: string
+          description: Associated trip identifier.
+        currency_code:
+          type: string
+          description: ISO 4217 currency code.
+    TripsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of trips.
+        limit:
+          type: integer
+          description: Number of trips per page.
+        offset:
+          type: integer
+          description: Offset of the current page.
+        trips:
+          type: array
+          items:
+            $ref: '#/components/schemas/DriverTrip'
+    DriverTrip:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique trip identifier.
+        status:
+          type: string
+          description: Status of the trip.
+        distance:
+          type: number
+          description: Distance of the trip in miles.
+        duration:
+          type: integer
+          description: Duration of the trip in seconds.
+        start_time:
+          type: integer
+          description: Unix timestamp of trip start.
+        end_time:
+          type: integer
+          description: Unix timestamp of trip end.
+        start_city:
+          type: object
+          properties:
+            display_name:
+              type: string
+              description: Display name of the city.
+            latitude:
+              type: number
+              description: Latitude of the city.
+            longitude:
+              type: number
+              description: Longitude of the city.

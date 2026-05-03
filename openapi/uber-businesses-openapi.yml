@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business API
+  description: >-
+    The Uber for Business API enables organizations to automate workflows within
+    their enterprise Uber accounts. Provides access to trip invoices, receipts,
+    and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+  - url: https://api.uber.com/v1.2
+    description: Production
+  - url: https://sandbox-api.uber.com/v1.2
+    description: Sandbox
+security:
+  - BearerAuth: []
+tags:
+  - name: Trips
+    description: Business trip receipts and invoices
+  - name: Orders
+    description: Eats order receipts
+paths:
+  /business/trips/{trip_id}/invoice_urls:
+    get:
+      operationId: getTripInvoiceUrls
+      summary: Get Trip Invoice URLs
+      description: Retrieve invoice URLs for a business trip.
+      tags:
+        - Trips
+      parameters:
+        - name: trip_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the business trip.
+      responses:
+        '200':
+          description: Invoice URLs for the trip.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invoice_urls:
+                    type: array
+                    items:
+                      type: string
+                      format: uri
+                    description: List of invoice download URLs.
+        '404':
+          description: Trip not found.
+  /business/trips/{trip_id}/receipt:
+    get:
+      operationId: getTripReceipt
+      summary: Get Trip Receipt
+      description: Fetch receipt details for a completed business trip.
+      tags:
+        - Trips
+      parameters:
+        - name: trip_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the business trip.
+      responses:
+        '200':
+          description: Receipt details for the trip.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripReceipt'
+        '404':
+          description: Trip not found.
+  /business/trips/{trip_id}/receipt/pdf_url:
+    get:
+      operationId: getTripReceiptPdfUrl
+      summary: Get Trip Receipt PDF URL
+      description: Obtain a PDF download URL for a business trip receipt.
+      tags:
+        - Trips
+      parameters:
+        - name: trip_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the business trip.
+      responses:
+        '200':
+          description: PDF URL for the trip receipt.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pdf_url:
+                    type: string
+                    format: uri
+                    description: URL to download the PDF receipt.
+        '404':
+          description: Trip not found.
+  /business/orders/{order_id}/receipt:
+    get:
+      operationId: getOrderReceipt
+      summary: Get Order Receipt
+      description: Get receipt information for an Uber Eats order within a business account.
+      tags:
+        - Orders
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the Eats order.
+      responses:
+        '200':
+          description: Receipt details for the Eats order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderReceipt'
+        '404':
+          description: Order not found.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope
+  schemas:
+    TripReceipt:
+      type: object
+      properties:
+        trip_id:
+          type: string
+          description: Unique trip identifier.
+        business_name:
+          type: string
+          description: Name of the associated business account.
+        employee_id:
+          type: string
+          description: Employee identifier for the trip.
+        start_time:
+          type: string
+          format: date-time
+          description: Trip start time.
+        end_time:
+          type: string
+          format: date-time
+          description: Trip end time.
+        origin:
+          type: object
+          properties:
+            address:
+              type: string
+            latitude:
+              type: number
+            longitude:
+              type: number
+        destination:
+          type: object
+          properties:
+            address:
+              type: string
+            latitude:
+              type: number
+            longitude:
+              type: number
+        distance:
+          type: number
+          description: Trip distance in miles.
+        duration:
+          type: number
+          description: Trip duration in seconds.
+        charges:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              amount:
+                type: number
+              type:
+                type: string
+        total_charged:
+          type: number
+          description: Total amount charged in local currency.
+        currency_code:
+          type: string
+          description: ISO 4217 currency code.
+    OrderReceipt:
+      type: object
+      properties:
+        order_id:
+          type: string
+          description: Unique order identifier.
+        store_name:
+          type: string
+          description: Name of the restaurant.
+        placed_at:
+          type: string
+          format: date-time
+          description: Time the order was placed.
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              quantity:
+                type: integer
+              price:
+                type: number
+        subtotal:
+          type: number
+          description: Order subtotal before fees.
+        delivery_fee:
+          type: number
+          description: Delivery fee amount.
+        total:
+          type: number
+          description: Total amount charged.
+        currency_code:
+          type: string
+          description: ISO 4217 currency code.

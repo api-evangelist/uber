@@ -1,0 +1,121 @@
+vocabulary:
+  name: Uber API Vocabulary
+  description: >-
+    Domain vocabulary and taxonomy for the Uber developer platform covering ride-sharing,
+    food delivery, on-demand courier, voucher management, and business travel APIs.
+  version: "1.0.0"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+  source: https://developer.uber.com/docs
+
+  domains:
+    - name: Transportation
+      description: Core ride-sharing and mobility services.
+      terms:
+        - term: Ride Request
+          definition: A request for an Uber vehicle dispatched to a rider's location.
+          synonyms: [Trip Request, Booking]
+        - term: Product
+          definition: An Uber ride service type (e.g., UberX, UberXL, Uber Black).
+          synonyms: [Ride Type, Service Type]
+        - term: Surge Pricing
+          definition: Dynamic fare multiplier applied during periods of high demand.
+          synonyms: [Dynamic Pricing, Surge Multiplier]
+        - term: Price Estimate
+          definition: A fare range for a ride between two points before booking.
+          synonyms: [Fare Estimate, Quote]
+        - term: ETA
+          definition: Estimated Time of Arrival for a driver to the pickup location.
+          synonyms: [Time Estimate, Driver ETA]
+        - term: Driver Partner
+          definition: An independent contractor who provides rides through the Uber platform.
+          synonyms: [Driver, Partner]
+        - term: Rider
+          definition: A passenger who requests rides through the Uber app.
+          synonyms: [Customer, Passenger]
+        - term: Fare ID
+          definition: A unique identifier for an upfront price estimate that locks in a fare.
+        - term: Sandbox
+          definition: Uber's test environment for API development without real transactions.
+        - term: Bearer Token
+          definition: OAuth 2.0 access token used to authenticate Uber API requests.
+
+    - name: Food Delivery
+      description: Uber Eats marketplace for restaurant ordering and delivery.
+      terms:
+        - term: Store
+          definition: A restaurant or food service location registered on the Uber Eats platform.
+          synonyms: [Restaurant, Merchant]
+        - term: Menu
+          definition: The catalog of food items and modifiers available at an Uber Eats store.
+        - term: Order
+          definition: A customer's food purchase from an Uber Eats store.
+        - term: BYOC
+          definition: "Bring Your Own Courier — merchant-dispatched delivery using merchant's own couriers."
+          synonyms: [Merchant Delivery]
+        - term: POS Integration
+          definition: Point of Sale system integration for receiving Uber Eats orders directly in a restaurant's system.
+        - term: Order Acceptance Window
+          definition: The time limit within which a restaurant must accept or deny an incoming order.
+        - term: Promotions
+          definition: Discount campaigns, offers, and incentives for Uber Eats customers.
+
+    - name: On-Demand Delivery
+      description: Uber Direct courier delivery service for merchants.
+      terms:
+        - term: Delivery
+          definition: An on-demand courier dispatch using Uber Direct to move goods from pickup to dropoff.
+        - term: Delivery Quote
+          definition: A price estimate for an Uber Direct delivery before dispatching.
+        - term: Courier
+          definition: The Uber driver assigned to fulfill an Uber Direct delivery.
+        - term: Manifest Item
+          definition: An item included in a delivery package, including name, quantity, and size.
+        - term: Proof of Delivery
+          definition: Confirmation that a delivery was completed, including photo or signature.
+        - term: Business Location
+          definition: A registered merchant pickup point configured in the Uber Direct system.
+        - term: Tracking URL
+          definition: A real-time delivery tracking link shared with the recipient.
+
+    - name: Vouchers
+      description: Voucher and promotional code programs for rides and meals.
+      terms:
+        - term: Voucher Program
+          definition: A configured campaign for distributing and managing voucher codes.
+        - term: Voucher Code
+          definition: A unique redemption code granting a discount or free credit on rides or meals.
+        - term: Code Generation
+          definition: Bulk creation of voucher codes for a program.
+        - term: Code Distribution
+          definition: Delivering voucher codes to recipient email addresses.
+        - term: Redemption
+          definition: The act of a user applying a voucher code to their Uber account.
+        - term: Program Template
+          definition: A reusable configuration for creating voucher programs.
+
+    - name: Business Travel
+      description: Uber for Business enterprise account management.
+      terms:
+        - term: Business Trip
+          definition: An Uber ride taken under a corporate Uber for Business account.
+        - term: Invoice
+          definition: A formal billing document for a business trip.
+        - term: Receipt
+          definition: A detailed summary of charges for a completed ride or order.
+        - term: Business Account
+          definition: An enterprise Uber account enabling centralized travel management.
+        - term: Employee ID
+          definition: An identifier linking a trip to a specific employee in the organization.
+
+  categories:
+    - Ride-Sharing
+    - Food Delivery
+    - On-Demand Delivery
+    - Transportation
+    - Logistics
+    - Vouchers
+    - Promotions
+    - Business Travel
+    - Payments
+    - Marketplace

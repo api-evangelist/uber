@@ -1,0 +1,43 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.uber.com/v1/eats/deliveries",
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "pickup_name": "Acme Store Downtown",
+      "pickup_address": "123 Market St, San Francisco, CA 94105",
+      "pickup_phone_number": "+14155550100",
+      "pickup_notes": "Use the side entrance. Package is at the front desk.",
+      "dropoff_name": "Jane Smith",
+      "dropoff_address": "456 Valencia St, San Francisco, CA 94103",
+      "dropoff_phone_number": "+14155550200",
+      "dropoff_notes": "Leave at door if no answer.",
+      "manifest_items": [
+        {
+          "name": "Electronics Package",
+          "quantity": 1,
+          "size": "medium"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "delivery_xyz789",
+      "quote_id": "quote_abc456",
+      "status": "pending",
+      "tracking_url": "https://www.ubereats.com/orders/track/delivery_xyz789",
+      "courier": null,
+      "created": "2026-05-03T11:00:00Z",
+      "updated": "2026-05-03T11:00:00Z",
+      "pickup_eta": "2026-05-03T11:20:00Z",
+      "dropoff_eta": "2026-05-03T11:40:00Z",
+      "fee": 599,
+      "currency": "USD"
+    }
+  }
+}

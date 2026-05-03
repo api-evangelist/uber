@@ -1,0 +1,52 @@
+{
+  "title": "Uber Riders API Structure",
+  "description": "JSON structure documentation for the Uber Riders API key entities.",
+  "entities": {
+    "Product": {
+      "description": "An Uber ride product type available at a location.",
+      "fields": {
+        "product_id": "string — Unique product identifier",
+        "description": "string — Product description",
+        "display_name": "string — User-facing product name",
+        "capacity": "integer — Maximum passenger capacity",
+        "image": "string(uri) — Product image URL"
+      }
+    },
+    "PriceEstimate": {
+      "description": "Price estimate for a ride product between two locations.",
+      "fields": {
+        "product_id": "string — Product identifier",
+        "currency_code": "string — ISO 4217 currency code",
+        "display_name": "string — Product name",
+        "estimate": "string — Formatted price estimate",
+        "low_estimate": "number — Lower bound of estimated price",
+        "high_estimate": "number — Upper bound of estimated price",
+        "surge_multiplier": "number — Current surge multiplier",
+        "duration": "integer — Expected duration in seconds",
+        "distance": "number — Expected distance in miles"
+      }
+    },
+    "RideRequest": {
+      "description": "A ride request submitted by a user.",
+      "fields": {
+        "request_id": "string — Unique ride request identifier",
+        "status": "string(enum) — Current request status",
+        "driver": "object — Assigned driver details",
+        "vehicle": "object — Driver's vehicle details",
+        "eta": "integer — Driver ETA in minutes",
+        "surge_multiplier": "number — Applied surge multiplier"
+      }
+    },
+    "RiderProfile": {
+      "description": "Uber rider account profile.",
+      "fields": {
+        "uuid": "string — Unique user identifier",
+        "first_name": "string — Rider's first name",
+        "last_name": "string — Rider's last name",
+        "email": "string(email) — Rider's email address",
+        "picture": "string(uri) — Profile picture URL",
+        "promo_code": "string — Rider's referral promo code"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.uber.com/v1.2/requests",
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "product_id": "a1111c8c-c720-46c3-8534-2fcdd730040d",
+      "start_latitude": 37.7749,
+      "start_longitude": -122.4194,
+      "end_latitude": 37.7849,
+      "end_longitude": -122.4094,
+      "fare_id": "fare_id_xyz123"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "request_id": "b5512127-a134-4bf4-b1ba-fe9f48f56d9d",
+      "status": "processing",
+      "driver": null,
+      "vehicle": null,
+      "eta": null,
+      "surge_multiplier": 1.0
+    }
+  }
+}

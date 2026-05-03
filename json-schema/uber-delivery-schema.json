@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/uber/blob/main/json-schema/uber-delivery-schema.json",
+  "title": "Uber Direct Delivery",
+  "description": "Schema for an Uber Direct delivery order object.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique delivery identifier."
+    },
+    "quote_id": {
+      "type": "string",
+      "description": "Associated quote identifier."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "pickup", "pickup_complete", "dropoff", "delivered", "canceled", "returned"],
+      "description": "Current delivery status."
+    },
+    "tracking_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to track the delivery in real-time."
+    },
+    "courier": {
+      "type": ["object", "null"],
+      "properties": {
+        "name": { "type": "string" },
+        "vehicle_type": { "type": "string" },
+        "phone_number": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "img_href": { "type": "string", "format": "uri" }
+      }
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Delivery creation timestamp."
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp."
+    },
+    "pickup_eta": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Estimated courier arrival at pickup."
+    },
+    "dropoff_eta": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Estimated delivery completion time."
+    },
+    "fee": {
+      "type": "integer",
+      "description": "Delivery fee in cents."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code."
+    }
+  }
+}

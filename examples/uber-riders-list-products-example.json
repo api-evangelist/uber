@@ -1,0 +1,38 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.uber.com/v1.2/products?latitude=37.7749&longitude=-122.4194",
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "products": [
+        {
+          "product_id": "a1111c8c-c720-46c3-8534-2fcdd730040d",
+          "description": "The original Uber",
+          "display_name": "UberX",
+          "capacity": 4,
+          "image": "https://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-uberx.png"
+        },
+        {
+          "product_id": "57c0ff4e-1493-4ef9-a4df-6b961525cf92",
+          "description": "Low Cost. Reliable. For Everyday Use.",
+          "display_name": "UberXL",
+          "capacity": 6,
+          "image": "https://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-uberxl.png"
+        },
+        {
+          "product_id": "b5e74e96-5d27-4caf-83e9-54c030bb2e81",
+          "description": "Premium rides in high-end cars",
+          "display_name": "Uber Black",
+          "capacity": 4,
+          "image": "https://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-black.png"
+        }
+      ]
+    }
+  }
+}

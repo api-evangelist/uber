@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/uber/blob/main/json-schema/uber-ride-request-schema.json",
+  "title": "Uber Ride Request",
+  "description": "Schema for an Uber ride request object.",
+  "type": "object",
+  "required": ["product_id", "start_latitude", "start_longitude"],
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "The unique ID of the Uber product to request."
+    },
+    "start_latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Pickup location latitude."
+    },
+    "start_longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Pickup location longitude."
+    },
+    "end_latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Dropoff location latitude."
+    },
+    "end_longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Dropoff location longitude."
+    },
+    "fare_id": {
+      "type": "string",
+      "description": "Upfront fare ID from a prior estimate call."
+    },
+    "surge_confirmation_id": {
+      "type": "string",
+      "description": "Surge confirmation ID if user has confirmed surge pricing."
+    },
+    "payment_method_id": {
+      "type": "string",
+      "description": "Unique identifier of the selected payment method."
+    }
+  },
+  "additionalProperties": false
+}

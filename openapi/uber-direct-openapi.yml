@@ -1,0 +1,474 @@
+openapi: 3.0.0
+info:
+  title: Uber Direct API
+  description: >-
+    The Uber Direct API allows merchants to leverage Uber's courier network to deliver
+    their orders. It supports on-demand delivery creation, courier tracking, refunds,
+    and business location management.
+  version: 1.0.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+  - url: https://api.uber.com/v1
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Deliveries
+    description: Delivery creation and management
+  - name: Organizations
+    description: Organization and account management
+  - name: Refunds
+    description: Delivery refund processing
+  - name: Locations
+    description: Business location management
+paths:
+  /eats/deliveries:
+    post:
+      operationId: createDelivery
+      summary: Create Delivery
+      description: Create a new delivery request using Uber's courier network.
+      tags:
+        - Deliveries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryRequest'
+      responses:
+        '200':
+          description: Delivery created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Delivery'
+        '400':
+          description: Invalid delivery request parameters.
+  /eats/deliveries/{order_id}:
+    get:
+      operationId: getDelivery
+      summary: Get Delivery Status
+      description: Returns the current status of a delivery order.
+      tags:
+        - Deliveries
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the delivery order.
+      responses:
+        '200':
+          description: Delivery details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Delivery'
+    delete:
+      operationId: cancelDelivery
+      summary: Cancel Delivery
+      description: Cancel an active delivery order.
+      tags:
+        - Deliveries
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the delivery order.
+      responses:
+        '200':
+          description: Delivery cancelled successfully.
+  /eats/deliveries/quote:
+    post:
+      operationId: getDeliveryQuote
+      summary: Get Delivery Quote
+      description: Get a price quote for a delivery before creating the order.
+      tags:
+        - Deliveries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - pickup_address
+                - dropoff_address
+              properties:
+                pickup_address:
+                  type: string
+                  description: Pickup address for the delivery.
+                dropoff_address:
+                  type: string
+                  description: Dropoff address for the delivery.
+                pickup_latitude:
+                  type: number
+                  description: Pickup location latitude.
+                pickup_longitude:
+                  type: number
+                  description: Pickup location longitude.
+                dropoff_latitude:
+                  type: number
+                  description: Dropoff location latitude.
+                dropoff_longitude:
+                  type: number
+                  description: Dropoff location longitude.
+      responses:
+        '200':
+          description: Delivery quote details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryQuote'
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: List Organizations
+      description: Returns a list of organizations associated with the authenticated account.
+      tags:
+        - Organizations
+      responses:
+        '200':
+          description: List of organizations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+  /organizations/{organization_id}:
+    get:
+      operationId: getOrganization
+      summary: Get Organization
+      description: Returns details for a specific organization.
+      tags:
+        - Organizations
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the organization.
+      responses:
+        '200':
+          description: Organization details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+  /eats/refunds:
+    post:
+      operationId: createRefund
+      summary: Create Refund
+      description: Request a refund for a delivery order.
+      tags:
+        - Refunds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund request created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+  /business-locations:
+    get:
+      operationId: listBusinessLocations
+      summary: List Business Locations
+      description: Returns all business locations for the authenticated merchant.
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: List of business locations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  locations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BusinessLocation'
+    post:
+      operationId: createBusinessLocation
+      summary: Create Business Location
+      description: Create a new business pickup location.
+      tags:
+        - Locations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessLocationRequest'
+      responses:
+        '201':
+          description: Business location created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessLocation'
+  /business-locations/{location_id}:
+    get:
+      operationId: getBusinessLocation
+      summary: Get Business Location
+      description: Returns details for a specific business location.
+      tags:
+        - Locations
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the business location.
+      responses:
+        '200':
+          description: Business location details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessLocation'
+    delete:
+      operationId: deleteBusinessLocation
+      summary: Delete Business Location
+      description: Remove a business pickup location.
+      tags:
+        - Locations
+      parameters:
+        - name: location_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the business location.
+      responses:
+        '204':
+          description: Location deleted successfully.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token
+  schemas:
+    DeliveryRequest:
+      type: object
+      required:
+        - pickup_name
+        - pickup_address
+        - dropoff_name
+        - dropoff_address
+      properties:
+        pickup_name:
+          type: string
+          description: Name of the pickup location or business.
+        pickup_address:
+          type: string
+          description: Pickup address for the courier.
+        pickup_phone_number:
+          type: string
+          description: Phone number for pickup location.
+        pickup_notes:
+          type: string
+          description: Special instructions for the courier at pickup.
+        dropoff_name:
+          type: string
+          description: Name of the recipient.
+        dropoff_address:
+          type: string
+          description: Dropoff address for the delivery.
+        dropoff_phone_number:
+          type: string
+          description: Phone number of the recipient.
+        dropoff_notes:
+          type: string
+          description: Special delivery instructions.
+        manifest_items:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              quantity:
+                type: integer
+              size:
+                type: string
+                enum:
+                  - small
+                  - medium
+                  - large
+                  - xlarge
+    Delivery:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique delivery identifier.
+        quote_id:
+          type: string
+          description: Associated quote identifier.
+        status:
+          type: string
+          enum:
+            - pending
+            - pickup
+            - pickup_complete
+            - dropoff
+            - delivered
+            - canceled
+            - returned
+          description: Current delivery status.
+        tracking_url:
+          type: string
+          format: uri
+          description: URL to track the delivery in real-time.
+        courier:
+          type: object
+          properties:
+            name:
+              type: string
+            vehicle_type:
+              type: string
+            phone_number:
+              type: string
+            latitude:
+              type: number
+            longitude:
+              type: number
+            img_href:
+              type: string
+              format: uri
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+        pickup_eta:
+          type: string
+          format: date-time
+        dropoff_eta:
+          type: string
+          format: date-time
+        fee:
+          type: integer
+          description: Delivery fee in cents.
+        currency:
+          type: string
+          description: Currency code for the fee.
+    DeliveryQuote:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Quote identifier to use when creating the delivery.
+        created:
+          type: string
+          format: date-time
+        expires:
+          type: string
+          format: date-time
+        fee:
+          type: integer
+          description: Estimated delivery fee in cents.
+        currency:
+          type: string
+          description: Currency code.
+        duration:
+          type: integer
+          description: Estimated delivery duration in seconds.
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique organization identifier.
+        name:
+          type: string
+          description: Organization name.
+        status:
+          type: string
+          description: Organization status.
+    RefundRequest:
+      type: object
+      required:
+        - order_id
+        - reason
+      properties:
+        order_id:
+          type: string
+          description: Order ID to refund.
+        reason:
+          type: string
+          description: Reason for requesting a refund.
+        amount:
+          type: integer
+          description: Refund amount in cents. If omitted, full refund.
+    Refund:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique refund identifier.
+        order_id:
+          type: string
+          description: Associated order identifier.
+        amount:
+          type: integer
+          description: Refund amount in cents.
+        status:
+          type: string
+          description: Current status of the refund.
+        created:
+          type: string
+          format: date-time
+    BusinessLocation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique location identifier.
+        name:
+          type: string
+          description: Location display name.
+        address:
+          type: string
+          description: Full address of the location.
+        phone_number:
+          type: string
+          description: Contact phone number.
+    BusinessLocationRequest:
+      type: object
+      required:
+        - name
+        - address
+      properties:
+        name:
+          type: string
+          description: Location display name.
+        address:
+          type: string
+          description: Full street address.
+        phone_number:
+          type: string
+          description: Contact phone number.
+        instructions:
+          type: string
+          description: Special pickup instructions.

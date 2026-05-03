@@ -1,0 +1,306 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Uber Food and Delivery"
+  description: >-
+    Workflow capability combining Uber Eats (restaurant ordering and store management) and
+    Uber Direct (on-demand courier delivery) APIs. Supports restaurant operators, e-commerce
+    merchants, and delivery platform integrators needing unified food ordering and delivery dispatch.
+  tags:
+    - Uber
+    - Uber Eats
+    - Uber Direct
+    - Food Delivery
+    - Delivery
+    - Logistics
+    - Restaurants
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      UBER_EATS_ACCESS_TOKEN: UBER_EATS_ACCESS_TOKEN
+      UBER_DIRECT_ACCESS_TOKEN: UBER_DIRECT_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: uber-eats
+      location: ./shared/eats.yaml
+    - import: uber-direct
+      location: ./shared/direct.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: uber-food-delivery-api
+      description: "Unified REST API for Uber Eats store management and Uber Direct delivery operations."
+      resources:
+        - path: /v1/stores
+          name: stores
+          description: "Uber Eats store listings."
+          operations:
+            - method: GET
+              name: list-stores
+              description: "List all stores for the authenticated Uber Eats partner."
+              call: "uber-eats.list-stores"
+              with:
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/stores/{store_id}
+          name: store
+          description: "Individual Uber Eats store details."
+          operations:
+            - method: GET
+              name: get-store
+              description: "Get details for a specific Uber Eats store."
+              call: "uber-eats.get-store"
+              with:
+                store_id: "rest.store_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/stores/{store_id}/menu
+          name: store-menu
+          description: "Uber Eats store menu management."
+          operations:
+            - method: GET
+              name: get-store-menu
+              description: "Get the current menu for a store."
+              call: "uber-eats.get-store-menu"
+              with:
+                store_id: "rest.store_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/orders/{order_id}
+          name: order
+          description: "Uber Eats order management."
+          operations:
+            - method: GET
+              name: get-order
+              description: "Get details for a specific Uber Eats order."
+              call: "uber-eats.get-order"
+              with:
+                order_id: "rest.order_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/deliveries/quotes
+          name: delivery-quotes
+          description: "Uber Direct delivery price quotes."
+          operations:
+            - method: POST
+              name: get-delivery-quote
+              description: "Get a price quote for an on-demand delivery."
+              call: "uber-direct.get-delivery-quote"
+              with:
+                pickup_address: "rest.pickup_address"
+                dropoff_address: "rest.dropoff_address"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/deliveries
+          name: deliveries
+          description: "Uber Direct delivery dispatch."
+          operations:
+            - method: POST
+              name: create-delivery
+              description: "Dispatch an Uber courier for on-demand delivery."
+              call: "uber-direct.create-delivery"
+              with:
+                pickup_name: "rest.pickup_name"
+                pickup_address: "rest.pickup_address"
+                dropoff_name: "rest.dropoff_name"
+                dropoff_address: "rest.dropoff_address"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/deliveries/{order_id}
+          name: delivery
+          description: "Individual Uber Direct delivery tracking and management."
+          operations:
+            - method: GET
+              name: get-delivery
+              description: "Get the current status of a delivery order."
+              call: "uber-direct.get-delivery"
+              with:
+                order_id: "rest.order_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: cancel-delivery
+              description: "Cancel an active delivery order."
+              call: "uber-direct.cancel-delivery"
+              with:
+                order_id: "rest.order_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/pickup-locations
+          name: pickup-locations
+          description: "Business pickup location management for Uber Direct."
+          operations:
+            - method: GET
+              name: list-pickup-locations
+              description: "List all business pickup locations."
+              call: "uber-direct.list-business-locations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9091
+      namespace: uber-food-delivery-mcp
+      transport: http
+      description: "MCP server for AI-assisted food ordering and delivery dispatch."
+      tools:
+        - name: list-eats-stores
+          description: "List all Uber Eats stores for the partner account."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-eats.list-stores"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-eats-store
+          description: "Get details for a specific Uber Eats restaurant store."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-eats.get-store"
+          with:
+            store_id: "tools.store_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-store-menu
+          description: "Get the current menu for an Uber Eats store."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-eats.get-store-menu"
+          with:
+            store_id: "tools.store_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-eats-order
+          description: "Get details for an Uber Eats order."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-eats.get-order"
+          with:
+            order_id: "tools.order_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: accept-eats-order
+          description: "Accept a pending Uber Eats order."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "uber-eats.accept-order"
+          with:
+            order_id: "tools.order_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: deny-eats-order
+          description: "Deny a pending Uber Eats order with a reason."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "uber-eats.deny-order"
+          with:
+            order_id: "tools.order_id"
+            reason: "tools.reason"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: quote-direct-delivery
+          description: "Get a price quote for an Uber Direct on-demand delivery."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uber-direct.get-delivery-quote"
+          with:
+            pickup_address: "tools.pickup_address"
+            dropoff_address: "tools.dropoff_address"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-direct-delivery
+          description: "Dispatch an Uber courier for an on-demand delivery."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "uber-direct.create-delivery"
+          with:
+            pickup_name: "tools.pickup_name"
+            pickup_address: "tools.pickup_address"
+            dropoff_name: "tools.dropoff_name"
+            dropoff_address: "tools.dropoff_address"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: track-direct-delivery
+          description: "Track the real-time status of an Uber Direct delivery."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-direct.get-delivery"
+          with:
+            order_id: "tools.order_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: cancel-direct-delivery
+          description: "Cancel an active Uber Direct delivery."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "uber-direct.cancel-delivery"
+          with:
+            order_id: "tools.order_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-pickup-locations
+          description: "List business pickup locations configured for Uber Direct."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-direct.list-business-locations"
+          outputParameters:
+            - type: object
+              mapping: "$."

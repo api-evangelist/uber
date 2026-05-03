@@ -1,0 +1,46 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.uber.com/v1/eats/orders/order_abc123",
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "order_abc123",
+      "external_reference_id": "EXT-99887",
+      "current_state": "ACCEPTED",
+      "store": {
+        "name": "Burger Palace",
+        "store_id": "store_12345"
+      },
+      "cart": {
+        "items": [
+          {
+            "id": "item_001",
+            "title": "Classic Burger",
+            "quantity": 2,
+            "price": 1299
+          },
+          {
+            "id": "item_002",
+            "title": "Large Fries",
+            "quantity": 2,
+            "price": 399
+          }
+        ]
+      },
+      "payment": {
+        "charges": [
+          { "name": "Subtotal", "amount": 33.96 },
+          { "name": "Delivery Fee", "amount": 2.99 },
+          { "name": "Service Fee", "amount": 1.50 }
+        ]
+      },
+      "placed_at": "2026-05-03T10:30:00Z"
+    }
+  }
+}

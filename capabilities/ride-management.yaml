@@ -1,0 +1,348 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Uber Ride Management"
+  description: >-
+    Workflow capability for managing the complete Uber ride lifecycle. Combines the Riders API
+    (ride requests, estimates, products) and Drivers API (driver profile, trips, payments) to
+    support ride-booking applications, fleet management dashboards, and driver analytics tools.
+  tags:
+    - Uber
+    - Ride-Sharing
+    - Transportation
+    - Riders
+    - Drivers
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      UBER_RIDERS_ACCESS_TOKEN: UBER_RIDERS_ACCESS_TOKEN
+      UBER_DRIVERS_ACCESS_TOKEN: UBER_DRIVERS_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: uber-riders
+      location: ./shared/riders.yaml
+    - import: uber-drivers
+      location: ./shared/drivers.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: uber-ride-management-api
+      description: "Unified REST API for managing Uber ride requests, estimates, and driver data."
+      resources:
+        - path: /v1/products
+          name: products
+          description: "Available Uber ride products at a location."
+          operations:
+            - method: GET
+              name: list-products
+              description: "List Uber products available at a given location."
+              call: "uber-riders.list-products"
+              with:
+                latitude: "rest.latitude"
+                longitude: "rest.longitude"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/estimates/price
+          name: price-estimates
+          description: "Price estimates for rides between two locations."
+          operations:
+            - method: GET
+              name: get-price-estimates
+              description: "Get price estimates for available products between two points."
+              call: "uber-riders.get-price-estimates"
+              with:
+                start_latitude: "rest.start_latitude"
+                start_longitude: "rest.start_longitude"
+                end_latitude: "rest.end_latitude"
+                end_longitude: "rest.end_longitude"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/estimates/time
+          name: time-estimates
+          description: "ETA estimates for ride products at a pickup location."
+          operations:
+            - method: GET
+              name: get-time-estimates
+              description: "Get arrival time estimates for available products."
+              call: "uber-riders.get-time-estimates"
+              with:
+                start_latitude: "rest.start_latitude"
+                start_longitude: "rest.start_longitude"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/ride-requests
+          name: ride-requests
+          description: "Ride request creation and management."
+          operations:
+            - method: POST
+              name: create-ride-request
+              description: "Request a ride for an authenticated Uber user."
+              call: "uber-riders.create-ride-request"
+              with:
+                product_id: "rest.product_id"
+                start_latitude: "rest.start_latitude"
+                start_longitude: "rest.start_longitude"
+                end_latitude: "rest.end_latitude"
+                end_longitude: "rest.end_longitude"
+                fare_id: "rest.fare_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/ride-requests/{request_id}
+          name: ride-request
+          description: "Individual ride request status and cancellation."
+          operations:
+            - method: GET
+              name: get-ride-request
+              description: "Get real-time status of a ride request."
+              call: "uber-riders.get-ride-request"
+              with:
+                request_id: "rest.request_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: cancel-ride-request
+              description: "Cancel an active ride request."
+              call: "uber-riders.cancel-ride-request"
+              with:
+                request_id: "rest.request_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/riders/profile
+          name: rider-profile
+          description: "Authenticated rider profile."
+          operations:
+            - method: GET
+              name: get-rider-profile
+              description: "Get the authenticated rider's Uber profile."
+              call: "uber-riders.get-rider-profile"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/riders/history
+          name: ride-history
+          description: "Rider trip history."
+          operations:
+            - method: GET
+              name: get-ride-history
+              description: "Get the rider's trip history."
+              call: "uber-riders.get-ride-history"
+              with:
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/drivers/profile
+          name: driver-profile
+          description: "Authenticated driver partner profile."
+          operations:
+            - method: GET
+              name: get-driver-profile
+              description: "Get the authenticated driver partner's profile."
+              call: "uber-drivers.get-driver-profile"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/drivers/payments
+          name: driver-payments
+          description: "Driver payment history."
+          operations:
+            - method: GET
+              name: get-driver-payments
+              description: "Get payment history for the driver partner."
+              call: "uber-drivers.get-driver-payments"
+              with:
+                from_time: "rest.from_time"
+                to_time: "rest.to_time"
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/drivers/trips
+          name: driver-trips
+          description: "Driver trip history."
+          operations:
+            - method: GET
+              name: get-driver-trips
+              description: "Get trip history for the driver partner."
+              call: "uber-drivers.get-driver-trips"
+              with:
+                from_time: "rest.from_time"
+                to_time: "rest.to_time"
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: uber-ride-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted Uber ride booking and driver analytics."
+      tools:
+        - name: list-uber-products
+          description: "List available Uber ride products at a specific location."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uber-riders.list-products"
+          with:
+            latitude: "tools.latitude"
+            longitude: "tools.longitude"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-price-estimates
+          description: "Get price estimates for Uber rides between two locations."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uber-riders.get-price-estimates"
+          with:
+            start_latitude: "tools.start_latitude"
+            start_longitude: "tools.start_longitude"
+            end_latitude: "tools.end_latitude"
+            end_longitude: "tools.end_longitude"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-time-estimates
+          description: "Get estimated arrival times for Uber products at a pickup location."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uber-riders.get-time-estimates"
+          with:
+            start_latitude: "tools.start_latitude"
+            start_longitude: "tools.start_longitude"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-ride-request
+          description: "Request an Uber ride for a user."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "uber-riders.create-ride-request"
+          with:
+            product_id: "tools.product_id"
+            start_latitude: "tools.start_latitude"
+            start_longitude: "tools.start_longitude"
+            end_latitude: "tools.end_latitude"
+            end_longitude: "tools.end_longitude"
+            fare_id: "tools.fare_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-ride-status
+          description: "Get the real-time status of an active ride request."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-riders.get-ride-request"
+          with:
+            request_id: "tools.request_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: cancel-ride
+          description: "Cancel an active Uber ride request."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "uber-riders.cancel-ride-request"
+          with:
+            request_id: "tools.request_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-rider-profile
+          description: "Get the authenticated Uber rider's profile information."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-riders.get-rider-profile"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-rider-history
+          description: "Get the trip history for an Uber rider."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-riders.get-ride-history"
+          with:
+            limit: "tools.limit"
+            offset: "tools.offset"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-driver-profile
+          description: "Get the profile for an Uber driver partner."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-drivers.get-driver-profile"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-driver-payments
+          description: "Get payment history for an Uber driver partner."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-drivers.get-driver-payments"
+          with:
+            from_time: "tools.from_time"
+            to_time: "tools.to_time"
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-driver-trips
+          description: "Get trip history for an Uber driver partner."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uber-drivers.get-driver-trips"
+          with:
+            from_time: "tools.from_time"
+            to_time: "tools.to_time"
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
