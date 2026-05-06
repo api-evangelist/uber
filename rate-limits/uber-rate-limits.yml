@@ -4,118 +4,37 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Uber
 providerId: uber
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Ride-Sharing
-  - Rides
-  - Taxis
-  - Transportation
   - Food Delivery
-  - Delivery
   - Logistics
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Uber API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Uber's developer documentation does not publish numeric API rate limits on its public-facing
+  pages. Access is gated to Uber for Business Enterprise clients and to specific Uber Eats / Uber Direct
+  partner programs; throttling, quotas, and SLAs are governed by the partner agreement and on-boarding
+  package rather than a public rate-limits page.
+notes: No public per-API rate-limit numbers are documented. Reconciled remains false until the partner
+  developer guide can be referenced inside an active enterprise agreement.
+sources:
+  - https://developer.uber.com/docs/businesses
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Uber Riders API
-      - Uber Drivers API
-      - Uber Eats API
-      - Uber Direct API
-      - Uber Guest Rides API
-      - Uber Vouchers API
-      - Uber for Business API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Uber Riders API
-      - Uber Drivers API
-      - Uber Eats API
-      - Uber Direct API
-      - Uber Guest Rides API
-      - Uber Vouchers API
-      - Uber for Business API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Uber Riders API
-      - Uber Drivers API
-      - Uber Eats API
-      - Uber Direct API
-      - Uber Guest Rides API
-      - Uber Vouchers API
-      - Uber for Business API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Uber Riders API
-      - Uber Drivers API
-      - Uber Eats API
-      - Uber Direct API
-      - Uber Guest Rides API
-      - Uber Vouchers API
-      - Uber for Business API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Uber Riders API
-      - Uber Drivers API
-      - Uber Eats API
-      - Uber Direct API
-      - Uber Guest Rides API
-      - Uber Vouchers API
-      - Uber for Business API
+  - name: Partner-Contract Rate Limit
+    scope: account
+    metric: varies
+    limit: see partner / enterprise agreement
+    notes: Documentation states API access is restricted to enterprise clients; per-endpoint quotas are
+      not published.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Enterprise Gating
+    description: Uber for Business APIs (Receipts, SFTP automation, SCIM, SAP Concur, SSO) require an
+      enterprise account before access is granted; on-boarding includes the operative throttling thresholds.
+  - name: Backoff
+    description: Apply exponential backoff with jitter on transient errors; respect any Retry-After header
+      returned by Uber's edge.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
