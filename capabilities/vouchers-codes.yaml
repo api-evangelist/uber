@@ -1,0 +1,185 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Vouchers API — Codes
+  description: 'Uber Vouchers API — Codes. 3 operations. Lead operation: List Voucher Codes. Self-contained Naftiko capability
+    covering one Uber business surface.'
+  tags:
+  - Uber
+  - Codes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UBER_API_KEY: UBER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vouchers-codes
+    baseUri: https://api.uber.com/v1
+    description: Uber Vouchers API — Codes business capability. Self-contained, no shared references.
+    resources:
+    - name: voucher-programs-program_id-codes
+      path: /voucher-programs/{program_id}/codes
+      operations:
+      - name: listvouchercodes
+        method: GET
+        description: List Voucher Codes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: program_id
+          in: path
+          type: string
+          required: true
+        - name: limit
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+    - name: voucher-programs-program_id-codes-distribute
+      path: /voucher-programs/{program_id}/codes/distribute
+      operations:
+      - name: distributevouchercodes
+        method: POST
+        description: Distribute Voucher Codes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: program_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: voucher-programs-program_id-codes-generate
+      path: /voucher-programs/{program_id}/codes/generate
+      operations:
+      - name: generatevouchercodes
+        method: POST
+        description: Generate Voucher Codes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: program_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: vouchers-codes-rest
+    port: 8080
+    description: REST adapter for Uber Vouchers API — Codes. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/voucher-programs/{program-id}/codes
+      name: voucher-programs-program-id-codes
+      description: REST surface for voucher-programs-program_id-codes.
+      operations:
+      - method: GET
+        name: listvouchercodes
+        description: List Voucher Codes
+        call: vouchers-codes.listvouchercodes
+        with:
+          program_id: rest.program_id
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/voucher-programs/{program-id}/codes/distribute
+      name: voucher-programs-program-id-codes-distribute
+      description: REST surface for voucher-programs-program_id-codes-distribute.
+      operations:
+      - method: POST
+        name: distributevouchercodes
+        description: Distribute Voucher Codes
+        call: vouchers-codes.distributevouchercodes
+        with:
+          program_id: rest.program_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/voucher-programs/{program-id}/codes/generate
+      name: voucher-programs-program-id-codes-generate
+      description: REST surface for voucher-programs-program_id-codes-generate.
+      operations:
+      - method: POST
+        name: generatevouchercodes
+        description: Generate Voucher Codes
+        call: vouchers-codes.generatevouchercodes
+        with:
+          program_id: rest.program_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vouchers-codes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Vouchers API — Codes. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-voucher-codes
+      description: List Voucher Codes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vouchers-codes.listvouchercodes
+      with:
+        program_id: tools.program_id
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: distribute-voucher-codes
+      description: Distribute Voucher Codes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vouchers-codes.distributevouchercodes
+      with:
+        program_id: tools.program_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: generate-voucher-codes
+      description: Generate Voucher Codes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vouchers-codes.generatevouchercodes
+      with:
+        program_id: tools.program_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

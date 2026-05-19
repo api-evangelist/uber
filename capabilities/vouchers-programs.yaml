@@ -1,0 +1,276 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Vouchers API — Programs
+  description: 'Uber Vouchers API — Programs. 6 operations. Lead operation: Create Voucher Program. Self-contained Naftiko
+    capability covering one Uber business surface.'
+  tags:
+  - Uber
+  - Programs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UBER_API_KEY: UBER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vouchers-programs
+    baseUri: https://api.uber.com/v1
+    description: Uber Vouchers API — Programs business capability. Self-contained, no shared references.
+    resources:
+    - name: voucher-programs
+      path: /voucher-programs
+      operations:
+      - name: createvoucherprogram
+        method: POST
+        description: Create Voucher Program
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listvoucherprograms
+        method: GET
+        description: List Voucher Programs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+    - name: voucher-programs-search
+      path: /voucher-programs/search
+      operations:
+      - name: searchvoucherprograms
+        method: POST
+        description: Search Voucher Programs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: voucher-programs-program_id
+      path: /voucher-programs/{program_id}
+      operations:
+      - name: getvoucherprogram
+        method: GET
+        description: Get Voucher Program
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: program_id
+          in: path
+          type: string
+          required: true
+      - name: updatevoucherprogram
+        method: PATCH
+        description: Update Voucher Program
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: program_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: cancelvoucherprogram
+        method: DELETE
+        description: Cancel Voucher Program
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: program_id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: vouchers-programs-rest
+    port: 8080
+    description: REST adapter for Uber Vouchers API — Programs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/voucher-programs
+      name: voucher-programs
+      description: REST surface for voucher-programs.
+      operations:
+      - method: POST
+        name: createvoucherprogram
+        description: Create Voucher Program
+        call: vouchers-programs.createvoucherprogram
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listvoucherprograms
+        description: List Voucher Programs
+        call: vouchers-programs.listvoucherprograms
+        with:
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/voucher-programs/search
+      name: voucher-programs-search
+      description: REST surface for voucher-programs-search.
+      operations:
+      - method: POST
+        name: searchvoucherprograms
+        description: Search Voucher Programs
+        call: vouchers-programs.searchvoucherprograms
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/voucher-programs/{program-id}
+      name: voucher-programs-program-id
+      description: REST surface for voucher-programs-program_id.
+      operations:
+      - method: GET
+        name: getvoucherprogram
+        description: Get Voucher Program
+        call: vouchers-programs.getvoucherprogram
+        with:
+          program_id: rest.program_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatevoucherprogram
+        description: Update Voucher Program
+        call: vouchers-programs.updatevoucherprogram
+        with:
+          program_id: rest.program_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: cancelvoucherprogram
+        description: Cancel Voucher Program
+        call: vouchers-programs.cancelvoucherprogram
+        with:
+          program_id: rest.program_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vouchers-programs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Vouchers API — Programs. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: create-voucher-program
+      description: Create Voucher Program
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vouchers-programs.createvoucherprogram
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-voucher-programs
+      description: List Voucher Programs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vouchers-programs.listvoucherprograms
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-voucher-programs
+      description: Search Voucher Programs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: vouchers-programs.searchvoucherprograms
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-voucher-program
+      description: Get Voucher Program
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vouchers-programs.getvoucherprogram
+      with:
+        program_id: tools.program_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-voucher-program
+      description: Update Voucher Program
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: vouchers-programs.updatevoucherprogram
+      with:
+        program_id: tools.program_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-voucher-program
+      description: Cancel Voucher Program
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: vouchers-programs.cancelvoucherprogram
+      with:
+        program_id: tools.program_id
+      outputParameters:
+      - type: object
+        mapping: $.
