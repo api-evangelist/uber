@@ -1,5 +1,10 @@
 aid: uber
 url: https://raw.githubusercontent.com/api-evangelist/uber/refs/heads/main/apis.yml
+common:
+  - type: GitHubOrganization
+    url: https://github.com/uber
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/uber-com
 apis:
 - aid: uber:uber-riders
   name: Uber Riders API
