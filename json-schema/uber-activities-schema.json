@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Activities",
+  "title": "Activities",
+  "type": "object",
+  "properties": {
+    "offset": {
+      "type": "integer",
+      "description": "Position in pagination."
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Number of items to retrieve."
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total number of items available."
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "description": "Unique activity identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the activity."
+          }
+        }
+      }
+    }
+  }
+}

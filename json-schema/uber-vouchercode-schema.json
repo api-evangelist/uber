@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VoucherCode",
+  "title": "VoucherCode",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "The voucher code string."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "distributed",
+        "redeemed",
+        "expired"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Organization",
+  "title": "Organization",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique organization identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Organization name."
+    },
+    "status": {
+      "type": "string",
+      "description": "Organization status."
+    }
+  }
+}

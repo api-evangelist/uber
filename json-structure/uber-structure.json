@@ -1,0 +1,228 @@
+{
+  "provider": "Uber",
+  "providerId": "uber",
+  "kind": "json-structure",
+  "description": "Structural overview of the Uber API surface; extracted from openapi/.",
+  "schemaCount": 11,
+  "operationCount": 16,
+  "schemas": [
+    {
+      "name": "Product",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "PriceEstimate",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "TimeEstimate",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "RiderProfile",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Activities",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Place",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PlaceUpdate",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "address"
+      ]
+    },
+    {
+      "name": "RideEstimate",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "RideRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "product_id",
+        "start_latitude",
+        "start_longitude"
+      ]
+    },
+    {
+      "name": "RideDetails",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Receipt",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/products",
+      "operationId": "listProducts",
+      "summary": "List Products",
+      "tags": [
+        "Products"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/products/{product_id}",
+      "operationId": "getProduct",
+      "summary": "Get Product",
+      "tags": [
+        "Products"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/estimates/price",
+      "operationId": "getPriceEstimates",
+      "summary": "Get Price Estimates",
+      "tags": [
+        "Estimates"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/estimates/time",
+      "operationId": "getTimeEstimates",
+      "summary": "Get Time Estimates",
+      "tags": [
+        "Estimates"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me",
+      "operationId": "getRiderProfile",
+      "summary": "Get Rider Profile",
+      "tags": [
+        "Riders"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/me",
+      "operationId": "applyPromotion",
+      "summary": "Apply Promotion",
+      "tags": [
+        "Riders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/history",
+      "operationId": "getRideHistory",
+      "summary": "Get Ride History",
+      "tags": [
+        "Riders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/places/{place_id}",
+      "operationId": "getPlace",
+      "summary": "Get Saved Place",
+      "tags": [
+        "Places"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/places/{place_id}",
+      "operationId": "updatePlace",
+      "summary": "Update Saved Place",
+      "tags": [
+        "Places"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/requests/estimate",
+      "operationId": "createRideEstimate",
+      "summary": "Create Ride Estimate",
+      "tags": [
+        "Requests"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/requests",
+      "operationId": "createRideRequest",
+      "summary": "Create Ride Request",
+      "tags": [
+        "Requests"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/requests/{request_id}",
+      "operationId": "getRideRequest",
+      "summary": "Get Ride Details",
+      "tags": [
+        "Requests"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/requests/{request_id}",
+      "operationId": "cancelRideRequest",
+      "summary": "Cancel Ride Request",
+      "tags": [
+        "Requests"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/requests/{request_id}",
+      "operationId": "updateRideRequest",
+      "summary": "Update Ride Request",
+      "tags": [
+        "Requests"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/requests/{request_id}/map",
+      "operationId": "getRideMap",
+      "summary": "Get Ride Map",
+      "tags": [
+        "Requests"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/requests/{request_id}/receipts",
+      "operationId": "getRideReceipt",
+      "summary": "Get Ride Receipt",
+      "tags": [
+        "Requests"
+      ]
+    }
+  ]
+}

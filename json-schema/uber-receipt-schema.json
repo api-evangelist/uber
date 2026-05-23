@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Receipt",
+  "title": "Receipt",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "description": "The unique ID for the request."
+    },
+    "charges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "total_charged": {
+      "type": "string",
+      "description": "The total amount charged to the user's payment method."
+    },
+    "total_owed": {
+      "type": "number",
+      "description": "The total amount owed by the user."
+    },
+    "currency_code": {
+      "type": "string",
+      "description": "ISO 4217 currency code."
+    },
+    "duration": {
+      "type": "string",
+      "description": "Time duration of the trip in ISO 8601 format."
+    },
+    "distance": {
+      "type": "string",
+      "description": "Distance of the trip charged."
+    },
+    "distance_label": {
+      "type": "string",
+      "description": "The localized unit of distance."
+    }
+  }
+}

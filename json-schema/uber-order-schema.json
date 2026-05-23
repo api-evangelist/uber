@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Order",
+  "title": "Order",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique order identifier."
+    },
+    "external_reference_id": {
+      "type": "string",
+      "description": "Partner's order reference."
+    },
+    "current_state": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "ACCEPTED",
+        "FULFILLED",
+        "DENIED",
+        "CANCELLED"
+      ],
+      "description": "Current order state."
+    },
+    "store": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "store_id": {
+          "type": "string"
+        }
+      }
+    },
+    "cart": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer"
+              },
+              "price": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "payment": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "placed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when order was placed."
+    }
+  }
+}

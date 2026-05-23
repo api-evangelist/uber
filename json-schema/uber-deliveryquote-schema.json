@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeliveryQuote",
+  "title": "DeliveryQuote",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Quote identifier to use when creating the delivery."
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fee": {
+      "type": "integer",
+      "description": "Estimated delivery fee in cents."
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Estimated delivery duration in seconds."
+    }
+  }
+}

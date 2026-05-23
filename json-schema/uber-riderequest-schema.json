@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RideRequest",
+  "title": "RideRequest",
+  "type": "object",
+  "required": [
+    "product_id",
+    "start_latitude",
+    "start_longitude"
+  ],
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "The unique ID of the product to request."
+    },
+    "start_latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "The beginning or starting latitude."
+    },
+    "start_longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "The beginning or starting longitude."
+    },
+    "end_latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "The final or ending latitude."
+    },
+    "end_longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "The final or ending longitude."
+    },
+    "fare_id": {
+      "type": "string",
+      "description": "The fare ID from a prior estimate call."
+    },
+    "surge_confirmation_id": {
+      "type": "string",
+      "description": "The surge confirmation ID if the user has confirmed a surge."
+    },
+    "payment_method_id": {
+      "type": "string",
+      "description": "The unique identifier of the payment method selected by a user."
+    }
+  }
+}

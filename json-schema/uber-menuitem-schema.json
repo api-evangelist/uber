@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MenuItem",
+  "title": "MenuItem",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the menu item."
+    },
+    "external_data": {
+      "type": "string",
+      "description": "Partner's own identifier for the item."
+    },
+    "title": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "description": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "msrp": {
+      "type": "integer",
+      "description": "Price in minor currency units (cents)."
+    },
+    "quantity_info": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "object",
+          "properties": {
+            "min_permitted": {
+              "type": "integer"
+            },
+            "max_permitted": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

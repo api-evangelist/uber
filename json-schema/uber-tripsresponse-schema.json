@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TripsResponse",
+  "title": "TripsResponse",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "description": "Total number of trips."
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Number of trips per page."
+    },
+    "offset": {
+      "type": "integer",
+      "description": "Offset of the current page."
+    },
+    "trips": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DriverTrip"
+      }
+    }
+  }
+}

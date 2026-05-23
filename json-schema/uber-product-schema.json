@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Product",
+  "title": "Product",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Unique identifier representing a specific product for a given location."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of product."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Display name of product."
+    },
+    "capacity": {
+      "type": "integer",
+      "description": "Capacity of product. Maximum number of persons that can be accommodated."
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "description": "Image URL representing the product."
+    }
+  }
+}

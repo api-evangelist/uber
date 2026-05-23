@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RideEstimate",
+  "title": "RideEstimate",
+  "type": "object",
+  "properties": {
+    "fare": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "The upfront fare value."
+        },
+        "fare_id": {
+          "type": "string",
+          "description": "Unique identifier of the fare, used when requesting a ride."
+        },
+        "expires_at": {
+          "type": "integer",
+          "description": "Expiration time of the fare in Unix epoch seconds."
+        },
+        "display": {
+          "type": "string",
+          "description": "Display string for the fare."
+        },
+        "currency_code": {
+          "type": "string",
+          "description": "ISO 4217 currency code."
+        }
+      }
+    }
+  }
+}

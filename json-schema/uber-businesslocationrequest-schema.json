@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BusinessLocationRequest",
+  "title": "BusinessLocationRequest",
+  "type": "object",
+  "required": [
+    "name",
+    "address"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Location display name."
+    },
+    "address": {
+      "type": "string",
+      "description": "Full street address."
+    },
+    "phone_number": {
+      "type": "string",
+      "description": "Contact phone number."
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Special pickup instructions."
+    }
+  }
+}

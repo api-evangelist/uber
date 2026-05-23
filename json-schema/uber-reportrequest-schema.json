@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportRequest",
+  "title": "ReportRequest",
+  "type": "object",
+  "required": [
+    "report_type",
+    "date_range"
+  ],
+  "properties": {
+    "report_type": {
+      "type": "string",
+      "description": "Type of report to generate."
+    },
+    "store_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of store IDs to include."
+    },
+    "date_range": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}

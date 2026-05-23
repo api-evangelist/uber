@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentsResponse",
+  "title": "PaymentsResponse",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "description": "Total number of payments."
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Number of payments per page."
+    },
+    "offset": {
+      "type": "integer",
+      "description": "Offset of the current page."
+    },
+    "payments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Payment"
+      }
+    }
+  }
+}

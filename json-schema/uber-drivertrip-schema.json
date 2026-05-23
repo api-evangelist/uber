@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DriverTrip",
+  "title": "DriverTrip",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "description": "Unique trip identifier."
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the trip."
+    },
+    "distance": {
+      "type": "number",
+      "description": "Distance of the trip in miles."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Duration of the trip in seconds."
+    },
+    "start_time": {
+      "type": "integer",
+      "description": "Unix timestamp of trip start."
+    },
+    "end_time": {
+      "type": "integer",
+      "description": "Unix timestamp of trip end."
+    },
+    "start_city": {
+      "type": "object",
+      "properties": {
+        "display_name": {
+          "type": "string",
+          "description": "Display name of the city."
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Latitude of the city."
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Longitude of the city."
+        }
+      }
+    }
+  }
+}

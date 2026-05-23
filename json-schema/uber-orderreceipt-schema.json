@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderReceipt",
+  "title": "OrderReceipt",
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "description": "Unique order identifier."
+    },
+    "store_name": {
+      "type": "string",
+      "description": "Name of the restaurant."
+    },
+    "placed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time the order was placed."
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "number",
+      "description": "Order subtotal before fees."
+    },
+    "delivery_fee": {
+      "type": "number",
+      "description": "Delivery fee amount."
+    },
+    "total": {
+      "type": "number",
+      "description": "Total amount charged."
+    },
+    "currency_code": {
+      "type": "string",
+      "description": "ISO 4217 currency code."
+    }
+  }
+}

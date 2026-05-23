@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeliveryRequest",
+  "title": "DeliveryRequest",
+  "type": "object",
+  "required": [
+    "pickup_name",
+    "pickup_address",
+    "dropoff_name",
+    "dropoff_address"
+  ],
+  "properties": {
+    "pickup_name": {
+      "type": "string",
+      "description": "Name of the pickup location or business."
+    },
+    "pickup_address": {
+      "type": "string",
+      "description": "Pickup address for the courier."
+    },
+    "pickup_phone_number": {
+      "type": "string",
+      "description": "Phone number for pickup location."
+    },
+    "pickup_notes": {
+      "type": "string",
+      "description": "Special instructions for the courier at pickup."
+    },
+    "dropoff_name": {
+      "type": "string",
+      "description": "Name of the recipient."
+    },
+    "dropoff_address": {
+      "type": "string",
+      "description": "Dropoff address for the delivery."
+    },
+    "dropoff_phone_number": {
+      "type": "string",
+      "description": "Phone number of the recipient."
+    },
+    "dropoff_notes": {
+      "type": "string",
+      "description": "Special delivery instructions."
+    },
+    "manifest_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "xlarge"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

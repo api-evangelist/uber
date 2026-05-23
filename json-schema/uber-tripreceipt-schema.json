@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TripReceipt",
+  "title": "TripReceipt",
+  "type": "object",
+  "properties": {
+    "trip_id": {
+      "type": "string",
+      "description": "Unique trip identifier."
+    },
+    "business_name": {
+      "type": "string",
+      "description": "Name of the associated business account."
+    },
+    "employee_id": {
+      "type": "string",
+      "description": "Employee identifier for the trip."
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Trip start time."
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Trip end time."
+    },
+    "origin": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "destination": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "distance": {
+      "type": "number",
+      "description": "Trip distance in miles."
+    },
+    "duration": {
+      "type": "number",
+      "description": "Trip duration in seconds."
+    },
+    "charges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "total_charged": {
+      "type": "number",
+      "description": "Total amount charged in local currency."
+    },
+    "currency_code": {
+      "type": "string",
+      "description": "ISO 4217 currency code."
+    }
+  }
+}

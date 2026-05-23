@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Refund",
+  "title": "Refund",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique refund identifier."
+    },
+    "order_id": {
+      "type": "string",
+      "description": "Associated order identifier."
+    },
+    "amount": {
+      "type": "integer",
+      "description": "Refund amount in cents."
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the refund."
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

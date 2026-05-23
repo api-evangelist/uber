@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Place",
+  "title": "Place",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "The formatted address of the saved place."
+    }
+  }
+}

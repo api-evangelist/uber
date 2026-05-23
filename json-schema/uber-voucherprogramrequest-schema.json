@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VoucherProgramRequest",
+  "title": "VoucherProgramRequest",
+  "type": "object",
+  "required": [
+    "name",
+    "type"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Program display name."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "rides",
+        "eats"
+      ],
+      "description": "Type of voucher program."
+    },
+    "budget": {
+      "type": "number",
+      "description": "Total budget for the program."
+    },
+    "currency_code": {
+      "type": "string",
+      "description": "ISO 4217 currency code."
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

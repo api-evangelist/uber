@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RideDetails",
+  "title": "RideDetails",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "description": "The unique ID for the request."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "processing",
+        "no_drivers_available",
+        "accepted",
+        "arriving",
+        "in_progress",
+        "driver_canceled",
+        "rider_canceled",
+        "completed"
+      ],
+      "description": "The status of the ride request."
+    },
+    "driver": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "picture_url": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        }
+      }
+    },
+    "vehicle": {
+      "type": "object",
+      "properties": {
+        "make": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "license_plate": {
+          "type": "string"
+        },
+        "picture_url": {
+          "type": "string"
+        }
+      }
+    },
+    "eta": {
+      "type": "integer",
+      "description": "Driver's expected arrival in minutes."
+    },
+    "surge_multiplier": {
+      "type": "number",
+      "description": "The surge pricing multiplier used to calculate the increased price."
+    }
+  }
+}

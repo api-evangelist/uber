@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MenuCategory",
+  "title": "MenuCategory",
+  "type": "object",
+  "properties": {
+    "category_id": {
+      "type": "string",
+      "description": "Unique identifier for the category."
+    },
+    "title": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string",
+          "description": "Category name in English."
+        }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MenuItem"
+      }
+    }
+  }
+}

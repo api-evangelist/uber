@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PriceEstimate",
+  "title": "PriceEstimate",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Unique identifier representing a specific product for a given location."
+    },
+    "currency_code": {
+      "type": "string",
+      "description": "ISO 4217 currency code."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Display name of product."
+    },
+    "estimate": {
+      "type": "string",
+      "description": "Formatted string of estimate in local currency."
+    },
+    "low_estimate": {
+      "type": "number",
+      "description": "Lower bound of the estimated price."
+    },
+    "high_estimate": {
+      "type": "number",
+      "description": "Upper bound of the estimated price."
+    },
+    "surge_multiplier": {
+      "type": "number",
+      "description": "Expected surge multiplier."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Expected activity duration in seconds."
+    },
+    "distance": {
+      "type": "number",
+      "description": "Expected activity distance in miles."
+    }
+  }
+}

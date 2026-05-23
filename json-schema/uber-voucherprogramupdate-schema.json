@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VoucherProgramUpdate",
+  "title": "VoucherProgramUpdate",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

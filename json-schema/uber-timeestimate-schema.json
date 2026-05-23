@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeEstimate",
+  "title": "TimeEstimate",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Unique identifier representing a specific product for a given location."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Display name of product."
+    },
+    "estimate": {
+      "type": "integer",
+      "description": "ETA for the product in seconds."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BusinessLocation",
+  "title": "BusinessLocation",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique location identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Location display name."
+    },
+    "address": {
+      "type": "string",
+      "description": "Full address of the location."
+    },
+    "phone_number": {
+      "type": "string",
+      "description": "Contact phone number."
+    }
+  }
+}

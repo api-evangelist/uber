@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RefundRequest",
+  "title": "RefundRequest",
+  "type": "object",
+  "required": [
+    "order_id",
+    "reason"
+  ],
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "description": "Order ID to refund."
+    },
+    "reason": {
+      "type": "string",
+      "description": "Reason for requesting a refund."
+    },
+    "amount": {
+      "type": "integer",
+      "description": "Refund amount in cents. If omitted, full refund."
+    }
+  }
+}
