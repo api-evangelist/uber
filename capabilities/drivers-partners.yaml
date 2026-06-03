@@ -1,0 +1,198 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Drivers API — Partners
+  description: 'Drivers — Partners. 3 operations. Lead operation: Get Driver Profile. Self-contained Naftiko capability covering
+    one Uber business surface.'
+  tags:
+  - Uber
+  - Drivers
+  - Partners
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: drivers-partners
+    baseUri: https://api.uber.com/v1
+    description: Uber Drivers API — Partners business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: partners-me
+      path: /partners/me
+      operations:
+      - name: getDriverProfile
+        method: GET
+        description: Get Driver Profile
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: partners-payments
+      path: /partners/payments
+      operations:
+      - name: getDriverPayments
+        method: GET
+        description: Get Driver Payments
+        inputParameters:
+        - name: from_time
+          in: query
+          type: integer
+          required: false
+          description: Unix timestamp of the start of the query time range.
+        - name: to_time
+          in: query
+          type: integer
+          required: false
+          description: Unix timestamp of the end of the query time range.
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Number of items to return. Default is 5, maximum is 50.
+        - name: offset
+          in: query
+          type: integer
+          required: false
+          description: Offset the list of returned results by this amount.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: partners-trips
+      path: /partners/trips
+      operations:
+      - name: getDriverTrips
+        method: GET
+        description: Get Driver Trips
+        inputParameters:
+        - name: from_time
+          in: query
+          type: integer
+          required: false
+          description: Unix timestamp of the start of the query time range.
+        - name: to_time
+          in: query
+          type: integer
+          required: false
+          description: Unix timestamp of the end of the query time range.
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Number of items to return. Default is 5, maximum is 50.
+        - name: offset
+          in: query
+          type: integer
+          required: false
+          description: Offset the list of returned results by this amount.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: drivers-partners-rest
+    port: 8080
+    description: REST adapter for Uber Drivers API — Partners. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/partners/me
+      name: partners-me
+      description: REST surface for partners-me.
+      operations:
+      - method: GET
+        name: getDriverProfile
+        description: Get Driver Profile
+        call: drivers-partners.getDriverProfile
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/partners/payments
+      name: partners-payments
+      description: REST surface for partners-payments.
+      operations:
+      - method: GET
+        name: getDriverPayments
+        description: Get Driver Payments
+        call: drivers-partners.getDriverPayments
+        with:
+          from_time: rest.from_time
+          to_time: rest.to_time
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/partners/trips
+      name: partners-trips
+      description: REST surface for partners-trips.
+      operations:
+      - method: GET
+        name: getDriverTrips
+        description: Get Driver Trips
+        call: drivers-partners.getDriverTrips
+        with:
+          from_time: rest.from_time
+          to_time: rest.to_time
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: drivers-partners-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Drivers API — Partners. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-driver-profile
+      description: Get Driver Profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drivers-partners.getDriverProfile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-driver-payments
+      description: Get Driver Payments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drivers-partners.getDriverPayments
+      with:
+        from_time: tools.from_time
+        to_time: tools.to_time
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-driver-trips
+      description: Get Driver Trips
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drivers-partners.getDriverTrips
+      with:
+        from_time: tools.from_time
+        to_time: tools.to_time
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.

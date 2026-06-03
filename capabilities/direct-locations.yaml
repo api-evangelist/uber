@@ -1,0 +1,190 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Direct API — Locations
+  description: 'Delivery — Locations. 4 operations. Lead operation: List Business Locations. Self-contained Naftiko capability
+    covering one Uber business surface.'
+  tags:
+  - Uber
+  - Delivery
+  - Locations
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: direct-locations
+    baseUri: https://api.uber.com/v1
+    description: Uber Direct API — Locations business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: business-locations
+      path: /business-locations
+      operations:
+      - name: listBusinessLocations
+        method: GET
+        description: List Business Locations
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: business-locations
+      path: /business-locations
+      operations:
+      - name: createBusinessLocation
+        method: POST
+        description: Create Business Location
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: business-locations-location-id
+      path: /business-locations/{location_id}
+      operations:
+      - name: getBusinessLocation
+        method: GET
+        description: Get Business Location
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the business location.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: business-locations-location-id
+      path: /business-locations/{location_id}
+      operations:
+      - name: deleteBusinessLocation
+        method: DELETE
+        description: Delete Business Location
+        inputParameters:
+        - name: location_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the business location.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: direct-locations-rest
+    port: 8080
+    description: REST adapter for Uber Direct API — Locations. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/business-locations
+      name: business-locations
+      description: REST surface for business-locations.
+      operations:
+      - method: GET
+        name: listBusinessLocations
+        description: List Business Locations
+        call: direct-locations.listBusinessLocations
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createBusinessLocation
+        description: Create Business Location
+        call: direct-locations.createBusinessLocation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/business-locations/{location-id}
+      name: business-locations-location-id
+      description: REST surface for business-locations-location-id.
+      operations:
+      - method: GET
+        name: getBusinessLocation
+        description: Get Business Location
+        call: direct-locations.getBusinessLocation
+        with:
+          location_id: rest.location_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteBusinessLocation
+        description: Delete Business Location
+        call: direct-locations.deleteBusinessLocation
+        with:
+          location_id: rest.location_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: direct-locations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Direct API — Locations. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-business-locations
+      description: List Business Locations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: direct-locations.listBusinessLocations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-business-location
+      description: Create Business Location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: direct-locations.createBusinessLocation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-business-location
+      description: Get Business Location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: direct-locations.getBusinessLocation
+      with:
+        location_id: tools.location_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-business-location
+      description: Delete Business Location
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: direct-locations.deleteBusinessLocation
+      with:
+        location_id: tools.location_id
+      outputParameters:
+      - type: object
+        mapping: $.

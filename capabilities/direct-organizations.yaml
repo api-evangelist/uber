@@ -1,0 +1,114 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Direct API — Organizations
+  description: 'Delivery — Organizations. 2 operations. Lead operation: List Organizations. Self-contained Naftiko capability
+    covering one Uber business surface.'
+  tags:
+  - Uber
+  - Delivery
+  - Organizations
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: direct-organizations
+    baseUri: https://api.uber.com/v1
+    description: Uber Direct API — Organizations business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: organizations
+      path: /organizations
+      operations:
+      - name: listOrganizations
+        method: GET
+        description: List Organizations
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: organizations-organization-id
+      path: /organizations/{organization_id}
+      operations:
+      - name: getOrganization
+        method: GET
+        description: Get Organization
+        inputParameters:
+        - name: organization_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the organization.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: direct-organizations-rest
+    port: 8080
+    description: REST adapter for Uber Direct API — Organizations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/organizations
+      name: organizations
+      description: REST surface for organizations.
+      operations:
+      - method: GET
+        name: listOrganizations
+        description: List Organizations
+        call: direct-organizations.listOrganizations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/{organization-id}
+      name: organizations-organization-id
+      description: REST surface for organizations-organization-id.
+      operations:
+      - method: GET
+        name: getOrganization
+        description: Get Organization
+        call: direct-organizations.getOrganization
+        with:
+          organization_id: rest.organization_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: direct-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Direct API — Organizations. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-organizations
+      description: List Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: direct-organizations.listOrganizations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-organization
+      description: Get Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: direct-organizations.getOrganization
+      with:
+        organization_id: tools.organization_id
+      outputParameters:
+      - type: object
+        mapping: $.

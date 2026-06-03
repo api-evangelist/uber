@@ -1,0 +1,165 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber for Business API — Trips
+  description: 'Business Travel — Trips. 3 operations. Lead operation: Get Trip Invoice URLs. Self-contained Naftiko capability
+    covering one Uber business surface.'
+  tags:
+  - Uber
+  - Business Travel
+  - Trips
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: businesses-trips
+    baseUri: https://api.uber.com/v1.2
+    description: Uber for Business API — Trips business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: business-trips-trip-id-invoice-urls
+      path: /business/trips/{trip_id}/invoice_urls
+      operations:
+      - name: getTripInvoiceUrls
+        method: GET
+        description: Get Trip Invoice URLs
+        inputParameters:
+        - name: trip_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the business trip.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: business-trips-trip-id-receipt
+      path: /business/trips/{trip_id}/receipt
+      operations:
+      - name: getTripReceipt
+        method: GET
+        description: Get Trip Receipt
+        inputParameters:
+        - name: trip_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the business trip.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: business-trips-trip-id-receipt-pdf-url
+      path: /business/trips/{trip_id}/receipt/pdf_url
+      operations:
+      - name: getTripReceiptPdfUrl
+        method: GET
+        description: Get Trip Receipt PDF URL
+        inputParameters:
+        - name: trip_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the business trip.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: businesses-trips-rest
+    port: 8080
+    description: REST adapter for Uber for Business API — Trips. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/business/trips/{trip-id}/invoice-urls
+      name: business-trips-trip-id-invoice-urls
+      description: REST surface for business-trips-trip-id-invoice-urls.
+      operations:
+      - method: GET
+        name: getTripInvoiceUrls
+        description: Get Trip Invoice URLs
+        call: businesses-trips.getTripInvoiceUrls
+        with:
+          trip_id: rest.trip_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/business/trips/{trip-id}/receipt
+      name: business-trips-trip-id-receipt
+      description: REST surface for business-trips-trip-id-receipt.
+      operations:
+      - method: GET
+        name: getTripReceipt
+        description: Get Trip Receipt
+        call: businesses-trips.getTripReceipt
+        with:
+          trip_id: rest.trip_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/business/trips/{trip-id}/receipt/pdf-url
+      name: business-trips-trip-id-receipt-pdf-url
+      description: REST surface for business-trips-trip-id-receipt-pdf-url.
+      operations:
+      - method: GET
+        name: getTripReceiptPdfUrl
+        description: Get Trip Receipt PDF URL
+        call: businesses-trips.getTripReceiptPdfUrl
+        with:
+          trip_id: rest.trip_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: businesses-trips-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber for Business API — Trips. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-trip-invoice-urls
+      description: Get Trip Invoice URLs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: businesses-trips.getTripInvoiceUrls
+      with:
+        trip_id: tools.trip_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-trip-receipt
+      description: Get Trip Receipt
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: businesses-trips.getTripReceipt
+      with:
+        trip_id: tools.trip_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-trip-receipt-pdf-url
+      description: Get Trip Receipt PDF URL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: businesses-trips.getTripReceiptPdfUrl
+      with:
+        trip_id: tools.trip_id
+      outputParameters:
+      - type: object
+        mapping: $.

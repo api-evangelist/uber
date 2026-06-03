@@ -1,10 +1,5 @@
 aid: uber
 url: https://raw.githubusercontent.com/api-evangelist/uber/refs/heads/main/apis.yml
-common:
-  - type: GitHubOrganization
-    url: https://github.com/uber
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/uber-com
 apis:
 - aid: uber:uber-riders
   name: Uber Riders API
@@ -23,6 +18,21 @@ apis:
     type: Documentation
   - url: openapi/uber-riders-openapi.yml
     type: OpenAPI
+  - url: https://github.com/uber/rides-android-sdk
+    type: SDK
+    title: Android SDK
+  - url: https://github.com/uber/uber-ios-sdk
+    type: SDK
+    title: iOS SDK
+  - url: https://pypi.org/project/uber-rides/
+    type: SDK
+    title: Python SDK
+  - url: https://github.com/uber/rides-java-sdk
+    type: SDK
+    title: Java SDK
+  - url: https://github.com/uber/Python-Sample-Application
+    type: CodeExamples
+    title: Python Sample Application
   - url: examples/uber-riders-list-products-example.json
     type: Example
   - url: examples/uber-riders-create-ride-request-example.json
@@ -39,9 +49,29 @@ apis:
     url: capabilities/riders-requests.yaml
   - type: NaftikoCapability
     url: capabilities/riders-riders.yaml
-  description: The Uber Riders API enables applications to interact with the Uber platform on behalf of riders. It allows
-    requesting rides, getting product listings, price and time estimates, viewing trip history, and managing saved places.
-    Authentication uses OAuth 2.0 bearer tokens.
+  - url: json-schema/uber-product-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-priceestimate-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-timeestimate-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-rideestimate-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-riderprofile-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-ridedetails-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-riderequest-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-place-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-placeupdate-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-activities-schema.json
+    type: JSONSchema
+  - url: json-structure/uber-riders-structure.json
+    type: JSONStructure
+  description: The Uber Riders API enables applications to interact with the Uber platform on behalf of riders. It allows requesting rides, getting product listings, price and time estimates, viewing trip history, and managing saved places. Authentication uses OAuth 2.0 bearer tokens.
 - aid: uber:uber-drivers
   name: Uber Drivers API
   tags:
@@ -59,8 +89,15 @@ apis:
     type: OpenAPI
   - type: NaftikoCapability
     url: capabilities/drivers-partners.yaml
-  description: The Uber Drivers API allows partners to access driver profile information, payment history, and trip records.
-    It provides access to driver earnings, completed trips, and partner program data via OAuth 2.0 bearer tokens.
+  - url: json-schema/uber-driverprofile-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-drivertrip-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-payment-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-paymentsresponse-schema.json
+    type: JSONSchema
+  description: The Uber Drivers API allows partners to access driver profile information, payment history, and trip records. It provides access to driver earnings, completed trips, and partner program data via OAuth 2.0 bearer tokens.
 - aid: uber:uber-eats
   name: Uber Eats API
   tags:
@@ -88,9 +125,23 @@ apis:
     url: capabilities/eats-reporting.yaml
   - type: NaftikoCapability
     url: capabilities/eats-stores.yaml
-  description: The Uber Eats Marketplace API enables partners to programmatically manage stores, menus, and orders on the
-    Uber Eats platform. It supports real-time menu synchronization, order processing, store operations, promotional campaigns,
-    and analytics reporting. Access requires written approval from Uber.
+  - url: json-schema/uber-store-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-storeupdate-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-menu-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-menucategory-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-menuitem-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-order-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-orderreceipt-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-reportrequest-schema.json
+    type: JSONSchema
+  description: The Uber Eats Marketplace API enables partners to programmatically manage stores, menus, and orders on the Uber Eats platform. It supports real-time menu synchronization, order processing, store operations, promotional campaigns, and analytics reporting. Access requires written approval from Uber.
 - aid: uber:uber-direct
   name: Uber Direct API
   tags:
@@ -105,6 +156,17 @@ apis:
     type: Documentation
   - url: openapi/uber-direct-openapi.yml
     type: OpenAPI
+  - url: https://www.npmjs.com/package/uber-direct
+    type: SDK
+    title: JavaScript SDK
+  - url: https://github.com/uber/uber-direct-sdk
+    type: SDK
+    title: JavaScript SDK Source
+  - url: https://github.com/uber/uber-direct-sdk-samples
+    type: CodeExamples
+    title: JavaScript SDK Samples
+  - url: https://developer.uber.com/docs/deliveries/authentication
+    type: Authentication
   - url: examples/uber-direct-create-delivery-example.json
     type: Example
   - url: json-schema/uber-delivery-schema.json
@@ -117,9 +179,21 @@ apis:
     url: capabilities/direct-organizations.yaml
   - type: NaftikoCapability
     url: capabilities/direct-refunds.yaml
-  description: The Uber Direct API allows merchants to leverage Uber's courier network to deliver their orders. It supports
-    on-demand delivery creation, courier tracking, refunds, and location management. Webhooks provide real-time delivery status,
-    courier updates, and shopping progress notifications.
+  - url: json-schema/uber-deliveryquote-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-deliveryrequest-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-organization-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-refund-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-refundrequest-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-businesslocation-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-businesslocationrequest-schema.json
+    type: JSONSchema
+  description: The Uber Direct API allows merchants to leverage Uber's courier network to deliver their orders. It supports on-demand delivery creation, courier tracking, refunds, and location management. Webhooks provide real-time delivery status, courier updates, and shopping progress notifications.
 - aid: uber:uber-guest-rides
   name: Uber Guest Rides API
   tags:
@@ -134,8 +208,7 @@ apis:
     type: Documentation
   - url: https://developer.uber.com/docs/guest-rides/about/u4b-api-introduction
     type: Documentation
-  description: The Uber Guest Rides API enables businesses to allow their users to request rides from Uber without requiring
-    an Uber account. Uses OAuth 2.0 with the guest.rides scope for authentication.
+  description: The Uber Guest Rides API enables businesses to allow their users to request rides from Uber without requiring an Uber account. Uses OAuth 2.0 with the guest.rides scope for authentication.
 - aid: uber:uber-vouchers
   name: Uber Vouchers API
   tags:
@@ -158,8 +231,17 @@ apis:
     url: capabilities/vouchers-redemption.yaml
   - type: NaftikoCapability
     url: capabilities/vouchers-templates.yaml
-  description: The Uber Vouchers API allows businesses to create and manage voucher programs and codes for rides and meals.
-    It supports program creation, code generation, bulk distribution, guest management, and code redemption workflows.
+  - url: json-schema/uber-vouchercode-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-voucherprogram-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-voucherprogramrequest-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-voucherprogramupdate-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-vouchertemplate-schema.json
+    type: JSONSchema
+  description: The Uber Vouchers API allows businesses to create and manage voucher programs and codes for rides and meals. It supports program creation, code generation, bulk distribution, guest management, and code redemption workflows.
 - aid: uber:uber-businesses
   name: Uber for Business API
   tags:
@@ -181,8 +263,13 @@ apis:
     url: capabilities/businesses-orders.yaml
   - type: NaftikoCapability
     url: capabilities/businesses-trips.yaml
-  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts.
-    Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  - url: json-schema/uber-receipt-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-tripreceipt-schema.json
+    type: JSONSchema
+  - url: json-schema/uber-tripsresponse-schema.json
+    type: JSONSchema
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
 name: Uber
 tags:
 - Ride-Sharing
@@ -200,21 +287,78 @@ properties:
   type: Vocabulary
 - url: json-ld/uber-context.jsonld
   type: JSONLDContext
-- url: capabilities/ride-management.yaml
-  type: NaftikoCapabilities
-- url: capabilities/food-and-delivery.yaml
-  type: NaftikoCapabilities
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-02-06'
-modified: '2026-05-19'
+modified: '2026-06-03'
 position: Consumer
-description: Uber is a global technology platform offering transportation, food delivery, and logistics services. Its developer
-  platform provides APIs for integrating ride requests, food ordering, on-demand delivery, voucher programs, and business
-  travel management into third-party applications. APIs use OAuth 2.0 authentication with scope-based access controls and
-  support both production and sandbox environments.
+description: Uber is a global technology platform offering transportation, food delivery, and logistics services. Its developer platform provides APIs for integrating ride requests, food ordering, on-demand delivery, voucher programs, and business travel management into third-party applications. APIs use OAuth 2.0 authentication with scope-based access controls and support both production and sandbox environments.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 specificationVersion: '0.19'
-common: []
+common:
+- type: GitHubOrganization
+  url: https://github.com/uber
+- type: LinkedIn
+  url: https://www.linkedin.com/company/uber-com
+- type: Portal
+  url: https://developer.uber.com/
+- type: Documentation
+  url: https://developer.uber.com/docs
+- type: Console
+  url: https://developer.uber.com/dashboard
+- type: SignUp
+  url: https://developer.uber.com/dashboard
+- type: GettingStarted
+  url: https://developer.uber.com/docs/riders/getting-started/introduction
+- type: Authentication
+  url: https://developer.uber.com/docs/riders/guides/authentication/introduction
+- type: Pricing
+  url: https://www.uber.com/us/en/business/api/
+- type: TermsOfService
+  url: https://developer.uber.com/docs/riders/policies/license-and-terms-of-use
+- type: PrivacyPolicy
+  url: https://www.uber.com/legal/en/document/?name=privacy-notice
+- type: Blog
+  url: https://www.uber.com/blog/engineering/
+- type: GitHubRepository
+  url: https://github.com/uber/uber-direct-sdk
+- type: Features
+  data:
+  - name: OAuth 2.0 Authorization
+    description: All Uber developer APIs authenticate with OAuth 2.0 bearer tokens using scope-based access controls for both client-credentials (server-to-server) and authorization-code (on behalf of a user) flows.
+  - name: Sandbox Environment
+    description: Most APIs offer a sandbox for simulating rides, deliveries, and orders without dispatching real couriers or charging real payment methods.
+  - name: Webhooks
+    description: Uber Direct and Uber Eats publish real-time event webhooks for delivery status, courier updates, shopping progress, refunds, and order lifecycle changes.
+  - name: Courier Delivery Network
+    description: Uber Direct exposes Uber's on-demand courier network so merchants can quote, create, track, and manage last-mile deliveries from their own storefronts.
+  - name: Marketplace Integration
+    description: Uber Eats Marketplace APIs let restaurants and POS partners synchronize stores, menus, and orders with the Uber Eats consumer marketplace in real time.
+- type: UseCases
+  data:
+  - name: Restaurant Delivery Fulfillment
+    description: Restaurants and food brands use Uber Direct to dispatch couriers for delivery of orders placed on their own websites and apps, bypassing the Uber Eats marketplace fee structure.
+  - name: Menu And Order Synchronization
+    description: POS and online-ordering platforms integrate Uber Eats APIs to keep store hours, menus, pricing, and order status in sync between their systems and the Uber Eats marketplace.
+  - name: Corporate Travel And Meals
+    description: Enterprises use Uber for Business and Vouchers to provision rides and meals for employees and guests with centralized billing, expense reporting, and policy controls.
+  - name: Guest Ride Provisioning
+    description: Healthcare, hospitality, and service businesses use Guest Rides to request trips on behalf of customers who do not have an Uber account.
+- type: Integrations
+  data:
+  - name: Point Of Sale Systems
+    description: Uber Eats integrates with restaurant POS platforms for automated order injection and menu management.
+  - name: E-Commerce And Ordering Platforms
+    description: Uber Direct integrates with online ordering and e-commerce checkout flows to add same-day local delivery.
+  - name: Expense And Travel Management
+    description: Uber for Business integrates with expense management and corporate travel platforms via receipts and invoices.
+- type: JSONStructure
+  url: json-structure/uber-structure.json
+- type: Plans
+  url: plans/uber-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/uber-rate-limits.yml
+- type: FinOps
+  url: finops/uber-finops.yml

@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Eats API — Reporting
+  description: 'Food Delivery — Reporting. 1 operations. Lead operation: Generate Report. Self-contained Naftiko capability
+    covering one Uber business surface.'
+  tags:
+  - Uber
+  - Food Delivery
+  - Reporting
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: eats-reporting
+    baseUri: https://api.uber.com/v1
+    description: Uber Eats API — Reporting business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: eats-reports
+      path: /eats/reports
+      operations:
+      - name: generateReport
+        method: POST
+        description: Generate Report
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: eats-reporting-rest
+    port: 8080
+    description: REST adapter for Uber Eats API — Reporting. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/eats/reports
+      name: eats-reports
+      description: REST surface for eats-reports.
+      operations:
+      - method: POST
+        name: generateReport
+        description: Generate Report
+        call: eats-reporting.generateReport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: eats-reporting-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Eats API — Reporting. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: generate-report
+      description: Generate Report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: eats-reporting.generateReport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,228 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Eats API — Orders
+  description: 'Food Delivery — Orders. 4 operations. Lead operation: Get Order. Self-contained Naftiko capability covering
+    one Uber business surface.'
+  tags:
+  - Uber
+  - Food Delivery
+  - Orders
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: eats-orders
+    baseUri: https://api.uber.com/v1
+    description: Uber Eats API — Orders business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: eats-orders-order-id
+      path: /eats/orders/{order_id}
+      operations:
+      - name: getOrder
+        method: GET
+        description: Get Order
+        inputParameters:
+        - name: order_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the order.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: eats-orders-order-id-accept-pos-order
+      path: /eats/orders/{order_id}/accept_pos_order
+      operations:
+      - name: acceptOrder
+        method: POST
+        description: Accept Order
+        inputParameters:
+        - name: order_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the order.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: eats-orders-order-id-deny-pos-order
+      path: /eats/orders/{order_id}/deny_pos_order
+      operations:
+      - name: denyOrder
+        method: POST
+        description: Deny Order
+        inputParameters:
+        - name: order_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the order.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: eats-orders-order-id-cancel
+      path: /eats/orders/{order_id}/cancel
+      operations:
+      - name: cancelOrder
+        method: POST
+        description: Cancel Order
+        inputParameters:
+        - name: order_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the order.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: eats-orders-rest
+    port: 8080
+    description: REST adapter for Uber Eats API — Orders. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/eats/orders/{order-id}
+      name: eats-orders-order-id
+      description: REST surface for eats-orders-order-id.
+      operations:
+      - method: GET
+        name: getOrder
+        description: Get Order
+        call: eats-orders.getOrder
+        with:
+          order_id: rest.order_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/eats/orders/{order-id}/accept-pos-order
+      name: eats-orders-order-id-accept-pos-order
+      description: REST surface for eats-orders-order-id-accept-pos-order.
+      operations:
+      - method: POST
+        name: acceptOrder
+        description: Accept Order
+        call: eats-orders.acceptOrder
+        with:
+          order_id: rest.order_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/eats/orders/{order-id}/deny-pos-order
+      name: eats-orders-order-id-deny-pos-order
+      description: REST surface for eats-orders-order-id-deny-pos-order.
+      operations:
+      - method: POST
+        name: denyOrder
+        description: Deny Order
+        call: eats-orders.denyOrder
+        with:
+          order_id: rest.order_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/eats/orders/{order-id}/cancel
+      name: eats-orders-order-id-cancel
+      description: REST surface for eats-orders-order-id-cancel.
+      operations:
+      - method: POST
+        name: cancelOrder
+        description: Cancel Order
+        call: eats-orders.cancelOrder
+        with:
+          order_id: rest.order_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: eats-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Eats API — Orders. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-order
+      description: Get Order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: eats-orders.getOrder
+      with:
+        order_id: tools.order_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: accept-order
+      description: Accept Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: eats-orders.acceptOrder
+      with:
+        order_id: tools.order_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deny-order
+      description: Deny Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: eats-orders.denyOrder
+      with:
+        order_id: tools.order_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-order
+      description: Cancel Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: eats-orders.cancelOrder
+      with:
+        order_id: tools.order_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

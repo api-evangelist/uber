@@ -1,0 +1,126 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Eats API — Menus
+  description: 'Food Delivery — Menus. 2 operations. Lead operation: Get Store Menu. Self-contained Naftiko capability covering
+    one Uber business surface.'
+  tags:
+  - Uber
+  - Food Delivery
+  - Menus
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: eats-menus
+    baseUri: https://api.uber.com/v1
+    description: Uber Eats API — Menus business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: eats-stores-store-id-menus
+      path: /eats/stores/{store_id}/menus
+      operations:
+      - name: getStoreMenu
+        method: GET
+        description: Get Store Menu
+        inputParameters:
+        - name: store_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the store.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: eats-stores-store-id-menus
+      path: /eats/stores/{store_id}/menus
+      operations:
+      - name: updateStoreMenu
+        method: PUT
+        description: Update Store Menu
+        inputParameters:
+        - name: store_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the store.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: eats-menus-rest
+    port: 8080
+    description: REST adapter for Uber Eats API — Menus. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/eats/stores/{store-id}/menus
+      name: eats-stores-store-id-menus
+      description: REST surface for eats-stores-store-id-menus.
+      operations:
+      - method: GET
+        name: getStoreMenu
+        description: Get Store Menu
+        call: eats-menus.getStoreMenu
+        with:
+          store_id: rest.store_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateStoreMenu
+        description: Update Store Menu
+        call: eats-menus.updateStoreMenu
+        with:
+          store_id: rest.store_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: eats-menus-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Eats API — Menus. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-store-menu
+      description: Get Store Menu
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: eats-menus.getStoreMenu
+      with:
+        store_id: tools.store_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-store-menu
+      description: Update Store Menu
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: eats-menus.updateStoreMenu
+      with:
+        store_id: tools.store_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

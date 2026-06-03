@@ -1,0 +1,165 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber Riders API — Estimates
+  description: 'Rides — Estimates. 2 operations. Lead operation: Get Price Estimates. Self-contained Naftiko capability covering
+    one Uber business surface.'
+  tags:
+  - Uber
+  - Rides
+  - Estimates
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: riders-estimates
+    baseUri: https://api.uber.com/v1.2
+    description: Uber Riders API — Estimates business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: estimates-price
+      path: /estimates/price
+      operations:
+      - name: getPriceEstimates
+        method: GET
+        description: Get Price Estimates
+        inputParameters:
+        - name: start_latitude
+          in: query
+          type: number
+          required: true
+          description: Latitude component of start location.
+        - name: start_longitude
+          in: query
+          type: number
+          required: true
+          description: Longitude component of start location.
+        - name: end_latitude
+          in: query
+          type: number
+          required: true
+          description: Latitude component of end location.
+        - name: end_longitude
+          in: query
+          type: number
+          required: true
+          description: Longitude component of end location.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: estimates-time
+      path: /estimates/time
+      operations:
+      - name: getTimeEstimates
+        method: GET
+        description: Get Time Estimates
+        inputParameters:
+        - name: start_latitude
+          in: query
+          type: number
+          required: true
+          description: Latitude component of start location.
+        - name: start_longitude
+          in: query
+          type: number
+          required: true
+          description: Longitude component of start location.
+        - name: product_id
+          in: query
+          type: string
+          required: false
+          description: Unique identifier representing a specific product for a given location.
+        - name: customer_uuid
+          in: query
+          type: string
+          required: false
+          description: Unique customer identifier to be used for experience customization.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: riders-estimates-rest
+    port: 8080
+    description: REST adapter for Uber Riders API — Estimates. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/estimates/price
+      name: estimates-price
+      description: REST surface for estimates-price.
+      operations:
+      - method: GET
+        name: getPriceEstimates
+        description: Get Price Estimates
+        call: riders-estimates.getPriceEstimates
+        with:
+          start_latitude: rest.start_latitude
+          start_longitude: rest.start_longitude
+          end_latitude: rest.end_latitude
+          end_longitude: rest.end_longitude
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/estimates/time
+      name: estimates-time
+      description: REST surface for estimates-time.
+      operations:
+      - method: GET
+        name: getTimeEstimates
+        description: Get Time Estimates
+        call: riders-estimates.getTimeEstimates
+        with:
+          start_latitude: rest.start_latitude
+          start_longitude: rest.start_longitude
+          product_id: rest.product_id
+          customer_uuid: rest.customer_uuid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: riders-estimates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber Riders API — Estimates. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-price-estimates
+      description: Get Price Estimates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: riders-estimates.getPriceEstimates
+      with:
+        start_latitude: tools.start_latitude
+        start_longitude: tools.start_longitude
+        end_latitude: tools.end_latitude
+        end_longitude: tools.end_longitude
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-time-estimates
+      description: Get Time Estimates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: riders-estimates.getTimeEstimates
+      with:
+        start_latitude: tools.start_latitude
+        start_longitude: tools.start_longitude
+        product_id: tools.product_id
+        customer_uuid: tools.customer_uuid
+      outputParameters:
+      - type: object
+        mapping: $.

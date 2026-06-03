@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Uber for Business API — Orders
+  description: 'Business Travel — Orders. 1 operations. Lead operation: Get Order Receipt. Self-contained Naftiko capability
+    covering one Uber business surface.'
+  tags:
+  - Uber
+  - Business Travel
+  - Orders
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    UBER_API_TOKEN: UBER_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: businesses-orders
+    baseUri: https://api.uber.com/v1.2
+    description: Uber for Business API — Orders business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.UBER_API_TOKEN}}'
+    resources:
+    - name: business-orders-order-id-receipt
+      path: /business/orders/{order_id}/receipt
+      operations:
+      - name: getOrderReceipt
+        method: GET
+        description: Get Order Receipt
+        inputParameters:
+        - name: order_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the Eats order.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: businesses-orders-rest
+    port: 8080
+    description: REST adapter for Uber for Business API — Orders. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/business/orders/{order-id}/receipt
+      name: business-orders-order-id-receipt
+      description: REST surface for business-orders-order-id-receipt.
+      operations:
+      - method: GET
+        name: getOrderReceipt
+        description: Get Order Receipt
+        call: businesses-orders.getOrderReceipt
+        with:
+          order_id: rest.order_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: businesses-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Uber for Business API — Orders. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-order-receipt
+      description: Get Order Receipt
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: businesses-orders.getOrderReceipt
+      with:
+        order_id: tools.order_id
+      outputParameters:
+      - type: object
+        mapping: $.
