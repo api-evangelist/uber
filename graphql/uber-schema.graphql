@@ -1,0 +1,1119 @@
+"""
+Uber GraphQL Schema
+Conceptual schema covering the Uber Rides, Drivers, Eats, Direct, Guest Rides,
+Vouchers, and for-Business APIs.
+Source: https://developer.uber.com/docs
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar DateTime
+scalar JSON
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+enum TripStatus {
+  PROCESSING
+  NO_DRIVERS_AVAILABLE
+  ACCEPTED
+  ARRIVING
+  IN_PROGRESS
+  DRIVER_CANCELED
+  RIDER_CANCELED
+  COMPLETED
+}
+
+enum DeliveryStatus {
+  PENDING
+  PICKUP
+  PICKUP_COMPLETE
+  DROPOFF
+  DELIVERED
+  CANCELED
+  RETURNED
+}
+
+enum OrderStatus {
+  CREATED
+  ACCEPTED
+  DENIED
+  CANCELED
+  STARTED_PREPARING
+  READY_FOR_PICKUP
+  PICKED_UP
+  DELIVERED
+}
+
+enum PaymentMethodType {
+  CREDIT_CARD
+  PAYPAL
+  APPLE_PAY
+  GOOGLE_PAY
+  BUSINESS_ACCOUNT
+  VOUCHER
+}
+
+enum VehicleType {
+  SEDAN
+  SUV
+  VAN
+  TRUCK
+  BIKE
+  SCOOTER
+  OTHER
+}
+
+enum SeatCapacity {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+  SIX_PLUS
+}
+
+enum WebhookEventType {
+  DELIVERY_STATUS_CHANGED
+  COURIER_LOCATION_UPDATED
+  DELIVERY_RETURN_INITIATED
+  REFUND_REQUESTED
+  REFUND_APPROVED
+  ORDER_CREATED
+  ORDER_STATUS_CHANGED
+  ORDER_PAYMENT_PROCESSED
+  TRIP_STATUS_CHANGED
+}
+
+enum RefundStatus {
+  PENDING
+  APPROVED
+  DENIED
+  PROCESSED
+}
+
+enum DriverStatus {
+  ONLINE
+  OFFLINE
+  ON_TRIP
+}
+
+enum ItemCategory {
+  FOOD
+  DRINK
+  ALCOHOL
+  GROCERY
+  PHARMACY
+  OTHER
+}
+
+enum FreightShipmentStatus {
+  DRAFT
+  POSTED
+  BOOKED
+  IN_TRANSIT
+  DELIVERED
+  CANCELED
+}
+
+# ---------------------------------------------------------------------------
+# Shared primitives
+# ---------------------------------------------------------------------------
+
+"""Geographic coordinate."""
+type Location {
+  latitude: Float!
+  longitude: Float!
+  address: String
+  name: String
+}
+
+"""Monetary value with currency."""
+type Money {
+  amount: Float!
+  currencyCode: String!
+  display: String
+}
+
+"""Encoded polyline for a path on a map."""
+type PolyLine {
+  points: String!
+  encodingType: String
+}
+
+"""Compass bearing in degrees."""
+type Bearing {
+  degrees: Float!
+  direction: String
+}
+
+# ---------------------------------------------------------------------------
+# Products (ride types)
+# ---------------------------------------------------------------------------
+
+"""A rideshare product available in a given market (e.g. UberX, Black, Pool)."""
+type Product {
+  productId: String!
+  displayName: String!
+  description: String
+  capacity: Int
+  image: String
+  upfrontFareEnabled: Boolean
+  cashEnabled: Boolean
+  sharedRidesEnabled: Boolean
+  availability: ProductAvailability
+  priceEstimate: PriceEstimate
+  timeEstimate: TimeEstimate
+}
+
+"""Availability window for a product."""
+type ProductAvailability {
+  available: Boolean!
+  unavailabilityReason: String
+  startTime: DateTime
+  endTime: DateTime
+}
+
+"""Fare estimate for a product on a route."""
+type PriceEstimate {
+  productId: String!
+  displayName: String!
+  estimate: String
+  lowEstimate: Float
+  highEstimate: Float
+  surgeMultiplier: Float
+  duration: Int
+  distance: Float
+  currencyCode: String
+  minimumFare: Float
+}
+
+"""ETA estimate for a product at a pickup location."""
+type TimeEstimate {
+  productId: String!
+  displayName: String!
+  estimate: Int!
+  isValidEstimate: Boolean
+}
+
+"""Combined ride estimate (fare + time) used in the request flow."""
+type RideEstimate {
+  fareId: String
+  expiresAt: DateTime
+  fareBreakdown: [FareBreakdown]
+  totalFare: Money
+  product: Product
+}
+
+"""Line-item in a fare breakdown."""
+type FareBreakdown {
+  name: String!
+  value: Money!
+  description: String
+}
+
+# ---------------------------------------------------------------------------
+# Rides & Trips
+# ---------------------------------------------------------------------------
+
+"""A ride request submitted by a rider."""
+type TripRequest {
+  requestId: String!
+  status: TripStatus!
+  eta: Int
+  surge: Surge
+  driver: Driver
+  vehicle: Vehicle
+  location: Location
+  waypoints: [Waypoint]
+}
+
+"""Full details of an ongoing or completed ride."""
+type RideDetails {
+  requestId: String!
+  status: TripStatus!
+  product: Product
+  driver: DriverDetails
+  vehicle: VehicleDetails
+  pickup: Location
+  destination: Location
+  waypoints: [Waypoint]
+  route: Route
+  fare: Money
+  receipt: Receipt
+  surgeMultiplier: Float
+  startTime: DateTime
+  endTime: DateTime
+  distance: Float
+  duration: Int
+}
+
+"""Simplified ride record surfaced in trip history."""
+type Ride {
+  uuid: String!
+  status: TripStatus!
+  productId: String
+  requestTime: DateTime
+  startTime: DateTime
+  endTime: DateTime
+  pickup: Location
+  destination: Location
+  distance: Float
+  durationSeconds: Int
+  fare: Money
+}
+
+"""Paginated trip history response."""
+type RideHistory {
+  offset: Int!
+  limit: Int!
+  count: Int!
+  history: [Ride]
+}
+
+"""A saved place (home, work, etc.) for a rider."""
+type Place {
+  placeId: String!
+  address: String!
+  name: String
+  location: Location
+}
+
+# ---------------------------------------------------------------------------
+# Drivers
+# ---------------------------------------------------------------------------
+
+"""Slim driver reference embedded in ride objects."""
+type Driver {
+  driverId: String!
+  name: String!
+  pictureUrl: String
+  rating: Float
+  phoneNumber: String
+}
+
+"""Full driver profile from the Drivers API."""
+type DriverDetails {
+  driverId: String!
+  firstName: String!
+  lastName: String!
+  email: String
+  phoneNumber: String
+  pictureUrl: String
+  rating: DriverRating
+  status: DriverStatus
+  activatedAt: DateTime
+  vehicles: [Vehicle]
+}
+
+"""Driver aggregate rating."""
+type DriverRating {
+  ratingAverage: Float!
+  ratingCount: Int!
+}
+
+"""A trip record from the driver's perspective."""
+type DriverTrip {
+  tripId: String!
+  status: TripStatus!
+  distance: Float
+  durationSeconds: Int
+  startTime: DateTime
+  endTime: DateTime
+  pickup: Location
+  dropoff: Location
+  fare: Money
+  driverPayout: Money
+}
+
+# ---------------------------------------------------------------------------
+# Vehicles
+# ---------------------------------------------------------------------------
+
+"""Slim vehicle reference embedded in ride objects."""
+type Vehicle {
+  vehicleId: String!
+  make: String
+  model: String
+  licensePlate: String
+  type: VehicleType
+  year: Int
+}
+
+"""Full vehicle details."""
+type VehicleDetails {
+  vehicleId: String!
+  make: String!
+  model: String!
+  year: Int
+  licensePlate: String!
+  color: String
+  pictureUrl: String
+  capacity: SeatCapacity
+  type: VehicleType
+}
+
+# ---------------------------------------------------------------------------
+# Routing & Geo
+# ---------------------------------------------------------------------------
+
+"""A turn-by-turn route between two points."""
+type Route {
+  summary: String
+  distance: Float
+  duration: Int
+  polyLine: PolyLine
+  waypoints: [Waypoint]
+}
+
+"""An intermediate stop on a route."""
+type Waypoint {
+  location: Location!
+  type: String
+  sequence: Int
+  etaSeconds: Int
+}
+
+# ---------------------------------------------------------------------------
+# Surge pricing
+# ---------------------------------------------------------------------------
+
+"""Surge pricing state for a product."""
+type Surge {
+  surgeConfirmationId: String
+  multiplier: Float!
+  active: Boolean!
+  surgeAreas: [SurgeArea]
+}
+
+"""A geographic zone currently experiencing surge pricing."""
+type SurgeArea {
+  areaId: String!
+  multiplier: Float!
+  polygon: [Location]
+}
+
+"""Displayed surge multiplier to show riders."""
+type SurgeMultiplier {
+  value: Float!
+  displayText: String
+}
+
+# ---------------------------------------------------------------------------
+# Payments
+# ---------------------------------------------------------------------------
+
+"""A payment method on file for a rider."""
+type PaymentMethod {
+  paymentMethodId: String!
+  type: PaymentMethodType!
+  isDefault: Boolean!
+  creditCard: CreditCard
+  paypalAccount: PaypalAccount
+}
+
+"""Credit card payment method details."""
+type CreditCard {
+  lastFour: String!
+  brand: String!
+  expiryMonth: Int
+  expiryYear: Int
+  billingZip: String
+}
+
+"""PayPal payment method details."""
+type PaypalAccount {
+  email: String!
+  paypalId: String
+}
+
+"""A payout record from the Drivers API."""
+type PayoutDetail {
+  payoutId: String!
+  amount: Money!
+  status: String!
+  payoutDate: DateTime
+  trips: [DriverTrip]
+}
+
+"""Itemized receipt for a completed ride or delivery."""
+type Receipt {
+  receiptId: String!
+  totalFare: Money
+  normalFare: Money
+  subtotal: Money
+  fees: [FareBreakdown]
+  surgeCharge: Money
+  duration: String
+  distance: String
+  currencyCode: String
+  timestamp: DateTime
+}
+
+"""Currency reference."""
+type Currency {
+  code: String!
+  symbol: String!
+  name: String
+}
+
+# ---------------------------------------------------------------------------
+# Promotions
+# ---------------------------------------------------------------------------
+
+"""A promo code that can be applied to a ride or order."""
+type PromoCode {
+  code: String!
+  description: String
+  expiresAt: DateTime
+  value: Money
+  type: String
+}
+
+"""A referral code shared by a user to earn credits."""
+type ReferralCode {
+  code: String!
+  referralUrl: String
+  creditsEarned: Money
+  referralsCount: Int
+}
+
+"""A voucher program managed by a business."""
+type VoucherProgram {
+  programId: String!
+  name: String!
+  description: String
+  budget: Money
+  spent: Money
+  remaining: Money
+  expiresAt: DateTime
+  codesCount: Int
+  template: VoucherTemplate
+  active: Boolean!
+}
+
+"""Template that defines voucher code behavior."""
+type VoucherTemplate {
+  templateId: String!
+  name: String!
+  type: String
+  value: Money
+  maxUses: Int
+  expiryDays: Int
+  restrictions: JSON
+}
+
+"""An individual voucher code."""
+type VoucherCode {
+  code: String!
+  programId: String!
+  status: String!
+  value: Money
+  redemptions: Int
+  maxUses: Int
+  expiresAt: DateTime
+}
+
+"""Input shape for creating a voucher program."""
+type VoucherProgramRequest {
+  name: String!
+  budget: Float!
+  currencyCode: String!
+  templateId: String!
+}
+
+# ---------------------------------------------------------------------------
+# Ratings & Reviews
+# ---------------------------------------------------------------------------
+
+"""A rating submitted after a trip."""
+type Rating {
+  ratingId: String!
+  tripId: String!
+  score: Int!
+  submittedAt: DateTime
+  review: Review
+}
+
+"""A text review attached to a rating."""
+type Review {
+  reviewId: String!
+  body: String
+  tags: [String]
+  submittedAt: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Business & Enterprise
+# ---------------------------------------------------------------------------
+
+"""A business profile for an Uber for Business account."""
+type BusinessProfile {
+  businessId: String!
+  name: String!
+  email: String
+  phone: String
+  memberships: [BusinessMembership]
+}
+
+"""A membership/role within a business account."""
+type BusinessMembership {
+  membershipId: String!
+  userId: String!
+  role: String!
+  status: String!
+  joinedAt: DateTime
+}
+
+"""An Uber for Business organization (Direct API)."""
+type Organization {
+  organizationId: String!
+  name: String!
+  billingType: String
+  contacts: [String]
+  locations: [BusinessLocation]
+}
+
+"""A business location used for Direct deliveries."""
+type BusinessLocation {
+  locationId: String!
+  organizationId: String!
+  name: String!
+  address: String!
+  location: Location
+  phone: String
+  specialInstructions: String
+  createdAt: DateTime
+}
+
+"""A trip record within an enterprise business account."""
+type BusinessTrip {
+  tripId: String!
+  employeeId: String
+  startTime: DateTime
+  endTime: DateTime
+  pickup: Location
+  destination: Location
+  fare: Money
+  receipt: Receipt
+  expenseCode: String
+  expenseMemo: String
+}
+
+# ---------------------------------------------------------------------------
+# Uber Health
+# ---------------------------------------------------------------------------
+
+"""A ride provisioned through the Uber Health program."""
+type UberHealthRide {
+  rideId: String!
+  patient: UberHealthPatient!
+  scheduledTime: DateTime
+  pickup: Location
+  destination: Location
+  status: TripStatus
+  coordinatorId: String
+}
+
+"""A patient record used in health transport rides."""
+type UberHealthPatient {
+  patientId: String!
+  name: String!
+  phone: String!
+  notes: String
+}
+
+# ---------------------------------------------------------------------------
+# Uber Eats
+# ---------------------------------------------------------------------------
+
+"""A restaurant/store on the Uber Eats marketplace."""
+type UberEatsRestaurant {
+  storeId: String!
+  name: String!
+  description: String
+  address: String
+  location: Location
+  phone: String
+  menuId: String
+  menu: Menu
+  isOpen: Boolean
+  openHours: [String]
+  deliveryFee: Money
+  minimumOrder: Money
+  rating: Float
+  reviewCount: Int
+}
+
+"""Full menu for a restaurant."""
+type Menu {
+  menuId: String!
+  storeId: String!
+  title: String
+  categories: [MenuCategory]
+  lastUpdated: DateTime
+}
+
+"""A category grouping items on a menu."""
+type MenuCategory {
+  categoryId: String!
+  title: String!
+  description: String
+  displayOrder: Int
+  items: [MenuItem]
+}
+
+"""A single item available for order."""
+type MenuItem {
+  itemId: String!
+  title: String!
+  description: String
+  price: Money!
+  imageUrl: String
+  category: ItemCategory
+  available: Boolean!
+  modifierGroups: [MenuItemModifierGroup]
+  calories: Int
+  alcoholic: Boolean
+}
+
+"""A group of optional modifiers for a menu item."""
+type MenuItemModifierGroup {
+  groupId: String!
+  title: String!
+  minSelections: Int
+  maxSelections: Int
+  modifiers: [MenuItemModifier]
+}
+
+"""A single modifier option (e.g. extra sauce, size upgrade)."""
+type MenuItemModifier {
+  modifierId: String!
+  title: String!
+  price: Money
+  default: Boolean
+  available: Boolean!
+}
+
+"""An order placed through Uber Eats."""
+type UberEatsOrder {
+  orderId: String!
+  storeId: String!
+  status: OrderStatus!
+  placedAt: DateTime!
+  estimatedReadyAt: DateTime
+  estimatedDeliveredAt: DateTime
+  items: [OrderItem]
+  subtotal: Money
+  deliveryFee: Money
+  taxes: Money
+  total: Money
+  receipt: OrderReceipt
+  deliveryAddress: Location
+  customer: String
+}
+
+"""A line item within an Eats order."""
+type OrderItem {
+  itemId: String!
+  title: String!
+  quantity: Int!
+  price: Money!
+  modifiers: [MenuItemModifier]
+  specialInstructions: String
+}
+
+"""Receipt for a completed Eats order."""
+type OrderReceipt {
+  receiptId: String!
+  orderId: String!
+  subtotal: Money
+  taxes: Money
+  tips: Money
+  deliveryFee: Money
+  total: Money
+  paymentMethod: String
+  issuedAt: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Uber Direct (on-demand delivery)
+# ---------------------------------------------------------------------------
+
+"""An on-demand delivery created through Uber Direct."""
+type Delivery {
+  deliveryId: String!
+  status: DeliveryStatus!
+  trackingUrl: String
+  quote: DeliveryQuote
+  pickup: PickupDetails!
+  dropoff: DropoffDetails!
+  courier: CourierLocation
+  tracking: DeliveryTracking
+  createdAt: DateTime
+  updatedAt: DateTime
+  externalId: String
+}
+
+"""A price quote for a prospective delivery."""
+type DeliveryQuote {
+  quoteId: String!
+  fee: Money!
+  currency: String!
+  expires: DateTime!
+  estimatedPickupTime: DateTime
+  estimatedDropoffTime: DateTime
+  externalDeliveryId: String
+}
+
+"""Real-time tracking state of a delivery."""
+type DeliveryTracking {
+  trackingId: String!
+  status: DeliveryStatus!
+  courierLocation: Location
+  estimatedPickupTime: DateTime
+  estimatedDropoffTime: DateTime
+  updatedAt: DateTime
+}
+
+"""Live location of the courier on a delivery."""
+type CourierLocation {
+  courierId: String!
+  location: Location!
+  bearing: Bearing
+  speed: Float
+  timestamp: DateTime
+  name: String
+  vehicleType: VehicleType
+}
+
+"""Pickup configuration for a Direct delivery."""
+type PickupDetails {
+  name: String!
+  address: String!
+  location: Location!
+  phone: String
+  notes: String
+  readyForPickupTime: DateTime
+}
+
+"""Dropoff configuration for a Direct delivery."""
+type DropoffDetails {
+  name: String!
+  address: String!
+  location: Location!
+  phone: String
+  notes: String
+  requiresSignature: Boolean
+  requiresId: Boolean
+}
+
+"""A refund request for a Direct delivery."""
+type Refund {
+  refundId: String!
+  deliveryId: String!
+  status: RefundStatus!
+  amount: Money
+  reason: String
+  requestedAt: DateTime
+  processedAt: DateTime
+}
+
+"""Input shape for creating a refund."""
+type RefundRequest {
+  deliveryId: String!
+  reason: String!
+  items: [JSON]
+}
+
+# ---------------------------------------------------------------------------
+# Uber Freight
+# ---------------------------------------------------------------------------
+
+"""A freight shipment listed or booked on Uber Freight."""
+type FreightShipment {
+  shipmentId: String!
+  status: FreightShipmentStatus!
+  pickupLocation: Location!
+  dropoffLocation: Location!
+  pickupTime: DateTime
+  deliveryTime: DateTime
+  commodity: String
+  weightLbs: Float
+  pallets: Int
+  rate: Money
+  carrier: Carrier
+  loadBoard: LoadBoard
+  route: Route
+  createdAt: DateTime
+}
+
+"""A request to bid on a freight shipment."""
+type BidRequest {
+  bidId: String!
+  shipmentId: String!
+  carrierId: String!
+  bidAmount: Money!
+  notes: String
+  submittedAt: DateTime
+  expiresAt: DateTime
+}
+
+"""A freight carrier profile."""
+type Carrier {
+  carrierId: String!
+  name: String!
+  mcNumber: String
+  dotNumber: String
+  rating: Float
+  profile: CarrierProfile
+}
+
+"""Detailed carrier profile information."""
+type CarrierProfile {
+  carrierId: String!
+  fleetSize: Int
+  specializations: [String]
+  insuranceCoverage: Money
+  safetyRating: String
+  yearsInBusiness: Int
+  phone: String
+  email: String
+}
+
+"""A load board listing showing available freight shipments."""
+type LoadBoard {
+  listingId: String!
+  shipmentId: String!
+  postedAt: DateTime!
+  expiresAt: DateTime
+  origin: Location!
+  destination: Location!
+  pickupDate: DateTime
+  rate: Money
+  distance: Float
+  commodity: String
+  weightLbs: Float
+}
+
+"""A spot-market trucking position."""
+type TruckingSpot {
+  spotId: String!
+  location: Location!
+  availableFrom: DateTime!
+  availableTo: DateTime
+  truckType: VehicleType
+  capacity: Float
+  carrierId: String
+}
+
+# ---------------------------------------------------------------------------
+# Webhooks & Events
+# ---------------------------------------------------------------------------
+
+"""A registered webhook endpoint."""
+type Webhook {
+  webhookId: String!
+  url: String!
+  eventTypes: [WebhookEventType]!
+  active: Boolean!
+  secret: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+"""A webhook event payload (generic envelope)."""
+type WebhookEvent {
+  eventId: String!
+  eventType: WebhookEventType!
+  resourceId: String!
+  resourceType: String!
+  payload: JSON
+  timestamp: DateTime!
+}
+
+"""A delivery lifecycle event surfaced via webhook or subscription."""
+type DeliveryEvent {
+  eventId: String!
+  deliveryId: String!
+  status: DeliveryStatus!
+  courierLocation: CourierLocation
+  timestamp: DateTime!
+}
+
+"""An Eats order lifecycle event surfaced via webhook or subscription."""
+type OrderEvent {
+  eventId: String!
+  orderId: String!
+  status: OrderStatus!
+  timestamp: DateTime!
+  details: JSON
+}
+
+# ---------------------------------------------------------------------------
+# Root types
+# ---------------------------------------------------------------------------
+
+type Query {
+  """List ride products available at a pickup location."""
+  products(latitude: Float!, longitude: Float!): [Product]
+
+  """Get price estimates for a route."""
+  priceEstimates(
+    startLatitude: Float!
+    startLongitude: Float!
+    endLatitude: Float!
+    endLongitude: Float!
+    seatCount: Int
+  ): [PriceEstimate]
+
+  """Get ETA estimates by product for a pickup location."""
+  timeEstimates(latitude: Float!, longitude: Float!, productId: String): [TimeEstimate]
+
+  """Fetch a specific ride request."""
+  ride(requestId: String!): RideDetails
+
+  """Fetch paginated trip history for the authenticated rider."""
+  rideHistory(offset: Int, limit: Int): RideHistory
+
+  """Fetch driver profile for the authenticated driver."""
+  driverProfile: DriverDetails
+
+  """List trips for the authenticated driver."""
+  driverTrips(offset: Int, limit: Int): [DriverTrip]
+
+  """List payment history for the authenticated driver."""
+  driverPayments(fromTime: DateTime, toTime: DateTime): [PayoutDetail]
+
+  """Fetch an Uber Eats store."""
+  restaurant(storeId: String!): UberEatsRestaurant
+
+  """Fetch the menu for an Uber Eats store."""
+  menu(menuId: String!): Menu
+
+  """Fetch an Uber Eats order."""
+  order(orderId: String!): UberEatsOrder
+
+  """Fetch an Uber Direct delivery."""
+  delivery(deliveryId: String!): Delivery
+
+  """Get a quote for an Uber Direct delivery."""
+  deliveryQuote(
+    pickupAddress: String!
+    dropoffAddress: String!
+    externalDeliveryId: String
+  ): DeliveryQuote
+
+  """Fetch a Direct organization."""
+  organization(organizationId: String!): Organization
+
+  """Fetch a Direct business location."""
+  businessLocation(locationId: String!): BusinessLocation
+
+  """Fetch a voucher program."""
+  voucherProgram(programId: String!): VoucherProgram
+
+  """Fetch a voucher code."""
+  voucherCode(code: String!): VoucherCode
+
+  """List business trips for the authenticated enterprise account."""
+  businessTrips(offset: Int, limit: Int): [BusinessTrip]
+
+  """Fetch a business trip receipt."""
+  businessReceipt(tripId: String!): Receipt
+
+  """List registered webhook endpoints."""
+  webhooks: [Webhook]
+}
+
+type Mutation {
+  """Request a ride for the authenticated rider."""
+  createRideRequest(
+    productId: String!
+    fareId: String
+    startLatitude: Float!
+    startLongitude: Float!
+    endLatitude: Float!
+    endLongitude: Float!
+    paymentMethodId: String
+    surgeConfirmationId: String
+  ): TripRequest
+
+  """Cancel a pending ride request."""
+  cancelRideRequest(requestId: String!): Boolean
+
+  """Update a rider saved place."""
+  updatePlace(placeId: String!, address: String!): Place
+
+  """Create an Uber Direct delivery."""
+  createDelivery(
+    pickupName: String!
+    pickupAddress: String!
+    pickupPhone: String!
+    dropoffName: String!
+    dropoffAddress: String!
+    dropoffPhone: String!
+    quoteId: String
+    externalDeliveryId: String
+    manifestReference: String
+  ): Delivery
+
+  """Cancel an Uber Direct delivery."""
+  cancelDelivery(deliveryId: String!): Boolean
+
+  """Create a quote for a Direct delivery."""
+  createDeliveryQuote(
+    pickupAddress: String!
+    dropoffAddress: String!
+    externalDeliveryId: String
+  ): DeliveryQuote
+
+  """Request a refund for a Direct delivery."""
+  createRefund(deliveryId: String!, reason: String!): Refund
+
+  """Update an Uber Eats store."""
+  updateStore(storeId: String!, input: JSON!): UberEatsRestaurant
+
+  """Upsert a full menu for an Uber Eats store."""
+  updateMenu(storeId: String!, input: JSON!): Menu
+
+  """Accept an incoming Uber Eats order."""
+  acceptOrder(orderId: String!, readyForPickupTime: DateTime): UberEatsOrder
+
+  """Deny an incoming Uber Eats order."""
+  denyOrder(orderId: String!, reason: String): UberEatsOrder
+
+  """Cancel an accepted Uber Eats order."""
+  cancelOrder(orderId: String!, reason: String): UberEatsOrder
+
+  """Create a new voucher program."""
+  createVoucherProgram(
+    name: String!
+    budget: Float!
+    currencyCode: String!
+    templateId: String!
+  ): VoucherProgram
+
+  """Generate voucher codes for a program."""
+  createVoucherCodes(programId: String!, count: Int!): [VoucherCode]
+
+  """Register a webhook endpoint."""
+  registerWebhook(url: String!, eventTypes: [WebhookEventType]!): Webhook
+
+  """Delete a registered webhook endpoint."""
+  deleteWebhook(webhookId: String!): Boolean
+}
+
+type Subscription {
+  """Stream real-time delivery status events."""
+  deliveryStatusUpdated(deliveryId: String!): DeliveryEvent
+
+  """Stream courier GPS location updates for a delivery."""
+  courierLocationUpdated(deliveryId: String!): CourierLocation
+
+  """Stream Uber Eats order lifecycle events for a store."""
+  orderStatusUpdated(storeId: String!): OrderEvent
+}
