@@ -1,0 +1,655 @@
+{
+  "item": [
+    {
+      "id": "a7dbcf0a-e4bc-4791-8a13-c89f6081303f",
+      "name": "Trips",
+      "description": {
+        "content": "Business trip receipts and invoices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2a6e156-c7b7-47ad-80ec-ee01dbe0212e",
+          "name": "Get Trip Invoice URLs",
+          "request": {
+            "name": "Get Trip Invoice URLs",
+            "description": {
+              "content": "Retrieve invoice URLs for a business trip.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "business",
+                "trips",
+                ":trip_id",
+                "invoice_urls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trip_id",
+                  "description": "(Required) Unique identifier for the business trip."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f6cb996-ec94-44ae-a471-9082121f4690",
+              "name": "Invoice URLs for the trip.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "trips",
+                    ":trip_id",
+                    "invoice_urls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trip_id",
+                      "description": "(Required) Unique identifier for the business trip."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoice_urls\": [\n    \"https://Apkv.mlhVA1TGILP-gzEXp09Xmbd+xmmJQqEmGV8Xbl5Cc7F3P,oYnie9Bvl\",\n    \"http://dzYRPTngTgLQcCUDyKhqPMbfDX.mkgbVEm1PdheOvxZU2wYUJbIPJN\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58b86afe-fa0b-4119-b923-0f3f6d732e6a",
+              "name": "Trip not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "trips",
+                    ":trip_id",
+                    "invoice_urls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trip_id",
+                      "description": "(Required) Unique identifier for the business trip."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6ff9859-67a5-4427-a96f-2b5c5306f7aa",
+          "name": "Get Trip Receipt",
+          "request": {
+            "name": "Get Trip Receipt",
+            "description": {
+              "content": "Fetch receipt details for a completed business trip.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "business",
+                "trips",
+                ":trip_id",
+                "receipt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trip_id",
+                  "description": "(Required) Unique identifier for the business trip."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d2cb786-3d54-4403-8cb6-4494c67d540f",
+              "name": "Receipt details for the trip.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "trips",
+                    ":trip_id",
+                    "receipt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trip_id",
+                      "description": "(Required) Unique identifier for the business trip."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trip_id\": \"string\",\n  \"business_name\": \"string\",\n  \"employee_id\": \"string\",\n  \"start_time\": \"1962-01-19T01:22:22.856Z\",\n  \"end_time\": \"1958-03-30T20:01:59.347Z\",\n  \"origin\": {\n    \"address\": \"string\",\n    \"latitude\": 6587.716983911627,\n    \"longitude\": 8710.085911971179\n  },\n  \"destination\": {\n    \"address\": \"string\",\n    \"latitude\": 9742.417027289162,\n    \"longitude\": 6490.138078659683\n  },\n  \"distance\": 6363.213830459731,\n  \"duration\": 1098.0912807495192,\n  \"charges\": [\n    {\n      \"name\": \"string\",\n      \"amount\": 6672.966450429733,\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"amount\": 3691.7137317881297,\n      \"type\": \"string\"\n    }\n  ],\n  \"total_charged\": 7446.639654257652,\n  \"currency_code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "341aa92f-62f6-4c2e-acad-12ddcc8478c3",
+              "name": "Trip not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "trips",
+                    ":trip_id",
+                    "receipt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trip_id",
+                      "description": "(Required) Unique identifier for the business trip."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c99965be-fb13-4633-803a-45a34a437fc1",
+          "name": "Get Trip Receipt PDF URL",
+          "request": {
+            "name": "Get Trip Receipt PDF URL",
+            "description": {
+              "content": "Obtain a PDF download URL for a business trip receipt.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "business",
+                "trips",
+                ":trip_id",
+                "receipt",
+                "pdf_url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trip_id",
+                  "description": "(Required) Unique identifier for the business trip."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b34aa662-aae2-49d3-8a05-cb59745f3917",
+              "name": "PDF URL for the trip receipt.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "trips",
+                    ":trip_id",
+                    "receipt",
+                    "pdf_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trip_id",
+                      "description": "(Required) Unique identifier for the business trip."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pdf_url\": \"https://SlTPJSFichfScHLTkFlUwBGMfyBnEH.ebblwcgAYGWQmqnIslQW6R0NTa1jMJY0fcGTtVoSYdldSens5yAfao4EZqur\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33ededc3-fd64-48b7-b20d-be9bf729eb00",
+              "name": "Trip not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "trips",
+                    ":trip_id",
+                    "receipt",
+                    "pdf_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trip_id",
+                      "description": "(Required) Unique identifier for the business trip."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "17782301-8c41-4821-9b0f-3eff8278bcd7",
+      "name": "Orders",
+      "description": {
+        "content": "Eats order receipts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dca36782-5eb4-4b7f-bd36-d2b3eec65912",
+          "name": "Get Order Receipt",
+          "request": {
+            "name": "Get Order Receipt",
+            "description": {
+              "content": "Get receipt information for an Uber Eats order within a business account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "business",
+                "orders",
+                ":order_id",
+                "receipt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Unique identifier for the Eats order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f676d299-7263-4c19-b24e-d08b81a59b18",
+              "name": "Receipt details for the Eats order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "orders",
+                    ":order_id",
+                    "receipt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the Eats order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order_id\": \"string\",\n  \"store_name\": \"string\",\n  \"placed_at\": \"1957-11-09T05:36:54.729Z\",\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"quantity\": 6290,\n      \"price\": 272.353163411434\n    },\n    {\n      \"name\": \"string\",\n      \"quantity\": 8145,\n      \"price\": 8072.376878672034\n    }\n  ],\n  \"subtotal\": 7008.743732281247,\n  \"delivery_fee\": 7801.07490837968,\n  \"total\": 8620.212320181006,\n  \"currency_code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb0ad524-b372-4d0c-8f7c-c35c24a21435",
+              "name": "Order not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "orders",
+                    ":order_id",
+                    "receipt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the Eats order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e847b1b2-4800-4798-ab72-31291fb4dbf1",
+    "name": "Uber for Business API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,396 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber Riders API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/products",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of location."
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of location."
+              }
+            ]
+          },
+          "docs": "Returns information about the Uber products offered at a given location."
+        },
+        {
+          "info": {
+            "name": "Get Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/products/:product_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier representing a specific product for a given location."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific Uber product."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Estimates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Price Estimates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/estimates/price",
+            "params": [
+              {
+                "name": "start_latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of start location."
+              },
+              {
+                "name": "start_longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of start location."
+              },
+              {
+                "name": "end_latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of end location."
+              },
+              {
+                "name": "end_longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of end location."
+              }
+            ]
+          },
+          "docs": "Returns an estimated price range for each product offered at a given location."
+        },
+        {
+          "info": {
+            "name": "Get Time Estimates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/estimates/time",
+            "params": [
+              {
+                "name": "start_latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of start location."
+              },
+              {
+                "name": "start_longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of start location."
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier representing a specific product for a given location."
+              },
+              {
+                "name": "customer_uuid",
+                "value": "",
+                "type": "query",
+                "description": "Unique customer identifier to be used for experience customization."
+              }
+            ]
+          },
+          "docs": "Returns ETAs for all products offered at a given location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Riders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Rider Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/me"
+          },
+          "docs": "Returns information about the Uber account of a user that has authorized with the application."
+        },
+        {
+          "info": {
+            "name": "Apply Promotion",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uber.com/v1.2/me",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply a promotional code to the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Get Ride History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/history",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to retrieve. Default is 5, maximum is 50."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the list of returned results by this amount."
+              }
+            ]
+          },
+          "docs": "Returns limited data about a user's lifetime activity with Uber."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Places",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Saved Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/places/:place_id",
+            "params": [
+              {
+                "name": "place_id",
+                "value": "",
+                "type": "path",
+                "description": "The name of the place (home or work)."
+              }
+            ]
+          },
+          "docs": "Returns information about a user's saved place, such as home or work."
+        },
+        {
+          "info": {
+            "name": "Update Saved Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.uber.com/v1.2/places/:place_id",
+            "params": [
+              {
+                "name": "place_id",
+                "value": "",
+                "type": "path",
+                "description": "The name of the place (home or work)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates information about a user's saved place."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Ride Estimate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1.2/requests/estimate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get an upfront fare estimate and surge pricing details for a ride request before booking."
+        },
+        {
+          "info": {
+            "name": "Create Ride Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1.2/requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request a ride on behalf of an Uber user given their desired product, start, and end locations."
+        },
+        {
+          "info": {
+            "name": "Get Ride Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/requests/:request_id",
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier representing a Request."
+              }
+            ]
+          },
+          "docs": "Get the real-time status of an ongoing trip."
+        },
+        {
+          "info": {
+            "name": "Update Ride Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uber.com/v1.2/requests/:request_id",
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier representing a Request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an ongoing request's destination."
+        },
+        {
+          "info": {
+            "name": "Cancel Ride Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uber.com/v1.2/requests/:request_id",
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier representing a Request."
+              }
+            ]
+          },
+          "docs": "Cancel an ongoing request on behalf of a rider."
+        },
+        {
+          "info": {
+            "name": "Get Ride Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/requests/:request_id/map",
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier representing a Request."
+              }
+            ]
+          },
+          "docs": "Get a map with a visual representation of a Request."
+        },
+        {
+          "info": {
+            "name": "Get Ride Receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/requests/:request_id/receipts",
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier representing a Request."
+              }
+            ]
+          },
+          "docs": "Get the receipt information of a completed request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

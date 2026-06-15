@@ -1,0 +1,272 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber Vouchers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Programs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Voucher Programs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1/voucher-programs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all voucher programs for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create Voucher Program",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1/voucher-programs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new voucher program for rides or meals."
+        },
+        {
+          "info": {
+            "name": "Search Voucher Programs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1/voucher-programs/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for voucher programs by criteria."
+        },
+        {
+          "info": {
+            "name": "Get Voucher Program",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1/voucher-programs/:program_id",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific voucher program."
+        },
+        {
+          "info": {
+            "name": "Update Voucher Program",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uber.com/v1/voucher-programs/:program_id",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing voucher program."
+        },
+        {
+          "info": {
+            "name": "Cancel Voucher Program",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uber.com/v1/voucher-programs/:program_id",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel and deactivate a voucher program."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Voucher Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1/voucher-programs/:program_id/codes/generate",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate redemption codes for a voucher program in bulk."
+        },
+        {
+          "info": {
+            "name": "List Voucher Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1/voucher-programs/:program_id/codes",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all codes for a voucher program."
+        },
+        {
+          "info": {
+            "name": "Distribute Voucher Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1/voucher-programs/:program_id/codes/distribute",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Distribute voucher codes to a list of recipients."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Voucher Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1/voucher-program-templates"
+          },
+          "docs": "Returns all available voucher program templates."
+        },
+        {
+          "info": {
+            "name": "Create Voucher Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1/voucher-program-templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a reusable voucher program template."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Redemption",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Redeem Voucher Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1/me/vouchers/redeem",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Redeem a voucher code for the authenticated user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

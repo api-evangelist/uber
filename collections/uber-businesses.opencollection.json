@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trips",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trip Invoice URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/business/trips/:trip_id/invoice_urls",
+            "params": [
+              {
+                "name": "trip_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the business trip."
+              }
+            ]
+          },
+          "docs": "Retrieve invoice URLs for a business trip."
+        },
+        {
+          "info": {
+            "name": "Get Trip Receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/business/trips/:trip_id/receipt",
+            "params": [
+              {
+                "name": "trip_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the business trip."
+              }
+            ]
+          },
+          "docs": "Fetch receipt details for a completed business trip."
+        },
+        {
+          "info": {
+            "name": "Get Trip Receipt PDF URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/business/trips/:trip_id/receipt/pdf_url",
+            "params": [
+              {
+                "name": "trip_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the business trip."
+              }
+            ]
+          },
+          "docs": "Obtain a PDF download URL for a business trip receipt."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Order Receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/business/orders/:order_id/receipt",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the Eats order."
+              }
+            ]
+          },
+          "docs": "Get receipt information for an Uber Eats order within a business account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

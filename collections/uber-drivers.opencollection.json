@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber Drivers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Partners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Driver Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1/partners/me"
+          },
+          "docs": "Returns information about a driver who has authorized with the application."
+        },
+        {
+          "info": {
+            "name": "Get Driver Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1/partners/payments",
+            "params": [
+              {
+                "name": "from_time",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp of the start of the query time range."
+              },
+              {
+                "name": "to_time",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp of the end of the query time range."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return. Default is 5, maximum is 50."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the list of returned results by this amount."
+              }
+            ]
+          },
+          "docs": "Returns a list of payments made to a driver over the lifetime of their account with Uber."
+        },
+        {
+          "info": {
+            "name": "Get Driver Trips",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1/partners/trips",
+            "params": [
+              {
+                "name": "from_time",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp of the start of the query time range."
+              },
+              {
+                "name": "to_time",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp of the end of the query time range."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return. Default is 5, maximum is 50."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the list of returned results by this amount."
+              }
+            ]
+          },
+          "docs": "Returns trip history for a driver partner."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
