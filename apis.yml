@@ -19,24 +19,24 @@ apis:
   - url: openapi/uber-riders-openapi.yml
     type: OpenAPI
   - url: https://github.com/uber/rides-android-sdk
-    type: SDK
+    type: SDKs
     title: Android SDK
   - url: https://github.com/uber/uber-ios-sdk
-    type: SDK
+    type: SDKs
     title: iOS SDK
   - url: https://pypi.org/project/uber-rides/
-    type: SDK
+    type: SDKs
     title: Python SDK
   - url: https://github.com/uber/rides-java-sdk
-    type: SDK
+    type: SDKs
     title: Java SDK
   - url: https://github.com/uber/Python-Sample-Application
     type: CodeExamples
     title: Python Sample Application
   - url: examples/uber-riders-list-products-example.json
-    type: Example
+    type: Examples
   - url: examples/uber-riders-create-ride-request-example.json
-    type: Example
+    type: Examples
   - url: json-schema/uber-ride-request-schema.json
     type: JSONSchema
   - url: json-schema/uber-product-schema.json
@@ -111,7 +111,7 @@ apis:
   - url: openapi/uber-eats-openapi.yml
     type: OpenAPI
   - url: examples/uber-eats-get-order-example.json
-    type: Example
+    type: Examples
   - url: json-schema/uber-store-schema.json
     type: JSONSchema
   - url: json-schema/uber-storeupdate-schema.json
@@ -147,10 +147,10 @@ apis:
   - url: openapi/uber-direct-openapi.yml
     type: OpenAPI
   - url: https://www.npmjs.com/package/uber-direct
-    type: SDK
+    type: SDKs
     title: JavaScript SDK
   - url: https://github.com/uber/uber-direct-sdk
-    type: SDK
+    type: SDKs
     title: JavaScript SDK Source
   - url: https://github.com/uber/uber-direct-sdk-samples
     type: CodeExamples
@@ -158,7 +158,7 @@ apis:
   - url: https://developer.uber.com/docs/deliveries/authentication
     type: Authentication
   - url: examples/uber-direct-create-delivery-example.json
-    type: Example
+    type: Examples
   - url: json-schema/uber-delivery-schema.json
     type: JSONSchema
   - url: json-schema/uber-deliveryquote-schema.json
@@ -291,7 +291,7 @@ common:
   url: https://developer.uber.com/docs
 - type: Console
   url: https://developer.uber.com/dashboard
-- type: SignUp
+- type: Signup
   url: https://developer.uber.com/dashboard
 - type: GettingStarted
   url: https://developer.uber.com/docs/riders/getting-started/introduction
