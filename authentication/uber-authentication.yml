@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/uber-businesses-openapi.yml, openapi/uber-direct-openapi.yml, openapi/uber-drivers-openapi.yml,
+  openapi/uber-eats-openapi.yml, openapi/uber-riders-openapi.yml, openapi/uber-vouchers-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: OAuth 2.0 Bearer token with business.receipts scope
+  sources:
+  - openapi/uber-businesses-openapi.yml
+  - openapi/uber-direct-openapi.yml
+  - openapi/uber-drivers-openapi.yml
+  - openapi/uber-eats-openapi.yml
+  - openapi/uber-riders-openapi.yml
+  - openapi/uber-vouchers-openapi.yml

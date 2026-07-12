@@ -281,6 +281,10 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
+- type: DomainSecurity
+  url: security/uber-domain-security.yml
+- type: Authentication
+  url: authentication/uber-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/uber
 - type: LinkedIn
