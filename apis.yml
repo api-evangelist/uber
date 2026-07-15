@@ -281,6 +281,8 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
+- type: AgenticAccess
+  url: agentic-access/uber-agentic-access.yml
 - type: DomainSecurity
   url: security/uber-domain-security.yml
 - type: Authentication
