@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Templates API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Templates
+  description: Voucher program templates
+paths:
+  /voucher-program-templates:
+    get:
+      operationId: listVoucherTemplates
+      summary: List Voucher Templates
+      description: Returns all available voucher program templates.
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: List of templates.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoucherTemplate'
+    post:
+      operationId: createVoucherTemplate
+      summary: Create Voucher Template
+      description: Create a reusable voucher program template.
+      tags:
+      - Templates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoucherTemplate'
+      responses:
+        '201':
+          description: Template created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoucherTemplate'
+components:
+  schemas:
+    VoucherTemplate:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

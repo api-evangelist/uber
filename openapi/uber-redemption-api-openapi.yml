@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Redemption API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Redemption
+  description: Voucher code redemption
+paths:
+  /me/vouchers/redeem:
+    post:
+      operationId: redeemVoucherCode
+      summary: Redeem Voucher Code
+      description: Redeem a voucher code for the authenticated user.
+      tags:
+      - Redemption
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - code
+              properties:
+                code:
+                  type: string
+                  description: The voucher code to redeem.
+      responses:
+        '200':
+          description: Voucher redeemed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  voucher_id:
+                    type: string
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

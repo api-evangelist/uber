@@ -1,0 +1,185 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Stores API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Stores
+  description: Store management and operational status
+paths:
+  /eats/stores:
+    get:
+      operationId: listStores
+      summary: List Stores
+      description: Returns a list of stores for the authenticated partner.
+      tags:
+      - Stores
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+        description: Number of stores to return.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+        description: Offset for pagination.
+      responses:
+        '200':
+          description: List of stores.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stores:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Store'
+                  total:
+                    type: integer
+  /eats/stores/{store_id}:
+    get:
+      operationId: getStore
+      summary: Get Store
+      description: Returns details for a specific store.
+      tags:
+      - Stores
+      parameters:
+      - name: store_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the store.
+      responses:
+        '200':
+          description: Store details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+    patch:
+      operationId: updateStore
+      summary: Update Store
+      description: Update store details such as operating hours and status.
+      tags:
+      - Stores
+      parameters:
+      - name: store_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the store.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreUpdate'
+      responses:
+        '200':
+          description: Updated store details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+  /eats/stores/{store_id}/status:
+    put:
+      operationId: updateStoreStatus
+      summary: Update Store Status
+      description: Set the store's online or offline status.
+      tags:
+      - Stores
+      parameters:
+      - name: store_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the store.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - online
+                  - offline
+                  description: The desired store status.
+      responses:
+        '200':
+          description: Store status updated.
+components:
+  schemas:
+    Store:
+      type: object
+      properties:
+        store_id:
+          type: string
+          description: Unique identifier for the store.
+        name:
+          type: string
+          description: Store display name.
+        status:
+          type: string
+          enum:
+          - online
+          - offline
+          description: Current operational status.
+        address:
+          type: object
+          properties:
+            street_address:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            zip_code:
+              type: string
+            country:
+              type: string
+        contact_emails:
+          type: array
+          items:
+            type: string
+            format: email
+    StoreUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Updated store name.
+        contact_emails:
+          type: array
+          items:
+            type: string
+            format: email
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

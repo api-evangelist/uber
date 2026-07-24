@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Products API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Products
+  description: Uber product types available at a location
+paths:
+  /products:
+    get:
+      operationId: listProducts
+      summary: List Products
+      description: Returns information about the Uber products offered at a given location.
+      tags:
+      - Products
+      parameters:
+      - name: latitude
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+        description: Latitude component of location.
+      - name: longitude
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+        description: Longitude component of location.
+      responses:
+        '200':
+          description: An array of products.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        '400':
+          description: Invalid parameters supplied.
+        '401':
+          description: Unauthorized.
+  /products/{product_id}:
+    get:
+      operationId: getProduct
+      summary: Get Product
+      description: Returns information about a specific Uber product.
+      tags:
+      - Products
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier representing a specific product for a given location.
+      responses:
+        '200':
+          description: A product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found.
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        product_id:
+          type: string
+          description: Unique identifier representing a specific product for a given location.
+        description:
+          type: string
+          description: Description of product.
+        display_name:
+          type: string
+          description: Display name of product.
+        capacity:
+          type: integer
+          description: Capacity of product. Maximum number of persons that can be accommodated.
+        image:
+          type: string
+          format: uri
+          description: Image URL representing the product.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

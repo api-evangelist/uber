@@ -1,0 +1,153 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Codes
+  description: Voucher code generation and distribution
+paths:
+  /voucher-programs/{program_id}/codes/generate:
+    post:
+      operationId: generateVoucherCodes
+      summary: Generate Voucher Codes
+      description: Generate redemption codes for a voucher program in bulk.
+      tags:
+      - Codes
+      parameters:
+      - name: program_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - quantity
+              properties:
+                quantity:
+                  type: integer
+                  description: Number of codes to generate.
+      responses:
+        '200':
+          description: Generated voucher codes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoucherCode'
+  /voucher-programs/{program_id}/codes:
+    get:
+      operationId: listVoucherCodes
+      summary: List Voucher Codes
+      description: Returns all codes for a voucher program.
+      tags:
+      - Codes
+      parameters:
+      - name: program_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: List of voucher codes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoucherCode'
+  /voucher-programs/{program_id}/codes/distribute:
+    post:
+      operationId: distributeVoucherCodes
+      summary: Distribute Voucher Codes
+      description: Distribute voucher codes to a list of recipients.
+      tags:
+      - Codes
+      parameters:
+      - name: program_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - recipients
+              properties:
+                recipients:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        format: email
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+      responses:
+        '200':
+          description: Voucher codes distributed successfully.
+components:
+  schemas:
+    VoucherCode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The voucher code string.
+        status:
+          type: string
+          enum:
+          - available
+          - distributed
+          - redeemed
+          - expired
+        created_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

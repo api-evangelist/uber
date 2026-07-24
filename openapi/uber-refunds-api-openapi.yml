@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Refunds API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Refunds
+  description: Delivery refund processing
+paths:
+  /eats/refunds:
+    post:
+      operationId: createRefund
+      summary: Create Refund
+      description: Request a refund for a delivery order.
+      tags:
+      - Refunds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund request created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+components:
+  schemas:
+    Refund:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique refund identifier.
+        order_id:
+          type: string
+          description: Associated order identifier.
+        amount:
+          type: integer
+          description: Refund amount in cents.
+        status:
+          type: string
+          description: Current status of the refund.
+        created:
+          type: string
+          format: date-time
+    RefundRequest:
+      type: object
+      required:
+      - order_id
+      - reason
+      properties:
+        order_id:
+          type: string
+          description: Order ID to refund.
+        reason:
+          type: string
+          description: Reason for requesting a refund.
+        amount:
+          type: integer
+          description: Refund amount in cents. If omitted, full refund.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

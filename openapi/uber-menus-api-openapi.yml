@@ -1,0 +1,124 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Menus API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Menus
+  description: Menu items, modifiers, and pricing
+paths:
+  /eats/stores/{store_id}/menus:
+    get:
+      operationId: getStoreMenu
+      summary: Get Store Menu
+      description: Returns the current menu for a specific store.
+      tags:
+      - Menus
+      parameters:
+      - name: store_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the store.
+      responses:
+        '200':
+          description: Menu details for the store.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Menu'
+    put:
+      operationId: updateStoreMenu
+      summary: Update Store Menu
+      description: Replace the full menu for a specific store.
+      tags:
+      - Menus
+      parameters:
+      - name: store_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the store.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Menu'
+      responses:
+        '200':
+          description: Menu update accepted.
+components:
+  schemas:
+    Menu:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuCategory'
+    MenuCategory:
+      type: object
+      properties:
+        category_id:
+          type: string
+          description: Unique identifier for the category.
+        title:
+          type: object
+          properties:
+            en:
+              type: string
+              description: Category name in English.
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuItem'
+    MenuItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the menu item.
+        external_data:
+          type: string
+          description: Partner's own identifier for the item.
+        title:
+          type: object
+          properties:
+            en:
+              type: string
+        description:
+          type: object
+          properties:
+            en:
+              type: string
+        msrp:
+          type: integer
+          description: Price in minor currency units (cents).
+        quantity_info:
+          type: object
+          properties:
+            quantity:
+              type: object
+              properties:
+                min_permitted:
+                  type: integer
+                max_permitted:
+                  type: integer
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

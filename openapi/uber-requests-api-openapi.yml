@@ -1,0 +1,350 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Requests API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Requests
+  description: Ride request management
+paths:
+  /requests/estimate:
+    post:
+      operationId: createRideEstimate
+      summary: Create Ride Estimate
+      description: Get an upfront fare estimate and surge pricing details for a ride request before booking.
+      tags:
+      - Requests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - product_id
+              - start_latitude
+              - start_longitude
+              - end_latitude
+              - end_longitude
+              properties:
+                product_id:
+                  type: string
+                  description: The unique ID of the product to request.
+                start_latitude:
+                  type: number
+                  format: double
+                  description: The beginning or starting latitude.
+                start_longitude:
+                  type: number
+                  format: double
+                  description: The beginning or starting longitude.
+                end_latitude:
+                  type: number
+                  format: double
+                  description: The final or ending latitude.
+                end_longitude:
+                  type: number
+                  format: double
+                  description: The final or ending longitude.
+      responses:
+        '200':
+          description: An upfront fare estimate object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RideEstimate'
+  /requests:
+    post:
+      operationId: createRideRequest
+      summary: Create Ride Request
+      description: Request a ride on behalf of an Uber user given their desired product, start, and end locations.
+      tags:
+      - Requests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RideRequest'
+      responses:
+        '201':
+          description: The ride request object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RideDetails'
+        '409':
+          description: A current booking already exists.
+  /requests/{request_id}:
+    get:
+      operationId: getRideRequest
+      summary: Get Ride Details
+      description: Get the real-time status of an ongoing trip.
+      tags:
+      - Requests
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier representing a Request.
+      responses:
+        '200':
+          description: The ride request object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RideDetails'
+    patch:
+      operationId: updateRideRequest
+      summary: Update Ride Request
+      description: Update an ongoing request's destination.
+      tags:
+      - Requests
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier representing a Request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                end_latitude:
+                  type: number
+                  format: double
+                  description: The final or ending latitude.
+                end_longitude:
+                  type: number
+                  format: double
+                  description: The final or ending longitude.
+                end_place_id:
+                  type: string
+                  description: The final or ending place ID.
+      responses:
+        '204':
+          description: Request updated successfully.
+    delete:
+      operationId: cancelRideRequest
+      summary: Cancel Ride Request
+      description: Cancel an ongoing request on behalf of a rider.
+      tags:
+      - Requests
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier representing a Request.
+      responses:
+        '204':
+          description: Request cancelled successfully.
+  /requests/{request_id}/map:
+    get:
+      operationId: getRideMap
+      summary: Get Ride Map
+      description: Get a map with a visual representation of a Request.
+      tags:
+      - Requests
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier representing a Request.
+      responses:
+        '200':
+          description: A map object with an href to the map image.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  request_id:
+                    type: string
+                  href:
+                    type: string
+                    format: uri
+  /requests/{request_id}/receipts:
+    get:
+      operationId: getRideReceipt
+      summary: Get Ride Receipt
+      description: Get the receipt information of a completed request.
+      tags:
+      - Requests
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier representing a Request.
+      responses:
+        '200':
+          description: Receipt data for the completed ride.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Receipt'
+components:
+  schemas:
+    RideEstimate:
+      type: object
+      properties:
+        fare:
+          type: object
+          properties:
+            value:
+              type: number
+              description: The upfront fare value.
+            fare_id:
+              type: string
+              description: Unique identifier of the fare, used when requesting a ride.
+            expires_at:
+              type: integer
+              description: Expiration time of the fare in Unix epoch seconds.
+            display:
+              type: string
+              description: Display string for the fare.
+            currency_code:
+              type: string
+              description: ISO 4217 currency code.
+    Receipt:
+      type: object
+      properties:
+        request_id:
+          type: string
+          description: The unique ID for the request.
+        charges:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              amount:
+                type: string
+              type:
+                type: string
+        total_charged:
+          type: string
+          description: The total amount charged to the user's payment method.
+        total_owed:
+          type: number
+          description: The total amount owed by the user.
+        currency_code:
+          type: string
+          description: ISO 4217 currency code.
+        duration:
+          type: string
+          description: Time duration of the trip in ISO 8601 format.
+        distance:
+          type: string
+          description: Distance of the trip charged.
+        distance_label:
+          type: string
+          description: The localized unit of distance.
+    RideRequest:
+      type: object
+      required:
+      - product_id
+      - start_latitude
+      - start_longitude
+      properties:
+        product_id:
+          type: string
+          description: The unique ID of the product to request.
+        start_latitude:
+          type: number
+          format: double
+          description: The beginning or starting latitude.
+        start_longitude:
+          type: number
+          format: double
+          description: The beginning or starting longitude.
+        end_latitude:
+          type: number
+          format: double
+          description: The final or ending latitude.
+        end_longitude:
+          type: number
+          format: double
+          description: The final or ending longitude.
+        fare_id:
+          type: string
+          description: The fare ID from a prior estimate call.
+        surge_confirmation_id:
+          type: string
+          description: The surge confirmation ID if the user has confirmed a surge.
+        payment_method_id:
+          type: string
+          description: The unique identifier of the payment method selected by a user.
+    RideDetails:
+      type: object
+      properties:
+        request_id:
+          type: string
+          description: The unique ID for the request.
+        status:
+          type: string
+          enum:
+          - processing
+          - no_drivers_available
+          - accepted
+          - arriving
+          - in_progress
+          - driver_canceled
+          - rider_canceled
+          - completed
+          description: The status of the ride request.
+        driver:
+          type: object
+          properties:
+            name:
+              type: string
+            phone_number:
+              type: string
+            picture_url:
+              type: string
+            rating:
+              type: number
+        vehicle:
+          type: object
+          properties:
+            make:
+              type: string
+            model:
+              type: string
+            license_plate:
+              type: string
+            picture_url:
+              type: string
+        eta:
+          type: integer
+          description: Driver's expected arrival in minutes.
+        surge_multiplier:
+          type: number
+          description: The surge pricing multiplier used to calculate the increased price.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

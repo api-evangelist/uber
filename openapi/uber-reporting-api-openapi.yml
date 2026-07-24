@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Reporting API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Reporting
+  description: Analytics and performance metrics
+paths:
+  /eats/reports:
+    post:
+      operationId: generateReport
+      summary: Generate Report
+      description: Generate analytics and performance reports for stores.
+      tags:
+      - Reporting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '202':
+          description: Report generation initiated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  report_id:
+                    type: string
+                  status:
+                    type: string
+components:
+  schemas:
+    ReportRequest:
+      type: object
+      required:
+      - report_type
+      - date_range
+      properties:
+        report_type:
+          type: string
+          description: Type of report to generate.
+        store_ids:
+          type: array
+          items:
+            type: string
+          description: List of store IDs to include.
+        date_range:
+          type: object
+          properties:
+            start_date:
+              type: string
+              format: date
+            end_date:
+              type: string
+              format: date
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

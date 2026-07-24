@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Organizations API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Organizations
+  description: Organization and account management
+paths:
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: List Organizations
+      description: Returns a list of organizations associated with the authenticated account.
+      tags:
+      - Organizations
+      responses:
+        '200':
+          description: List of organizations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+  /organizations/{organization_id}:
+    get:
+      operationId: getOrganization
+      summary: Get Organization
+      description: Returns details for a specific organization.
+      tags:
+      - Organizations
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the organization.
+      responses:
+        '200':
+          description: Organization details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+components:
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique organization identifier.
+        name:
+          type: string
+          description: Organization name.
+        status:
+          type: string
+          description: Organization status.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

@@ -1,0 +1,134 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Locations API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Locations
+  description: Business location management
+paths:
+  /business-locations:
+    get:
+      operationId: listBusinessLocations
+      summary: List Business Locations
+      description: Returns all business locations for the authenticated merchant.
+      tags:
+      - Locations
+      responses:
+        '200':
+          description: List of business locations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  locations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BusinessLocation'
+    post:
+      operationId: createBusinessLocation
+      summary: Create Business Location
+      description: Create a new business pickup location.
+      tags:
+      - Locations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessLocationRequest'
+      responses:
+        '201':
+          description: Business location created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessLocation'
+  /business-locations/{location_id}:
+    get:
+      operationId: getBusinessLocation
+      summary: Get Business Location
+      description: Returns details for a specific business location.
+      tags:
+      - Locations
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the business location.
+      responses:
+        '200':
+          description: Business location details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessLocation'
+    delete:
+      operationId: deleteBusinessLocation
+      summary: Delete Business Location
+      description: Remove a business pickup location.
+      tags:
+      - Locations
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the business location.
+      responses:
+        '204':
+          description: Location deleted successfully.
+components:
+  schemas:
+    BusinessLocation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique location identifier.
+        name:
+          type: string
+          description: Location display name.
+        address:
+          type: string
+          description: Full address of the location.
+        phone_number:
+          type: string
+          description: Contact phone number.
+    BusinessLocationRequest:
+      type: object
+      required:
+      - name
+      - address
+      properties:
+        name:
+          type: string
+          description: Location display name.
+        address:
+          type: string
+          description: Full street address.
+        phone_number:
+          type: string
+          description: Contact phone number.
+        instructions:
+          type: string
+          description: Special pickup instructions.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope

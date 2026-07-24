@@ -1,0 +1,254 @@
+openapi: 3.0.0
+info:
+  title: Uber for Business Codes Deliveries API
+  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
+  version: 1.2.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+- url: https://api.uber.com/v1.2
+  description: Production
+- url: https://sandbox-api.uber.com/v1.2
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Deliveries
+  description: Delivery creation and management
+paths:
+  /eats/deliveries:
+    post:
+      operationId: createDelivery
+      summary: Create Delivery
+      description: Create a new delivery request using Uber's courier network.
+      tags:
+      - Deliveries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryRequest'
+      responses:
+        '200':
+          description: Delivery created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Delivery'
+        '400':
+          description: Invalid delivery request parameters.
+  /eats/deliveries/{order_id}:
+    get:
+      operationId: getDelivery
+      summary: Get Delivery Status
+      description: Returns the current status of a delivery order.
+      tags:
+      - Deliveries
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the delivery order.
+      responses:
+        '200':
+          description: Delivery details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Delivery'
+    delete:
+      operationId: cancelDelivery
+      summary: Cancel Delivery
+      description: Cancel an active delivery order.
+      tags:
+      - Deliveries
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the delivery order.
+      responses:
+        '200':
+          description: Delivery cancelled successfully.
+  /eats/deliveries/quote:
+    post:
+      operationId: getDeliveryQuote
+      summary: Get Delivery Quote
+      description: Get a price quote for a delivery before creating the order.
+      tags:
+      - Deliveries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - pickup_address
+              - dropoff_address
+              properties:
+                pickup_address:
+                  type: string
+                  description: Pickup address for the delivery.
+                dropoff_address:
+                  type: string
+                  description: Dropoff address for the delivery.
+                pickup_latitude:
+                  type: number
+                  description: Pickup location latitude.
+                pickup_longitude:
+                  type: number
+                  description: Pickup location longitude.
+                dropoff_latitude:
+                  type: number
+                  description: Dropoff location latitude.
+                dropoff_longitude:
+                  type: number
+                  description: Dropoff location longitude.
+      responses:
+        '200':
+          description: Delivery quote details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryQuote'
+components:
+  schemas:
+    Delivery:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique delivery identifier.
+        quote_id:
+          type: string
+          description: Associated quote identifier.
+        status:
+          type: string
+          enum:
+          - pending
+          - pickup
+          - pickup_complete
+          - dropoff
+          - delivered
+          - canceled
+          - returned
+          description: Current delivery status.
+        tracking_url:
+          type: string
+          format: uri
+          description: URL to track the delivery in real-time.
+        courier:
+          type: object
+          properties:
+            name:
+              type: string
+            vehicle_type:
+              type: string
+            phone_number:
+              type: string
+            latitude:
+              type: number
+            longitude:
+              type: number
+            img_href:
+              type: string
+              format: uri
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+        pickup_eta:
+          type: string
+          format: date-time
+        dropoff_eta:
+          type: string
+          format: date-time
+        fee:
+          type: integer
+          description: Delivery fee in cents.
+        currency:
+          type: string
+          description: Currency code for the fee.
+    DeliveryRequest:
+      type: object
+      required:
+      - pickup_name
+      - pickup_address
+      - dropoff_name
+      - dropoff_address
+      properties:
+        pickup_name:
+          type: string
+          description: Name of the pickup location or business.
+        pickup_address:
+          type: string
+          description: Pickup address for the courier.
+        pickup_phone_number:
+          type: string
+          description: Phone number for pickup location.
+        pickup_notes:
+          type: string
+          description: Special instructions for the courier at pickup.
+        dropoff_name:
+          type: string
+          description: Name of the recipient.
+        dropoff_address:
+          type: string
+          description: Dropoff address for the delivery.
+        dropoff_phone_number:
+          type: string
+          description: Phone number of the recipient.
+        dropoff_notes:
+          type: string
+          description: Special delivery instructions.
+        manifest_items:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              quantity:
+                type: integer
+              size:
+                type: string
+                enum:
+                - small
+                - medium
+                - large
+                - xlarge
+    DeliveryQuote:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Quote identifier to use when creating the delivery.
+        created:
+          type: string
+          format: date-time
+        expires:
+          type: string
+          format: date-time
+        fee:
+          type: integer
+          description: Estimated delivery fee in cents.
+        currency:
+          type: string
+          description: Currency code.
+        duration:
+          type: integer
+          description: Estimated delivery duration in seconds.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token with business.receipts scope
