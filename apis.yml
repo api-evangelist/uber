@@ -1,184 +1,6 @@
 aid: uber
 url: https://raw.githubusercontent.com/api-evangelist/uber/refs/heads/main/apis.yml
 apis:
-- aid: uber:uber-riders
-  name: Uber Riders API
-  tags:
-  - Ride-Sharing
-  - Rides
-  - Products
-  - Estimates
-  - Transportation
-  humanURL: https://developer.uber.com/docs/riders/introduction
-  baseURL: https://api.uber.com/v1.2
-  properties:
-  - url: https://developer.uber.com/docs/riders/references/api
-    type: Documentation
-  - url: https://developer.uber.com/docs/riders/ride-requests/introduction
-    type: Documentation
-  - url: openapi/uber-riders-openapi.yml
-    type: OpenAPI
-  - url: https://github.com/uber/rides-android-sdk
-    type: SDKs
-    title: Android SDK
-  - url: https://github.com/uber/uber-ios-sdk
-    type: SDKs
-    title: iOS SDK
-  - url: https://pypi.org/project/uber-rides/
-    type: SDKs
-    title: Python SDK
-  - url: https://github.com/uber/rides-java-sdk
-    type: SDKs
-    title: Java SDK
-  - url: https://github.com/uber/Python-Sample-Application
-    type: CodeExamples
-    title: Python Sample Application
-  - url: examples/uber-riders-list-products-example.json
-    type: Examples
-  - url: examples/uber-riders-create-ride-request-example.json
-    type: Examples
-  - url: json-schema/uber-ride-request-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-product-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-priceestimate-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-timeestimate-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-rideestimate-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-riderprofile-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-ridedetails-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-riderequest-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-place-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-placeupdate-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-activities-schema.json
-    type: JSONSchema
-  - url: json-structure/uber-riders-structure.json
-    type: JSONStructure
-  - url: graphql/uber-graphql.md
-    type: GraphQL
-  description: The Uber Riders API enables applications to interact with the Uber
-    platform on behalf of riders. It allows requesting rides, getting product listings,
-    price and time estimates, viewing trip history, and managing saved places. Authentication
-    uses OAuth 2.0 bearer tokens.
-- aid: uber:uber-drivers
-  name: Uber Drivers API
-  tags:
-  - Drivers
-  - Ride-Sharing
-  - Payments
-  - Trips
-  - Transportation
-  humanURL: https://developer.uber.com/docs/drivers/introduction
-  baseURL: https://api.uber.com/v1
-  properties:
-  - url: https://developer.uber.com/docs/drivers/references/api
-    type: Documentation
-  - url: openapi/uber-drivers-openapi.yml
-    type: OpenAPI
-  - url: json-schema/uber-driverprofile-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-drivertrip-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-payment-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-paymentsresponse-schema.json
-    type: JSONSchema
-  description: The Uber Drivers API allows partners to access driver profile information,
-    payment history, and trip records. It provides access to driver earnings, completed
-    trips, and partner program data via OAuth 2.0 bearer tokens.
-- aid: uber:uber-eats
-  name: Uber Eats API
-  tags:
-  - Food Delivery
-  - Restaurants
-  - Orders
-  - Menus
-  - Delivery
-  humanURL: https://developer.uber.com/docs/eats/introduction
-  baseURL: https://api.uber.com/v1
-  properties:
-  - url: https://developer.uber.com/docs/eats/introduction
-    type: Documentation
-  - url: https://developer.uber.com/docs/eats/api-change-log
-    type: ChangeLog
-  - url: openapi/uber-eats-openapi.yml
-    type: OpenAPI
-  - url: examples/uber-eats-get-order-example.json
-    type: Examples
-  - url: json-schema/uber-store-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-storeupdate-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-menu-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-menucategory-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-menuitem-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-order-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-orderreceipt-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-reportrequest-schema.json
-    type: JSONSchema
-  description: The Uber Eats Marketplace API enables partners to programmatically
-    manage stores, menus, and orders on the Uber Eats platform. It supports real-time
-    menu synchronization, order processing, store operations, promotional campaigns,
-    and analytics reporting. Access requires written approval from Uber.
-- aid: uber:uber-direct
-  name: Uber Direct API
-  tags:
-  - Delivery
-  - Courier
-  - Logistics
-  - Fulfillment
-  humanURL: https://developer.uber.com/docs/deliveries/overview
-  baseURL: https://api.uber.com/v1
-  properties:
-  - url: https://developer.uber.com/docs/deliveries/overview
-    type: Documentation
-  - url: openapi/uber-direct-openapi.yml
-    type: OpenAPI
-  - url: https://www.npmjs.com/package/uber-direct
-    type: SDKs
-    title: JavaScript SDK
-  - url: https://github.com/uber/uber-direct-sdk
-    type: SDKs
-    title: JavaScript SDK Source
-  - url: https://github.com/uber/uber-direct-sdk-samples
-    type: CodeExamples
-    title: JavaScript SDK Samples
-  - url: https://developer.uber.com/docs/deliveries/authentication
-    type: Authentication
-  - url: examples/uber-direct-create-delivery-example.json
-    type: Examples
-  - url: json-schema/uber-delivery-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-deliveryquote-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-deliveryrequest-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-organization-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-refund-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-refundrequest-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-businesslocation-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-businesslocationrequest-schema.json
-    type: JSONSchema
-  description: The Uber Direct API allows merchants to leverage Uber's courier network
-    to deliver their orders. It supports on-demand delivery creation, courier tracking,
-    refunds, and location management. Webhooks provide real-time delivery status,
-    courier updates, and shopping progress notifications.
 - aid: uber:uber-guest-rides
   name: Uber Guest Rides API
   tags:
@@ -193,62 +15,2593 @@ apis:
     type: Documentation
   - url: https://developer.uber.com/docs/guest-rides/about/u4b-api-introduction
     type: Documentation
-  description: The Uber Guest Rides API enables businesses to allow their users to
-    request rides from Uber without requiring an Uber account. Uses OAuth 2.0 with
-    the guest.rides scope for authentication.
-- aid: uber:uber-vouchers
-  name: Uber Vouchers API
-  tags:
-  - Vouchers
-  - Promotions
-  - Incentives
-  - Codes
-  humanURL: https://developer.uber.com/docs/vouchers/introduction
-  baseURL: https://api.uber.com/v1
-  properties:
-  - url: https://developer.uber.com/docs/vouchers/introduction
-    type: Documentation
-  - url: openapi/uber-vouchers-openapi.yml
-    type: OpenAPI
-  - url: json-schema/uber-vouchercode-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-voucherprogram-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-voucherprogramrequest-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-voucherprogramupdate-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-vouchertemplate-schema.json
-    type: JSONSchema
-  description: The Uber Vouchers API allows businesses to create and manage voucher
-    programs and codes for rides and meals. It supports program creation, code generation,
-    bulk distribution, guest management, and code redemption workflows.
-- aid: uber:uber-businesses
-  name: Uber for Business API
-  tags:
-  - Business
-  - Enterprise
-  - Receipts
-  - Trips
-  - Expenses
-  humanURL: https://developer.uber.com/docs/businesses/introduction
+  description: >-
+    The Uber Guest Rides API enables businesses to allow their users to request rides from Uber without
+    requiring an Uber account. Uses OAuth 2.0 with the guest.rides scope for authentication.
+- aid: uber:uber-codes-api
+  name: Uber Codes API
+  description: Voucher code generation and distribution
+  humanURL: https://developer.uber.com/docs/riders/introduction
   baseURL: https://api.uber.com/v1.2
+  tags:
+  - Codes
   properties:
-  - url: https://developer.uber.com/docs/businesses/introduction
-    type: Documentation
-  - url: https://developer.uber.com/docs/businesses/receipts/references/api
-    type: Documentation
-  - url: openapi/uber-businesses-openapi.yml
-    type: OpenAPI
-  - url: json-schema/uber-receipt-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-tripreceipt-schema.json
-    type: JSONSchema
-  - url: json-schema/uber-tripsresponse-schema.json
-    type: JSONSchema
-  description: The Uber for Business API enables organizations to automate workflows
-    within their enterprise Uber accounts. Provides access to trip invoices, receipts,
-    and business travel data for expense management and reporting.
+  - type: OpenAPI
+    url: openapi/uber-codes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-deliveries-api
+  name: Uber Deliveries API
+  description: Delivery creation and management
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Deliveries
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-deliveries-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-estimates-api
+  name: Uber Estimates API
+  description: Price and time estimates for rides
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Estimates
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-estimates-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-locations-api
+  name: Uber Locations API
+  description: Business location management
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-locations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-menus-api
+  name: Uber Menus API
+  description: Menu items, modifiers, and pricing
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Menus
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-menus-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-orders-api
+  name: Uber Orders API
+  description: Eats order receipts
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-organizations-api
+  name: Uber Organizations API
+  description: Organization and account management
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-partners-api
+  name: Uber Partners API
+  description: Driver partner profile and activity data
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Partners
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-partners-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-places-api
+  name: Uber Places API
+  description: Saved rider locations
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Places
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-places-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-products-api
+  name: Uber Products API
+  description: Uber product types available at a location
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-products-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-programs-api
+  name: Uber Programs API
+  description: Voucher program management
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Programs
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-programs-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-redemption-api
+  name: Uber Redemption API
+  description: Voucher code redemption
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Redemption
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-redemption-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-refunds-api
+  name: Uber Refunds API
+  description: Delivery refund processing
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-refunds-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-reporting-api
+  name: Uber Reporting API
+  description: Analytics and performance metrics
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-reporting-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-requests-api
+  name: Uber Requests API
+  description: Ride request management
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-requests-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-riders-api
+  name: Uber Riders API
+  description: Rider profile and history
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Riders
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-riders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-stores-api
+  name: Uber Stores API
+  description: Store management and operational status
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Stores
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-stores-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-templates-api
+  name: Uber Templates API
+  description: Voucher program templates
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-templates-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
+- aid: uber:uber-trips-api
+  name: Uber Trips API
+  description: Business trip receipts and invoices
+  humanURL: https://developer.uber.com/docs/riders/introduction
+  baseURL: https://api.uber.com/v1.2
+  tags:
+  - Trips
+  properties:
+  - type: OpenAPI
+    url: openapi/uber-trips-api-openapi.yml
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/references/api
+  - type: Documentation
+    url: https://developer.uber.com/docs/riders/ride-requests/introduction
+  - type: SDKs
+    url: https://github.com/uber/rides-android-sdk
+  - type: SDKs
+    url: https://github.com/uber/uber-ios-sdk
+  - type: SDKs
+    url: https://pypi.org/project/uber-rides/
+  - type: SDKs
+    url: https://github.com/uber/rides-java-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/Python-Sample-Application
+  - type: Examples
+    url: examples/uber-riders-list-products-example.json
+  - type: Examples
+    url: examples/uber-riders-create-ride-request-example.json
+  - type: JSONSchema
+    url: json-schema/uber-ride-request-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-product-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-priceestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-timeestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-rideestimate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-ridedetails-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-riderequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-place-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-placeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-activities-schema.json
+  - type: JSONStructure
+    url: json-structure/uber-riders-structure.json
+  - type: GraphQL
+    url: graphql/uber-graphql.md
+  - type: Documentation
+    url: https://developer.uber.com/docs/drivers/references/api
+  - type: JSONSchema
+    url: json-schema/uber-driverprofile-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-drivertrip-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-paymentsresponse-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/eats/introduction
+  - type: ChangeLog
+    url: https://developer.uber.com/docs/eats/api-change-log
+  - type: Examples
+    url: examples/uber-eats-get-order-example.json
+  - type: JSONSchema
+    url: json-schema/uber-store-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-storeupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menucategory-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-menuitem-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-order-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-orderreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-reportrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/deliveries/overview
+  - type: SDKs
+    url: https://www.npmjs.com/package/uber-direct
+  - type: SDKs
+    url: https://github.com/uber/uber-direct-sdk
+  - type: CodeExamples
+    url: https://github.com/uber/uber-direct-sdk-samples
+  - type: Authentication
+    url: https://developer.uber.com/docs/deliveries/authentication
+  - type: Examples
+    url: examples/uber-direct-create-delivery-example.json
+  - type: JSONSchema
+    url: json-schema/uber-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryquote-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-deliveryrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-refundrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocation-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-businesslocationrequest-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/vouchers/introduction
+  - type: JSONSchema
+    url: json-schema/uber-vouchercode-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogram-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramrequest-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-voucherprogramupdate-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-vouchertemplate-schema.json
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/introduction
+  - type: Documentation
+    url: https://developer.uber.com/docs/businesses/receipts/references/api
+  - type: JSONSchema
+    url: json-schema/uber-receipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripreceipt-schema.json
+  - type: JSONSchema
+    url: json-schema/uber-tripsresponse-schema.json
 name: Uber
 tags:
 - Ride-Sharing
@@ -266,7 +2619,20 @@ properties:
   type: Vocabulary
 - url: json-ld/uber-context.jsonld
   type: JSONLDContext
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/uber.png
 access: 3rd-Party
 created: '2025-02-06'
 modified: '2026-06-03'
@@ -281,6 +2647,8 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/uber/overview
 - type: AgenticAccess
   url: agentic-access/uber-agentic-access.yml
 - type: DomainSecurity
