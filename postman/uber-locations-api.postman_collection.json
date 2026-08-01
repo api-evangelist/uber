@@ -1,0 +1,384 @@
+{
+  "info": {
+    "_postman_id": "7ab257c3-936c-445e-8dff-1df87b5c4cb1",
+    "name": "Uber for Business Codes Locations API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:53.000Z",
+    "updatedAt": "2026-07-28T03:21:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7ab257c3-936c-445e-8dff-1df87b5c4cb1"
+  },
+  "item": [
+    {
+      "name": "business-locations",
+      "item": [
+        {
+          "name": "{location_id}",
+          "item": [
+            {
+              "name": "Get Business Location",
+              "id": "ece9e969-8da9-40b5-beb0-333f42875342",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/business-locations/:location_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "business-locations",
+                    ":location_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6976c0be-3973-417b-8ce7-de16265fac2b",
+                      "key": "location_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for the business location."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific business location."
+              },
+              "response": [
+                {
+                  "id": "a1faf991-b697-4fae-92a0-d773dd2700ca",
+                  "name": "Business location details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/business-locations/:location_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "business-locations",
+                        ":location_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "location_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone_number\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:21:53.000Z",
+                  "updatedAt": "2026-07-28T03:21:53.000Z",
+                  "uid": "35240-a1faf991-b697-4fae-92a0-d773dd2700ca"
+                }
+              ],
+              "createdAt": "2026-07-28T03:21:53.000Z",
+              "updatedAt": "2026-07-28T03:21:53.000Z",
+              "uid": "35240-ece9e969-8da9-40b5-beb0-333f42875342"
+            },
+            {
+              "name": "Delete Business Location",
+              "id": "ae7c7d7e-7ac7-4d6e-a4bd-4d7232e22609",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/business-locations/:location_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "business-locations",
+                    ":location_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "51425e44-d0b1-43cb-bc1b-375554db44da",
+                      "key": "location_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for the business location."
+                    }
+                  ]
+                },
+                "description": "Remove a business pickup location."
+              },
+              "response": [
+                {
+                  "id": "4edfe7c2-aba5-40c7-8000-e616b12dae30",
+                  "name": "Location deleted successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/business-locations/:location_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "business-locations",
+                        ":location_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "location_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:21:53.000Z",
+                  "updatedAt": "2026-07-28T03:21:53.000Z",
+                  "uid": "35240-4edfe7c2-aba5-40c7-8000-e616b12dae30"
+                }
+              ],
+              "createdAt": "2026-07-28T03:21:53.000Z",
+              "updatedAt": "2026-07-28T03:21:53.000Z",
+              "uid": "35240-ae7c7d7e-7ac7-4d6e-a4bd-4d7232e22609"
+            }
+          ],
+          "id": "f82c1a39-d309-41cc-8eb7-bce0f8d37026",
+          "createdAt": "2026-07-28T03:21:53.000Z",
+          "updatedAt": "2026-07-28T03:21:53.000Z",
+          "uid": "35240-f82c1a39-d309-41cc-8eb7-bce0f8d37026"
+        },
+        {
+          "name": "List Business Locations",
+          "id": "1c16626a-22bb-4012-837c-c3f2daf15120",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/business-locations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "business-locations"
+              ]
+            },
+            "description": "Returns all business locations for the authenticated merchant."
+          },
+          "response": [
+            {
+              "id": "7141cd15-a8d8-4a70-b907-5db539eab3c5",
+              "name": "List of business locations.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/business-locations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "business-locations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"locations\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:21:53.000Z",
+              "updatedAt": "2026-07-28T03:21:53.000Z",
+              "uid": "35240-7141cd15-a8d8-4a70-b907-5db539eab3c5"
+            }
+          ],
+          "createdAt": "2026-07-28T03:21:53.000Z",
+          "updatedAt": "2026-07-28T03:21:53.000Z",
+          "uid": "35240-1c16626a-22bb-4012-837c-c3f2daf15120"
+        },
+        {
+          "name": "Create Business Location",
+          "id": "2a989a6b-c7c3-499d-a95d-c18f29b886af",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"instructions\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/business-locations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "business-locations"
+              ]
+            },
+            "description": "Create a new business pickup location."
+          },
+          "response": [
+            {
+              "id": "6605fbd6-5c04-4b7a-834f-d7320c82f964",
+              "name": "Business location created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"instructions\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/business-locations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "business-locations"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone_number\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:21:53.000Z",
+              "updatedAt": "2026-07-28T03:21:53.000Z",
+              "uid": "35240-6605fbd6-5c04-4b7a-834f-d7320c82f964"
+            }
+          ],
+          "createdAt": "2026-07-28T03:21:53.000Z",
+          "updatedAt": "2026-07-28T03:21:53.000Z",
+          "uid": "35240-2a989a6b-c7c3-499d-a95d-c18f29b886af"
+        }
+      ],
+      "id": "7a97eb55-1a3a-4a15-9c5b-b2f2d322088d",
+      "createdAt": "2026-07-28T03:21:53.000Z",
+      "updatedAt": "2026-07-28T03:21:53.000Z",
+      "uid": "35240-7a97eb55-1a3a-4a15-9c5b-b2f2d322088d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

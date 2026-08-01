@@ -1,0 +1,664 @@
+{
+  "info": {
+    "_postman_id": "9babd972-f1b7-4bdf-896d-c6ddee3b52ed",
+    "name": "Uber for Business Codes Orders API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:55.000Z",
+    "updatedAt": "2026-07-28T03:21:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9babd972-f1b7-4bdf-896d-c6ddee3b52ed"
+  },
+  "item": [
+    {
+      "name": "business",
+      "item": [
+        {
+          "name": "orders",
+          "item": [
+            {
+              "name": "{order_id}",
+              "item": [
+                {
+                  "name": "receipt",
+                  "item": [
+                    {
+                      "name": "Get Order Receipt",
+                      "id": "dd58e456-e35a-4108-8a14-840698395039",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/business/orders/:order_id/receipt",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "business",
+                            "orders",
+                            ":order_id",
+                            "receipt"
+                          ],
+                          "variable": [
+                            {
+                              "id": "96099748-2fb3-4e9b-8f22-b72e3b1463b7",
+                              "key": "order_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the Eats order."
+                            }
+                          ]
+                        },
+                        "description": "Get receipt information for an Uber Eats order within a business account."
+                      },
+                      "response": [
+                        {
+                          "id": "cfa1b26c-695a-4b4b-b5c7-bf0f77f8afd3",
+                          "name": "Receipt details for the Eats order.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/business/orders/:order_id/receipt",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "business",
+                                "orders",
+                                ":order_id",
+                                "receipt"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"order_id\": \"<string>\",\n  \"store_name\": \"<string>\",\n  \"placed_at\": \"<dateTime>\",\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<number>\"\n    }\n  ],\n  \"subtotal\": \"<number>\",\n  \"delivery_fee\": \"<number>\",\n  \"total\": \"<number>\",\n  \"currency_code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:21:55.000Z",
+                          "updatedAt": "2026-07-28T03:21:55.000Z",
+                          "uid": "35240-cfa1b26c-695a-4b4b-b5c7-bf0f77f8afd3"
+                        },
+                        {
+                          "id": "5c1b0728-4975-4331-9f7e-0c51f4c771b2",
+                          "name": "Order not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/business/orders/:order_id/receipt",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "business",
+                                "orders",
+                                ":order_id",
+                                "receipt"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:21:55.000Z",
+                          "updatedAt": "2026-07-28T03:21:55.000Z",
+                          "uid": "35240-5c1b0728-4975-4331-9f7e-0c51f4c771b2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:21:55.000Z",
+                      "updatedAt": "2026-07-28T03:21:55.000Z",
+                      "uid": "35240-dd58e456-e35a-4108-8a14-840698395039"
+                    }
+                  ],
+                  "id": "ad01d8df-30f9-4940-8bae-4205692aaa66",
+                  "createdAt": "2026-07-28T03:21:55.000Z",
+                  "updatedAt": "2026-07-28T03:21:55.000Z",
+                  "uid": "35240-ad01d8df-30f9-4940-8bae-4205692aaa66"
+                }
+              ],
+              "id": "ee35d6bf-85e7-4d2b-a960-c7020591fbdb",
+              "createdAt": "2026-07-28T03:21:55.000Z",
+              "updatedAt": "2026-07-28T03:21:55.000Z",
+              "uid": "35240-ee35d6bf-85e7-4d2b-a960-c7020591fbdb"
+            }
+          ],
+          "id": "280a501e-4346-44c2-afd6-81c536732666",
+          "createdAt": "2026-07-28T03:21:55.000Z",
+          "updatedAt": "2026-07-28T03:21:55.000Z",
+          "uid": "35240-280a501e-4346-44c2-afd6-81c536732666"
+        }
+      ],
+      "id": "f2381b9a-b1cf-4056-b0ae-0e3c823d7ec7",
+      "createdAt": "2026-07-28T03:21:55.000Z",
+      "updatedAt": "2026-07-28T03:21:55.000Z",
+      "uid": "35240-f2381b9a-b1cf-4056-b0ae-0e3c823d7ec7"
+    },
+    {
+      "name": "eats",
+      "item": [
+        {
+          "name": "orders",
+          "item": [
+            {
+              "name": "{order_id}",
+              "item": [
+                {
+                  "name": "accept_pos_order",
+                  "item": [
+                    {
+                      "name": "Accept Order",
+                      "id": "d616654a-9f1f-4d10-a068-df4c35c220cd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/orders/:order_id/accept_pos_order",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "orders",
+                            ":order_id",
+                            "accept_pos_order"
+                          ],
+                          "variable": [
+                            {
+                              "id": "413e2ff9-5785-4007-b6ba-be44233534aa",
+                              "key": "order_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the order."
+                            }
+                          ]
+                        },
+                        "description": "Accept a pending order within the required acceptance window."
+                      },
+                      "response": [
+                        {
+                          "id": "4ad9ddca-a949-4a7b-987f-dd9bcdf7db1d",
+                          "name": "Order accepted successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/eats/orders/:order_id/accept_pos_order",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "eats",
+                                "orders",
+                                ":order_id",
+                                "accept_pos_order"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:21:55.000Z",
+                          "updatedAt": "2026-07-28T03:21:55.000Z",
+                          "uid": "35240-4ad9ddca-a949-4a7b-987f-dd9bcdf7db1d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:21:55.000Z",
+                      "updatedAt": "2026-07-28T03:21:55.000Z",
+                      "uid": "35240-d616654a-9f1f-4d10-a068-df4c35c220cd"
+                    }
+                  ],
+                  "id": "60d2b81c-205f-49d6-a135-b2df15283be3",
+                  "createdAt": "2026-07-28T03:21:55.000Z",
+                  "updatedAt": "2026-07-28T03:21:55.000Z",
+                  "uid": "35240-60d2b81c-205f-49d6-a135-b2df15283be3"
+                },
+                {
+                  "name": "deny_pos_order",
+                  "item": [
+                    {
+                      "name": "Deny Order",
+                      "id": "c44979a1-a63b-4bc5-aa7f-ba6550134993",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\",\n  \"reason_details\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/orders/:order_id/deny_pos_order",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "orders",
+                            ":order_id",
+                            "deny_pos_order"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f66957d4-3b38-4478-a041-03b23feaa850",
+                              "key": "order_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the order."
+                            }
+                          ]
+                        },
+                        "description": "Deny a pending order and specify a reason."
+                      },
+                      "response": [
+                        {
+                          "id": "892272a5-1871-4eb1-8256-8275d0168609",
+                          "name": "Order denied successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"<string>\",\n  \"reason_details\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/eats/orders/:order_id/deny_pos_order",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "eats",
+                                "orders",
+                                ":order_id",
+                                "deny_pos_order"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:21:55.000Z",
+                          "updatedAt": "2026-07-28T03:21:55.000Z",
+                          "uid": "35240-892272a5-1871-4eb1-8256-8275d0168609"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:21:55.000Z",
+                      "updatedAt": "2026-07-28T03:21:55.000Z",
+                      "uid": "35240-c44979a1-a63b-4bc5-aa7f-ba6550134993"
+                    }
+                  ],
+                  "id": "b99fa5c4-addc-488f-a003-cf8d074cc412",
+                  "createdAt": "2026-07-28T03:21:55.000Z",
+                  "updatedAt": "2026-07-28T03:21:55.000Z",
+                  "uid": "35240-b99fa5c4-addc-488f-a003-cf8d074cc412"
+                },
+                {
+                  "name": "cancel",
+                  "item": [
+                    {
+                      "name": "Cancel Order",
+                      "id": "dd9b2acc-530d-493c-9773-665364144ad0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/orders/:order_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "orders",
+                            ":order_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9c844723-dafc-4dca-a287-0124eea8080d",
+                              "key": "order_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the order."
+                            }
+                          ]
+                        },
+                        "description": "Cancel an accepted order."
+                      },
+                      "response": [
+                        {
+                          "id": "839a6f22-c9e8-492f-9735-6039fb200017",
+                          "name": "Order cancelled successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/eats/orders/:order_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "eats",
+                                "orders",
+                                ":order_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:21:55.000Z",
+                          "updatedAt": "2026-07-28T03:21:55.000Z",
+                          "uid": "35240-839a6f22-c9e8-492f-9735-6039fb200017"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:21:55.000Z",
+                      "updatedAt": "2026-07-28T03:21:55.000Z",
+                      "uid": "35240-dd9b2acc-530d-493c-9773-665364144ad0"
+                    }
+                  ],
+                  "id": "6839190e-daec-4ed0-b9b7-7a643fb0d043",
+                  "createdAt": "2026-07-28T03:21:55.000Z",
+                  "updatedAt": "2026-07-28T03:21:55.000Z",
+                  "uid": "35240-6839190e-daec-4ed0-b9b7-7a643fb0d043"
+                },
+                {
+                  "name": "Get Order",
+                  "id": "9f2a7c18-6544-4947-a248-97ba6d4da88e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/eats/orders/:order_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "eats",
+                        "orders",
+                        ":order_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a2f05635-c35a-45c0-bda7-e4c7729a012b",
+                          "key": "order_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the order."
+                        }
+                      ]
+                    },
+                    "description": "Returns order details for a specific order ID."
+                  },
+                  "response": [
+                    {
+                      "id": "5eb04754-3331-4018-8fde-dbb61b28235f",
+                      "name": "Order details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/orders/:order_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "orders",
+                            ":order_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "order_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"external_reference_id\": \"<string>\",\n  \"current_state\": \"ACCEPTED\",\n  \"store\": {\n    \"name\": \"<string>\",\n    \"store_id\": \"<string>\"\n  },\n  \"cart\": {\n    \"items\": [\n      {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<integer>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<integer>\"\n      }\n    ]\n  },\n  \"payment\": {\n    \"charges\": [\n      {\n        \"name\": \"<string>\",\n        \"amount\": \"<number>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"amount\": \"<number>\"\n      }\n    ]\n  },\n  \"placed_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:21:55.000Z",
+                      "updatedAt": "2026-07-28T03:21:55.000Z",
+                      "uid": "35240-5eb04754-3331-4018-8fde-dbb61b28235f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:21:55.000Z",
+                  "updatedAt": "2026-07-28T03:21:55.000Z",
+                  "uid": "35240-9f2a7c18-6544-4947-a248-97ba6d4da88e"
+                }
+              ],
+              "id": "3e3aed59-4a05-41c2-936c-e97dba1d822b",
+              "createdAt": "2026-07-28T03:21:55.000Z",
+              "updatedAt": "2026-07-28T03:21:55.000Z",
+              "uid": "35240-3e3aed59-4a05-41c2-936c-e97dba1d822b"
+            }
+          ],
+          "id": "8f4f2aea-0f5a-425d-a3f2-229f9db19590",
+          "createdAt": "2026-07-28T03:21:55.000Z",
+          "updatedAt": "2026-07-28T03:21:55.000Z",
+          "uid": "35240-8f4f2aea-0f5a-425d-a3f2-229f9db19590"
+        }
+      ],
+      "id": "a844c2a6-295b-41d2-81e3-4e3b79a21f62",
+      "createdAt": "2026-07-28T03:21:55.000Z",
+      "updatedAt": "2026-07-28T03:21:55.000Z",
+      "uid": "35240-a844c2a6-295b-41d2-81e3-4e3b79a21f62"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

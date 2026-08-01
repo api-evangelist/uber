@@ -1,0 +1,353 @@
+{
+  "info": {
+    "_postman_id": "5569910c-7d46-4ee1-870f-e8fda1cd7688",
+    "name": "Uber for Business Codes Riders API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:20.000Z",
+    "updatedAt": "2026-07-28T03:22:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5569910c-7d46-4ee1-870f-e8fda1cd7688"
+  },
+  "item": [
+    {
+      "name": "me",
+      "item": [
+        {
+          "name": "Get Rider Profile",
+          "id": "b106584e-c914-40f4-926c-af0c32d1776c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "me"
+              ]
+            },
+            "description": "Returns information about the Uber account of a user that has authorized with the application."
+          },
+          "response": [
+            {
+              "id": "99b5a965-a03e-41f4-9074-245dbad2b413",
+              "name": "Profile information for the authenticated user.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"picture\": \"<uri>\",\n  \"promo_code\": \"<string>\",\n  \"uuid\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:22:20.000Z",
+              "updatedAt": "2026-07-28T03:22:20.000Z",
+              "uid": "35240-99b5a965-a03e-41f4-9074-245dbad2b413"
+            }
+          ],
+          "createdAt": "2026-07-28T03:22:20.000Z",
+          "updatedAt": "2026-07-28T03:22:20.000Z",
+          "uid": "35240-b106584e-c914-40f4-926c-af0c32d1776c"
+        },
+        {
+          "name": "Apply Promotion",
+          "id": "41acd304-2753-4d8e-8964-88650d064d6c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applied_promotion_codes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "me"
+              ]
+            },
+            "description": "Apply a promotional code to the authenticated user's account."
+          },
+          "response": [
+            {
+              "id": "7a2d1de7-7f16-4759-b33a-4c1aa2019fc5",
+              "name": "Promotional code applied successfully.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applied_promotion_codes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:22:20.000Z",
+              "updatedAt": "2026-07-28T03:22:20.000Z",
+              "uid": "35240-7a2d1de7-7f16-4759-b33a-4c1aa2019fc5"
+            },
+            {
+              "id": "26d79f8a-2456-4d2e-9cd0-70249947d97c",
+              "name": "Invalid or already used promotional code.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applied_promotion_codes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:22:20.000Z",
+              "updatedAt": "2026-07-28T03:22:20.000Z",
+              "uid": "35240-26d79f8a-2456-4d2e-9cd0-70249947d97c"
+            }
+          ],
+          "createdAt": "2026-07-28T03:22:20.000Z",
+          "updatedAt": "2026-07-28T03:22:20.000Z",
+          "uid": "35240-41acd304-2753-4d8e-8964-88650d064d6c"
+        }
+      ],
+      "id": "3ff066f9-47e8-432e-8d33-357ae6adcb73",
+      "createdAt": "2026-07-28T03:22:20.000Z",
+      "updatedAt": "2026-07-28T03:22:20.000Z",
+      "uid": "35240-3ff066f9-47e8-432e-8d33-357ae6adcb73"
+    },
+    {
+      "name": "history",
+      "item": [
+        {
+          "name": "Get Ride History",
+          "id": "dc1686c9-957f-4255-ba51-68f7093e58fb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/history?limit=5&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "history"
+              ],
+              "query": [
+                {
+                  "description": "Number of items to retrieve. Default is 5, maximum is 50.",
+                  "key": "limit",
+                  "value": "5"
+                },
+                {
+                  "description": "Offset the list of returned results by this amount.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns limited data about a user's lifetime activity with Uber."
+          },
+          "response": [
+            {
+              "id": "59ee4bcf-18fe-4e01-aa9d-1638012d6b69",
+              "name": "History information for the given user.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/history?limit=5&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "history"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to retrieve. Default is 5, maximum is 50.",
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "description": "Offset the list of returned results by this amount.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"offset\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"count\": \"<integer>\",\n  \"history\": [\n    {\n      \"uuid\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"uuid\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:22:20.000Z",
+              "updatedAt": "2026-07-28T03:22:20.000Z",
+              "uid": "35240-59ee4bcf-18fe-4e01-aa9d-1638012d6b69"
+            }
+          ],
+          "createdAt": "2026-07-28T03:22:20.000Z",
+          "updatedAt": "2026-07-28T03:22:20.000Z",
+          "uid": "35240-dc1686c9-957f-4255-ba51-68f7093e58fb"
+        }
+      ],
+      "id": "8b45e82c-1341-4800-a464-41551a2d0826",
+      "createdAt": "2026-07-28T03:22:20.000Z",
+      "updatedAt": "2026-07-28T03:22:20.000Z",
+      "uid": "35240-8b45e82c-1341-4800-a464-41551a2d0826"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

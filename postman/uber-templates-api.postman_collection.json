@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "934cd00e-7b73-4b99-9317-64bd3545387d",
+    "name": "Uber for Business Codes Templates API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:21.000Z",
+    "updatedAt": "2026-07-28T03:22:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-934cd00e-7b73-4b99-9317-64bd3545387d"
+  },
+  "item": [
+    {
+      "name": "voucher-program-templates",
+      "item": [
+        {
+          "name": "List Voucher Templates",
+          "id": "92b36286-a1e6-4a14-89ee-12abc34ec102",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/voucher-program-templates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "voucher-program-templates"
+              ]
+            },
+            "description": "Returns all available voucher program templates."
+          },
+          "response": [
+            {
+              "id": "16b1d6b7-182e-4ff0-9192-dc5dec1ec73b",
+              "name": "List of templates.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/voucher-program-templates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voucher-program-templates"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"templates\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:22:22.000Z",
+              "updatedAt": "2026-07-28T03:22:22.000Z",
+              "uid": "35240-16b1d6b7-182e-4ff0-9192-dc5dec1ec73b"
+            }
+          ],
+          "createdAt": "2026-07-28T03:22:22.000Z",
+          "updatedAt": "2026-07-28T03:22:22.000Z",
+          "uid": "35240-92b36286-a1e6-4a14-89ee-12abc34ec102"
+        },
+        {
+          "name": "Create Voucher Template",
+          "id": "97559412-d1af-41e2-a222-a97dd02b4e91",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/voucher-program-templates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "voucher-program-templates"
+              ]
+            },
+            "description": "Create a reusable voucher program template."
+          },
+          "response": [
+            {
+              "id": "c64dbf83-1656-46f8-bda6-ac7570812620",
+              "name": "Template created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/voucher-program-templates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voucher-program-templates"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:22:22.000Z",
+              "updatedAt": "2026-07-28T03:22:22.000Z",
+              "uid": "35240-c64dbf83-1656-46f8-bda6-ac7570812620"
+            }
+          ],
+          "createdAt": "2026-07-28T03:22:22.000Z",
+          "updatedAt": "2026-07-28T03:22:22.000Z",
+          "uid": "35240-97559412-d1af-41e2-a222-a97dd02b4e91"
+        }
+      ],
+      "id": "22e7479c-3a8a-44b8-bcda-e502f9e471bb",
+      "createdAt": "2026-07-28T03:22:22.000Z",
+      "updatedAt": "2026-07-28T03:22:22.000Z",
+      "uid": "35240-22e7479c-3a8a-44b8-bcda-e502f9e471bb"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

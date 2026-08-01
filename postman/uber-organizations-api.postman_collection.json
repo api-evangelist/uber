@@ -1,0 +1,209 @@
+{
+  "info": {
+    "_postman_id": "6e7e9c98-a96f-4578-aee6-210d70e12136",
+    "name": "Uber for Business Codes Organizations API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:56.000Z",
+    "updatedAt": "2026-07-28T03:21:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e7e9c98-a96f-4578-aee6-210d70e12136"
+  },
+  "item": [
+    {
+      "name": "organizations",
+      "item": [
+        {
+          "name": "{organization_id}",
+          "item": [
+            {
+              "name": "Get Organization",
+              "id": "0416f29e-2922-478b-a319-9f60d52e4976",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/organizations/:organization_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "14c9f4ee-6ede-4794-9458-b5ec31918e26",
+                      "key": "organization_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for the organization."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific organization."
+              },
+              "response": [
+                {
+                  "id": "7108dc64-ddc5-49d9-b7de-508e35ec2471",
+                  "name": "Organization details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/:organization_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        ":organization_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "organization_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:21:56.000Z",
+                  "updatedAt": "2026-07-28T03:21:56.000Z",
+                  "uid": "35240-7108dc64-ddc5-49d9-b7de-508e35ec2471"
+                }
+              ],
+              "createdAt": "2026-07-28T03:21:56.000Z",
+              "updatedAt": "2026-07-28T03:21:56.000Z",
+              "uid": "35240-0416f29e-2922-478b-a319-9f60d52e4976"
+            }
+          ],
+          "id": "fd003284-af32-48be-b1ec-9879410687a2",
+          "createdAt": "2026-07-28T03:21:56.000Z",
+          "updatedAt": "2026-07-28T03:21:56.000Z",
+          "uid": "35240-fd003284-af32-48be-b1ec-9879410687a2"
+        },
+        {
+          "name": "List Organizations",
+          "id": "d043fc33-f0b1-496c-b2ae-fbd4191c39db",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "organizations"
+              ]
+            },
+            "description": "Returns a list of organizations associated with the authenticated account."
+          },
+          "response": [
+            {
+              "id": "31d1ed64-b3ec-4dc8-961a-b74a961fd2bd",
+              "name": "List of organizations.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"organizations\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:21:56.000Z",
+              "updatedAt": "2026-07-28T03:21:56.000Z",
+              "uid": "35240-31d1ed64-b3ec-4dc8-961a-b74a961fd2bd"
+            }
+          ],
+          "createdAt": "2026-07-28T03:21:56.000Z",
+          "updatedAt": "2026-07-28T03:21:56.000Z",
+          "uid": "35240-d043fc33-f0b1-496c-b2ae-fbd4191c39db"
+        }
+      ],
+      "id": "01d802e6-57d1-4561-8d26-b5eed7bc200c",
+      "createdAt": "2026-07-28T03:21:56.000Z",
+      "updatedAt": "2026-07-28T03:21:56.000Z",
+      "uid": "35240-01d802e6-57d1-4561-8d26-b5eed7bc200c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

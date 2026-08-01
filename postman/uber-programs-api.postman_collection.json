@@ -1,0 +1,632 @@
+{
+  "info": {
+    "_postman_id": "8fcc885b-cb22-48ee-9774-25d5a6c1166e",
+    "name": "Uber for Business Codes Programs API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:59.000Z",
+    "updatedAt": "2026-07-28T03:21:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8fcc885b-cb22-48ee-9774-25d5a6c1166e"
+  },
+  "item": [
+    {
+      "name": "voucher-programs",
+      "item": [
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "Search Voucher Programs",
+              "id": "b67a8501-5a06-4c7b-8234-a1098833fb39",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"inactive\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/voucher-programs/search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voucher-programs",
+                    "search"
+                  ]
+                },
+                "description": "Search for voucher programs by criteria."
+              },
+              "response": [
+                {
+                  "id": "6a252979-0745-4f95-936f-c1b3f735cf15",
+                  "name": "Matching voucher programs.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"inactive\",\n  \"type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/voucher-programs/search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voucher-programs",
+                        "search"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"programs\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"inactive\",\n      \"budget\": \"<number>\",\n      \"currency_code\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"active\",\n      \"budget\": \"<number>\",\n      \"currency_code\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:22:00.000Z",
+                  "updatedAt": "2026-07-28T03:22:00.000Z",
+                  "uid": "35240-6a252979-0745-4f95-936f-c1b3f735cf15"
+                }
+              ],
+              "createdAt": "2026-07-28T03:22:00.000Z",
+              "updatedAt": "2026-07-28T03:22:00.000Z",
+              "uid": "35240-b67a8501-5a06-4c7b-8234-a1098833fb39"
+            }
+          ],
+          "id": "aa4ebec5-af19-4010-8583-5a825de8dc4a",
+          "createdAt": "2026-07-28T03:22:00.000Z",
+          "updatedAt": "2026-07-28T03:22:00.000Z",
+          "uid": "35240-aa4ebec5-af19-4010-8583-5a825de8dc4a"
+        },
+        {
+          "name": "{program_id}",
+          "item": [
+            {
+              "name": "Get Voucher Program",
+              "id": "bbb508b5-0b58-4b75-83bd-d3d05ec039fe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/voucher-programs/:program_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voucher-programs",
+                    ":program_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "87299485-f0a8-46f1-bb87-df5d29f3d802",
+                      "key": "program_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific voucher program."
+              },
+              "response": [
+                {
+                  "id": "6ffa1e95-9d37-471e-a051-25bd4e8bfb15",
+                  "name": "Voucher program details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/voucher-programs/:program_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voucher-programs",
+                        ":program_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "program_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"inactive\",\n  \"budget\": \"<number>\",\n  \"currency_code\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:22:00.000Z",
+                  "updatedAt": "2026-07-28T03:22:00.000Z",
+                  "uid": "35240-6ffa1e95-9d37-471e-a051-25bd4e8bfb15"
+                }
+              ],
+              "createdAt": "2026-07-28T03:22:00.000Z",
+              "updatedAt": "2026-07-28T03:22:00.000Z",
+              "uid": "35240-bbb508b5-0b58-4b75-83bd-d3d05ec039fe"
+            },
+            {
+              "name": "Update Voucher Program",
+              "id": "96218ef6-a363-4e57-be88-c119e6283305",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"end_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/voucher-programs/:program_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voucher-programs",
+                    ":program_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "08a3bd97-db68-4f50-867f-fe0e20c98783",
+                      "key": "program_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Update an existing voucher program."
+              },
+              "response": [
+                {
+                  "id": "50ef86c8-052c-4f78-a610-70731745e54c",
+                  "name": "Updated voucher program.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"end_date\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/voucher-programs/:program_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voucher-programs",
+                        ":program_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "program_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"inactive\",\n  \"budget\": \"<number>\",\n  \"currency_code\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:22:00.000Z",
+                  "updatedAt": "2026-07-28T03:22:00.000Z",
+                  "uid": "35240-50ef86c8-052c-4f78-a610-70731745e54c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:22:00.000Z",
+              "updatedAt": "2026-07-28T03:22:00.000Z",
+              "uid": "35240-96218ef6-a363-4e57-be88-c119e6283305"
+            },
+            {
+              "name": "Cancel Voucher Program",
+              "id": "31476f38-b3f0-43b6-8d73-6436f3cec94b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/voucher-programs/:program_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voucher-programs",
+                    ":program_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7451ae52-9e56-41ed-b37e-6e75824cc2a1",
+                      "key": "program_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Cancel and deactivate a voucher program."
+              },
+              "response": [
+                {
+                  "id": "5d7a2d69-6c71-4ba9-adfc-734352c5138e",
+                  "name": "Program cancelled successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/voucher-programs/:program_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voucher-programs",
+                        ":program_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "program_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:22:00.000Z",
+                  "updatedAt": "2026-07-28T03:22:00.000Z",
+                  "uid": "35240-5d7a2d69-6c71-4ba9-adfc-734352c5138e"
+                }
+              ],
+              "createdAt": "2026-07-28T03:22:00.000Z",
+              "updatedAt": "2026-07-28T03:22:00.000Z",
+              "uid": "35240-31476f38-b3f0-43b6-8d73-6436f3cec94b"
+            }
+          ],
+          "id": "cb95cc4f-0f4d-4288-8ff3-a5882927a4b9",
+          "createdAt": "2026-07-28T03:22:00.000Z",
+          "updatedAt": "2026-07-28T03:22:00.000Z",
+          "uid": "35240-cb95cc4f-0f4d-4288-8ff3-a5882927a4b9"
+        },
+        {
+          "name": "Create Voucher Program",
+          "id": "68848853-2c3d-446b-a52b-3311a5014093",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"eats\",\n  \"budget\": \"<number>\",\n  \"currency_code\": \"<string>\",\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/voucher-programs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "voucher-programs"
+              ]
+            },
+            "description": "Create a new voucher program for rides or meals."
+          },
+          "response": [
+            {
+              "id": "8bf90451-ab79-4ded-b248-ad1025c36568",
+              "name": "Voucher program created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"eats\",\n  \"budget\": \"<number>\",\n  \"currency_code\": \"<string>\",\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/voucher-programs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voucher-programs"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"inactive\",\n  \"budget\": \"<number>\",\n  \"currency_code\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T03:22:00.000Z",
+              "updatedAt": "2026-07-28T03:22:00.000Z",
+              "uid": "35240-8bf90451-ab79-4ded-b248-ad1025c36568"
+            }
+          ],
+          "createdAt": "2026-07-28T03:22:00.000Z",
+          "updatedAt": "2026-07-28T03:22:00.000Z",
+          "uid": "35240-68848853-2c3d-446b-a52b-3311a5014093"
+        },
+        {
+          "name": "List Voucher Programs",
+          "id": "96ced74f-ac4c-4b4d-88ed-d8e2144a829c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/voucher-programs?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "voucher-programs"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns all voucher programs for the authenticated account."
+          },
+          "response": [
+            {
+              "id": "c6915628-f5bf-411e-8f17-0cee640ec3ab",
+              "name": "List of voucher programs.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/voucher-programs?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voucher-programs"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"programs\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"inactive\",\n      \"budget\": \"<number>\",\n      \"currency_code\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"active\",\n      \"budget\": \"<number>\",\n      \"currency_code\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:22:00.000Z",
+              "updatedAt": "2026-07-28T03:22:00.000Z",
+              "uid": "35240-c6915628-f5bf-411e-8f17-0cee640ec3ab"
+            }
+          ],
+          "createdAt": "2026-07-28T03:22:00.000Z",
+          "updatedAt": "2026-07-28T03:22:00.000Z",
+          "uid": "35240-96ced74f-ac4c-4b4d-88ed-d8e2144a829c"
+        }
+      ],
+      "id": "b178d27c-f9db-449a-929b-d3d55ba32b5b",
+      "createdAt": "2026-07-28T03:22:00.000Z",
+      "updatedAt": "2026-07-28T03:22:00.000Z",
+      "uid": "35240-b178d27c-f9db-449a-929b-d3d55ba32b5b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

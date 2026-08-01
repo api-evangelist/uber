@@ -1,0 +1,265 @@
+{
+  "info": {
+    "_postman_id": "9a8a7ad4-8615-4d5d-b2f9-913a5092cc1e",
+    "name": "Uber for Business Codes Menus API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:54.000Z",
+    "updatedAt": "2026-07-28T03:21:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9a8a7ad4-8615-4d5d-b2f9-913a5092cc1e"
+  },
+  "item": [
+    {
+      "name": "eats",
+      "item": [
+        {
+          "name": "stores",
+          "item": [
+            {
+              "name": "{store_id}",
+              "item": [
+                {
+                  "name": "menus",
+                  "item": [
+                    {
+                      "name": "Get Store Menu",
+                      "id": "30fae1fa-66bf-44da-af07-fc3e3d9daa76",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/stores/:store_id/menus",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "stores",
+                            ":store_id",
+                            "menus"
+                          ],
+                          "variable": [
+                            {
+                              "id": "99bce51f-b39a-4838-9fae-57453305b734",
+                              "key": "store_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the store."
+                            }
+                          ]
+                        },
+                        "description": "Returns the current menu for a specific store."
+                      },
+                      "response": [
+                        {
+                          "id": "f0d880be-b787-4de1-afc5-f9fac839d3c2",
+                          "name": "Menu details for the store.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/eats/stores/:store_id/menus",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "eats",
+                                "stores",
+                                ":store_id",
+                                "menus"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "store_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"categories\": [\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:21:54.000Z",
+                          "updatedAt": "2026-07-28T03:21:54.000Z",
+                          "uid": "35240-f0d880be-b787-4de1-afc5-f9fac839d3c2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:21:54.000Z",
+                      "updatedAt": "2026-07-28T03:21:54.000Z",
+                      "uid": "35240-30fae1fa-66bf-44da-af07-fc3e3d9daa76"
+                    },
+                    {
+                      "name": "Update Store Menu",
+                      "id": "3c5cccdc-51e4-4f95-a3bd-c88a5eba7b68",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"categories\": [\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/stores/:store_id/menus",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "stores",
+                            ":store_id",
+                            "menus"
+                          ],
+                          "variable": [
+                            {
+                              "id": "de1b66e9-eb0b-47a7-8080-822fd0898750",
+                              "key": "store_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the store."
+                            }
+                          ]
+                        },
+                        "description": "Replace the full menu for a specific store."
+                      },
+                      "response": [
+                        {
+                          "id": "9d3e46da-0e86-4aee-9550-3446b214fadd",
+                          "name": "Menu update accepted.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"categories\": [\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/eats/stores/:store_id/menus",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "eats",
+                                "stores",
+                                ":store_id",
+                                "menus"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "store_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:21:54.000Z",
+                          "updatedAt": "2026-07-28T03:21:54.000Z",
+                          "uid": "35240-9d3e46da-0e86-4aee-9550-3446b214fadd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:21:54.000Z",
+                      "updatedAt": "2026-07-28T03:21:54.000Z",
+                      "uid": "35240-3c5cccdc-51e4-4f95-a3bd-c88a5eba7b68"
+                    }
+                  ],
+                  "id": "a4974f56-6ced-4bae-9914-cbfdaca5eb35",
+                  "createdAt": "2026-07-28T03:21:54.000Z",
+                  "updatedAt": "2026-07-28T03:21:54.000Z",
+                  "uid": "35240-a4974f56-6ced-4bae-9914-cbfdaca5eb35"
+                }
+              ],
+              "id": "376f481b-72ef-4087-8be1-1d736aa38bda",
+              "createdAt": "2026-07-28T03:21:54.000Z",
+              "updatedAt": "2026-07-28T03:21:54.000Z",
+              "uid": "35240-376f481b-72ef-4087-8be1-1d736aa38bda"
+            }
+          ],
+          "id": "d26488bd-c45d-4e66-85c2-845f109ed692",
+          "createdAt": "2026-07-28T03:21:54.000Z",
+          "updatedAt": "2026-07-28T03:21:54.000Z",
+          "uid": "35240-d26488bd-c45d-4e66-85c2-845f109ed692"
+        }
+      ],
+      "id": "239b5c47-c0e5-44c0-b870-0c68b56ffacd",
+      "createdAt": "2026-07-28T03:21:54.000Z",
+      "updatedAt": "2026-07-28T03:21:54.000Z",
+      "uid": "35240-239b5c47-c0e5-44c0-b870-0c68b56ffacd"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

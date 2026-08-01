@@ -1,0 +1,162 @@
+{
+  "info": {
+    "_postman_id": "3cc80d4c-5b8d-4729-9bfd-fde2e7e04db5",
+    "name": "Uber for Business Codes Redemption API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:00.000Z",
+    "updatedAt": "2026-07-28T03:22:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3cc80d4c-5b8d-4729-9bfd-fde2e7e04db5"
+  },
+  "item": [
+    {
+      "name": "me",
+      "item": [
+        {
+          "name": "vouchers",
+          "item": [
+            {
+              "name": "redeem",
+              "item": [
+                {
+                  "name": "Redeem Voucher Code",
+                  "id": "a361973c-e9c5-4120-af5a-be1d0aa1c93f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"code\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/vouchers/redeem",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "vouchers",
+                        "redeem"
+                      ]
+                    },
+                    "description": "Redeem a voucher code for the authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "b22782ff-5f0b-4386-adb6-e9b0e715481f",
+                      "name": "Voucher redeemed successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"code\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/me/vouchers/redeem",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "vouchers",
+                            "redeem"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"voucher_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:22:01.000Z",
+                      "updatedAt": "2026-07-28T03:22:01.000Z",
+                      "uid": "35240-b22782ff-5f0b-4386-adb6-e9b0e715481f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:22:01.000Z",
+                  "updatedAt": "2026-07-28T03:22:01.000Z",
+                  "uid": "35240-a361973c-e9c5-4120-af5a-be1d0aa1c93f"
+                }
+              ],
+              "id": "2fc6a907-b6fa-465d-861f-d52908805968",
+              "createdAt": "2026-07-28T03:22:01.000Z",
+              "updatedAt": "2026-07-28T03:22:01.000Z",
+              "uid": "35240-2fc6a907-b6fa-465d-861f-d52908805968"
+            }
+          ],
+          "id": "f2bf36e6-f238-4391-ba68-f7ca7ef34e19",
+          "createdAt": "2026-07-28T03:22:01.000Z",
+          "updatedAt": "2026-07-28T03:22:01.000Z",
+          "uid": "35240-f2bf36e6-f238-4391-ba68-f7ca7ef34e19"
+        }
+      ],
+      "id": "1ebb0720-5fce-4ca2-94b9-6836ce90af49",
+      "createdAt": "2026-07-28T03:22:01.000Z",
+      "updatedAt": "2026-07-28T03:22:01.000Z",
+      "uid": "35240-1ebb0720-5fce-4ca2-94b9-6836ce90af49"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

@@ -1,0 +1,412 @@
+{
+  "info": {
+    "_postman_id": "f3bb898d-e9c8-459e-a4a0-b128111d6898",
+    "name": "Uber for Business Codes API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:50.000Z",
+    "updatedAt": "2026-07-28T03:21:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f3bb898d-e9c8-459e-a4a0-b128111d6898"
+  },
+  "item": [
+    {
+      "name": "voucher-programs",
+      "item": [
+        {
+          "name": "{program_id}",
+          "item": [
+            {
+              "name": "codes",
+              "item": [
+                {
+                  "name": "generate",
+                  "item": [
+                    {
+                      "name": "Generate Voucher Codes",
+                      "id": "1f6fc54d-188a-4bbb-969c-dc93a1af6025",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"quantity\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/voucher-programs/:program_id/codes/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "voucher-programs",
+                            ":program_id",
+                            "codes",
+                            "generate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cb47d157-b730-4ab7-b68b-61c5bdd2d985",
+                              "key": "program_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Generate redemption codes for a voucher program in bulk."
+                      },
+                      "response": [
+                        {
+                          "id": "2eac4621-020b-4285-bf88-9c908b5b444b",
+                          "name": "Generated voucher codes.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"quantity\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/voucher-programs/:program_id/codes/generate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "voucher-programs",
+                                ":program_id",
+                                "codes",
+                                "generate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "program_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"codes\": [\n    {\n      \"code\": \"<string>\",\n      \"status\": \"expired\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"status\": \"available\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:21:51.000Z",
+                          "updatedAt": "2026-07-28T03:21:51.000Z",
+                          "uid": "35240-2eac4621-020b-4285-bf88-9c908b5b444b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:21:51.000Z",
+                      "updatedAt": "2026-07-28T03:21:51.000Z",
+                      "uid": "35240-1f6fc54d-188a-4bbb-969c-dc93a1af6025"
+                    }
+                  ],
+                  "id": "b2245a6a-db6b-40b5-a904-8fa4f24d44c4",
+                  "createdAt": "2026-07-28T03:21:50.000Z",
+                  "updatedAt": "2026-07-28T03:21:50.000Z",
+                  "uid": "35240-b2245a6a-db6b-40b5-a904-8fa4f24d44c4"
+                },
+                {
+                  "name": "distribute",
+                  "item": [
+                    {
+                      "name": "Distribute Voucher Codes",
+                      "id": "edf0d5fa-9657-42a8-9787-796ccb25e93e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"recipients\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/voucher-programs/:program_id/codes/distribute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "voucher-programs",
+                            ":program_id",
+                            "codes",
+                            "distribute"
+                          ],
+                          "variable": [
+                            {
+                              "id": "62f82dc0-96a0-44ff-8e9e-1518267fa2e4",
+                              "key": "program_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Distribute voucher codes to a list of recipients."
+                      },
+                      "response": [
+                        {
+                          "id": "5c823cdb-b80a-4a47-bc0b-87a8468f8521",
+                          "name": "Voucher codes distributed successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"recipients\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/voucher-programs/:program_id/codes/distribute",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "voucher-programs",
+                                ":program_id",
+                                "codes",
+                                "distribute"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "program_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:21:51.000Z",
+                          "updatedAt": "2026-07-28T03:21:51.000Z",
+                          "uid": "35240-5c823cdb-b80a-4a47-bc0b-87a8468f8521"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:21:51.000Z",
+                      "updatedAt": "2026-07-28T03:21:51.000Z",
+                      "uid": "35240-edf0d5fa-9657-42a8-9787-796ccb25e93e"
+                    }
+                  ],
+                  "id": "1c713ef7-aabc-4d67-87be-48262de0b336",
+                  "createdAt": "2026-07-28T03:21:50.000Z",
+                  "updatedAt": "2026-07-28T03:21:50.000Z",
+                  "uid": "35240-1c713ef7-aabc-4d67-87be-48262de0b336"
+                },
+                {
+                  "name": "List Voucher Codes",
+                  "id": "72cde484-29fd-476a-879b-c24afd1c90a3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/voucher-programs/:program_id/codes?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voucher-programs",
+                        ":program_id",
+                        "codes"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6262c494-7249-4701-84e7-1c6c186c50bf",
+                          "key": "program_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all codes for a voucher program."
+                  },
+                  "response": [
+                    {
+                      "id": "073da5ca-81a7-4830-96d4-bfb83fa8f34f",
+                      "name": "List of voucher codes.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/voucher-programs/:program_id/codes?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "voucher-programs",
+                            ":program_id",
+                            "codes"
+                          ],
+                          "query": [
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "program_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"codes\": [\n    {\n      \"code\": \"<string>\",\n      \"status\": \"expired\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"status\": \"available\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:21:51.000Z",
+                      "updatedAt": "2026-07-28T03:21:51.000Z",
+                      "uid": "35240-073da5ca-81a7-4830-96d4-bfb83fa8f34f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:21:51.000Z",
+                  "updatedAt": "2026-07-28T03:21:51.000Z",
+                  "uid": "35240-72cde484-29fd-476a-879b-c24afd1c90a3"
+                }
+              ],
+              "id": "6f3cfdd4-ca13-4576-87e2-3deb6b1982dc",
+              "createdAt": "2026-07-28T03:21:50.000Z",
+              "updatedAt": "2026-07-28T03:21:50.000Z",
+              "uid": "35240-6f3cfdd4-ca13-4576-87e2-3deb6b1982dc"
+            }
+          ],
+          "id": "45b836da-7053-4d6c-a177-af0ac0f45878",
+          "createdAt": "2026-07-28T03:21:50.000Z",
+          "updatedAt": "2026-07-28T03:21:50.000Z",
+          "uid": "35240-45b836da-7053-4d6c-a177-af0ac0f45878"
+        }
+      ],
+      "id": "43d347e6-e0bf-425e-bc76-31b3572581b0",
+      "createdAt": "2026-07-28T03:21:50.000Z",
+      "updatedAt": "2026-07-28T03:21:50.000Z",
+      "uid": "35240-43d347e6-e0bf-425e-bc76-31b3572581b0"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

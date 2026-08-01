@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "5346b7fb-e974-424b-927c-2d9d83cf4abb",
+    "name": "Uber for Business Codes Refunds API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:17.000Z",
+    "updatedAt": "2026-07-28T03:22:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5346b7fb-e974-424b-927c-2d9d83cf4abb"
+  },
+  "item": [
+    {
+      "name": "eats",
+      "item": [
+        {
+          "name": "refunds",
+          "item": [
+            {
+              "name": "Create Refund",
+              "id": "3fedd811-611e-45e3-bcec-fb749df11180",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eats/refunds",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eats",
+                    "refunds"
+                  ]
+                },
+                "description": "Request a refund for a delivery order."
+              },
+              "response": [
+                {
+                  "id": "302934a6-9a75-4424-bd46-fd5c6fd6b387",
+                  "name": "Refund request created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"order_id\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"amount\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/eats/refunds",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "eats",
+                        "refunds"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"created\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:22:18.000Z",
+                  "updatedAt": "2026-07-28T03:22:18.000Z",
+                  "uid": "35240-302934a6-9a75-4424-bd46-fd5c6fd6b387"
+                }
+              ],
+              "createdAt": "2026-07-28T03:22:18.000Z",
+              "updatedAt": "2026-07-28T03:22:18.000Z",
+              "uid": "35240-3fedd811-611e-45e3-bcec-fb749df11180"
+            }
+          ],
+          "id": "0e961477-6a5a-46a0-b2a5-a948591a36e8",
+          "createdAt": "2026-07-28T03:22:18.000Z",
+          "updatedAt": "2026-07-28T03:22:18.000Z",
+          "uid": "35240-0e961477-6a5a-46a0-b2a5-a948591a36e8"
+        }
+      ],
+      "id": "f46affbc-efe7-4499-a030-6375c713bcfd",
+      "createdAt": "2026-07-28T03:22:18.000Z",
+      "updatedAt": "2026-07-28T03:22:18.000Z",
+      "uid": "35240-f46affbc-efe7-4499-a030-6375c713bcfd"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

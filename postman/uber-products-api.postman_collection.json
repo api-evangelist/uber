@@ -1,0 +1,362 @@
+{
+  "info": {
+    "_postman_id": "7ed30149-d67a-49b5-bec5-c3a379caa97a",
+    "name": "Uber for Business Codes Products API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:58.000Z",
+    "updatedAt": "2026-07-28T03:21:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7ed30149-d67a-49b5-bec5-c3a379caa97a"
+  },
+  "item": [
+    {
+      "name": "products",
+      "item": [
+        {
+          "name": "{product_id}",
+          "item": [
+            {
+              "name": "Get Product",
+              "id": "b2560081-e856-4325-97ca-78517a0faca3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products/:product_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products",
+                    ":product_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c389d555-9722-45de-a603-a324cd4f7f21",
+                      "key": "product_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier representing a specific product for a given location."
+                    }
+                  ]
+                },
+                "description": "Returns information about a specific Uber product."
+              },
+              "response": [
+                {
+                  "id": "3ee9d91a-80e2-4a94-8148-062d31fc566a",
+                  "name": "A product.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:product_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":product_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "product_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"product_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"capacity\": \"<integer>\",\n  \"image\": \"<uri>\"\n}",
+                  "createdAt": "2026-07-28T03:21:59.000Z",
+                  "updatedAt": "2026-07-28T03:21:59.000Z",
+                  "uid": "35240-3ee9d91a-80e2-4a94-8148-062d31fc566a"
+                },
+                {
+                  "id": "a77e3cde-cd50-4f5c-be49-45f1971d088f",
+                  "name": "Product not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:product_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":product_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "product_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:21:59.000Z",
+                  "updatedAt": "2026-07-28T03:21:59.000Z",
+                  "uid": "35240-a77e3cde-cd50-4f5c-be49-45f1971d088f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:21:59.000Z",
+              "updatedAt": "2026-07-28T03:21:59.000Z",
+              "uid": "35240-b2560081-e856-4325-97ca-78517a0faca3"
+            }
+          ],
+          "id": "dc3eb1d9-5eeb-4d5d-aae6-e20e4baf3412",
+          "createdAt": "2026-07-28T03:21:59.000Z",
+          "updatedAt": "2026-07-28T03:21:59.000Z",
+          "uid": "35240-dc3eb1d9-5eeb-4d5d-aae6-e20e4baf3412"
+        },
+        {
+          "name": "List Products",
+          "id": "5f4d138b-7d8b-405a-ad67-0cf50a3621b7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/products?latitude=<double>&longitude=<double>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Latitude component of location.",
+                  "key": "latitude",
+                  "value": "<double>"
+                },
+                {
+                  "description": "(Required) Longitude component of location.",
+                  "key": "longitude",
+                  "value": "<double>"
+                }
+              ]
+            },
+            "description": "Returns information about the Uber products offered at a given location."
+          },
+          "response": [
+            {
+              "id": "15302988-76e9-4236-97ed-58acb40b7c4d",
+              "name": "An array of products.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products?latitude=<double>&longitude=<double>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude component of location.",
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) Longitude component of location.",
+                      "key": "longitude",
+                      "value": "<double>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"products\": [\n    {\n      \"product_id\": \"<string>\",\n      \"description\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"capacity\": \"<integer>\",\n      \"image\": \"<uri>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"description\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"capacity\": \"<integer>\",\n      \"image\": \"<uri>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:21:59.000Z",
+              "updatedAt": "2026-07-28T03:21:59.000Z",
+              "uid": "35240-15302988-76e9-4236-97ed-58acb40b7c4d"
+            },
+            {
+              "id": "382578cb-3556-4230-b73d-bb6bf963e7c4",
+              "name": "Invalid parameters supplied.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products?latitude=<double>&longitude=<double>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude component of location.",
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) Longitude component of location.",
+                      "key": "longitude",
+                      "value": "<double>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:21:59.000Z",
+              "updatedAt": "2026-07-28T03:21:59.000Z",
+              "uid": "35240-382578cb-3556-4230-b73d-bb6bf963e7c4"
+            },
+            {
+              "id": "ef6d94c6-4533-48e6-bb0d-a92d4fc72fb1",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products?latitude=<double>&longitude=<double>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude component of location.",
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) Longitude component of location.",
+                      "key": "longitude",
+                      "value": "<double>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:21:59.000Z",
+              "updatedAt": "2026-07-28T03:21:59.000Z",
+              "uid": "35240-ef6d94c6-4533-48e6-bb0d-a92d4fc72fb1"
+            }
+          ],
+          "createdAt": "2026-07-28T03:21:59.000Z",
+          "updatedAt": "2026-07-28T03:21:59.000Z",
+          "uid": "35240-5f4d138b-7d8b-405a-ad67-0cf50a3621b7"
+        }
+      ],
+      "id": "80b4663c-dfee-4be3-ad86-353b7b49d7c4",
+      "createdAt": "2026-07-28T03:21:59.000Z",
+      "updatedAt": "2026-07-28T03:21:59.000Z",
+      "uid": "35240-80b4663c-dfee-4be3-ad86-353b7b49d7c4"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

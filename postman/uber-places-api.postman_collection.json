@@ -1,0 +1,252 @@
+{
+  "info": {
+    "_postman_id": "efa68111-ab4c-4f55-a40a-0f3b95e42480",
+    "name": "Uber for Business Codes Places API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:57.000Z",
+    "updatedAt": "2026-07-28T03:21:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-efa68111-ab4c-4f55-a40a-0f3b95e42480"
+  },
+  "item": [
+    {
+      "name": "places",
+      "item": [
+        {
+          "name": "{place_id}",
+          "item": [
+            {
+              "name": "Get Saved Place",
+              "id": "35ea7f15-809f-4996-9485-640ffd50ea4e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/places/:place_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "places",
+                    ":place_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9dc1cbfc-e8b7-4bc1-9440-e49ea02ef9c2",
+                      "key": "place_id",
+                      "value": "home",
+                      "description": "(Required) The name of the place (home or work)."
+                    }
+                  ]
+                },
+                "description": "Returns information about a user's saved place, such as home or work."
+              },
+              "response": [
+                {
+                  "id": "257862e7-b7ba-4a69-80c5-119744ae24bc",
+                  "name": "A place object.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/places/:place_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "places",
+                        ":place_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "place_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"address\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:21:58.000Z",
+                  "updatedAt": "2026-07-28T03:21:58.000Z",
+                  "uid": "35240-257862e7-b7ba-4a69-80c5-119744ae24bc"
+                }
+              ],
+              "createdAt": "2026-07-28T03:21:58.000Z",
+              "updatedAt": "2026-07-28T03:21:58.000Z",
+              "uid": "35240-35ea7f15-809f-4996-9485-640ffd50ea4e"
+            },
+            {
+              "name": "Update Saved Place",
+              "id": "b12c6273-d142-4b98-b374-63092a8cc66c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/places/:place_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "places",
+                    ":place_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4c9b9d60-0b54-4dd2-a37b-11c11c5c5f98",
+                      "key": "place_id",
+                      "value": "home",
+                      "description": "(Required) The name of the place (home or work)."
+                    }
+                  ]
+                },
+                "description": "Updates information about a user's saved place."
+              },
+              "response": [
+                {
+                  "id": "167b0bca-1483-4a8c-a40d-5dc795af2f14",
+                  "name": "Place updated successfully.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"address\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/places/:place_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "places",
+                        ":place_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "place_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"address\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:21:58.000Z",
+                  "updatedAt": "2026-07-28T03:21:58.000Z",
+                  "uid": "35240-167b0bca-1483-4a8c-a40d-5dc795af2f14"
+                }
+              ],
+              "createdAt": "2026-07-28T03:21:58.000Z",
+              "updatedAt": "2026-07-28T03:21:58.000Z",
+              "uid": "35240-b12c6273-d142-4b98-b374-63092a8cc66c"
+            }
+          ],
+          "id": "76409299-e383-4cf1-9e3f-a22e5dedc141",
+          "createdAt": "2026-07-28T03:21:58.000Z",
+          "updatedAt": "2026-07-28T03:21:58.000Z",
+          "uid": "35240-76409299-e383-4cf1-9e3f-a22e5dedc141"
+        }
+      ],
+      "id": "b87e8125-bdd2-4310-ad5b-54eab7ee75c6",
+      "createdAt": "2026-07-28T03:21:58.000Z",
+      "updatedAt": "2026-07-28T03:21:58.000Z",
+      "uid": "35240-b87e8125-bdd2-4310-ad5b-54eab7ee75c6"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

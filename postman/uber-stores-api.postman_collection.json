@@ -1,0 +1,480 @@
+{
+  "info": {
+    "_postman_id": "0d8cfee7-0017-47ca-af67-59431f676532",
+    "name": "Uber for Business Codes Stores API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:21.000Z",
+    "updatedAt": "2026-07-28T03:22:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0d8cfee7-0017-47ca-af67-59431f676532"
+  },
+  "item": [
+    {
+      "name": "eats",
+      "item": [
+        {
+          "name": "stores",
+          "item": [
+            {
+              "name": "{store_id}",
+              "item": [
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "Update Store Status",
+                      "id": "7ea88b5b-ee02-4aac-97fd-d1fd2bc09d3b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"offline\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/stores/:store_id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "stores",
+                            ":store_id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ce2a1796-23c7-4413-9a0f-2a2a41e50da3",
+                              "key": "store_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the store."
+                            }
+                          ]
+                        },
+                        "description": "Set the store's online or offline status."
+                      },
+                      "response": [
+                        {
+                          "id": "fb0ebf2d-1f2d-4443-8bf7-e138f5737a3c",
+                          "name": "Store status updated.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"offline\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/eats/stores/:store_id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "eats",
+                                "stores",
+                                ":store_id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "store_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:22:21.000Z",
+                          "updatedAt": "2026-07-28T03:22:21.000Z",
+                          "uid": "35240-fb0ebf2d-1f2d-4443-8bf7-e138f5737a3c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:22:21.000Z",
+                      "updatedAt": "2026-07-28T03:22:21.000Z",
+                      "uid": "35240-7ea88b5b-ee02-4aac-97fd-d1fd2bc09d3b"
+                    }
+                  ],
+                  "id": "7143b61c-4ddf-45ec-8dc5-c5ec89400eef",
+                  "createdAt": "2026-07-28T03:22:21.000Z",
+                  "updatedAt": "2026-07-28T03:22:21.000Z",
+                  "uid": "35240-7143b61c-4ddf-45ec-8dc5-c5ec89400eef"
+                },
+                {
+                  "name": "Get Store",
+                  "id": "39d1934e-3ddd-4451-ada3-471d5d414772",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/eats/stores/:store_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "eats",
+                        "stores",
+                        ":store_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "15281385-50aa-4c60-955e-7b6437db4491",
+                          "key": "store_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the store."
+                        }
+                      ]
+                    },
+                    "description": "Returns details for a specific store."
+                  },
+                  "response": [
+                    {
+                      "id": "41e79f73-4a69-4da4-bdb8-a0e49ccb9a19",
+                      "name": "Store details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/stores/:store_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "stores",
+                            ":store_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "store_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"store_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"online\",\n  \"address\": {\n    \"street_address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"contact_emails\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:22:21.000Z",
+                      "updatedAt": "2026-07-28T03:22:21.000Z",
+                      "uid": "35240-41e79f73-4a69-4da4-bdb8-a0e49ccb9a19"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:22:21.000Z",
+                  "updatedAt": "2026-07-28T03:22:21.000Z",
+                  "uid": "35240-39d1934e-3ddd-4451-ada3-471d5d414772"
+                },
+                {
+                  "name": "Update Store",
+                  "id": "13acaf7c-4c5a-4045-b77d-7c1a55adbbce",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"contact_emails\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/eats/stores/:store_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "eats",
+                        "stores",
+                        ":store_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2baef299-f757-4a44-b73f-e935d81ef13c",
+                          "key": "store_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the store."
+                        }
+                      ]
+                    },
+                    "description": "Update store details such as operating hours and status."
+                  },
+                  "response": [
+                    {
+                      "id": "0ab602a6-6616-411b-81ef-fef84c0a895d",
+                      "name": "Updated store details.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"contact_emails\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/eats/stores/:store_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "eats",
+                            "stores",
+                            ":store_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "store_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"store_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"online\",\n  \"address\": {\n    \"street_address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"contact_emails\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:22:21.000Z",
+                      "updatedAt": "2026-07-28T03:22:21.000Z",
+                      "uid": "35240-0ab602a6-6616-411b-81ef-fef84c0a895d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:22:21.000Z",
+                  "updatedAt": "2026-07-28T03:22:21.000Z",
+                  "uid": "35240-13acaf7c-4c5a-4045-b77d-7c1a55adbbce"
+                }
+              ],
+              "id": "e49e3a3e-5403-4f47-83aa-fb05eeb408db",
+              "createdAt": "2026-07-28T03:22:21.000Z",
+              "updatedAt": "2026-07-28T03:22:21.000Z",
+              "uid": "35240-e49e3a3e-5403-4f47-83aa-fb05eeb408db"
+            },
+            {
+              "name": "List Stores",
+              "id": "5452abd1-c712-4d62-9bee-63f776ec6962",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/eats/stores?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eats",
+                    "stores"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of stores to return.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Offset for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Returns a list of stores for the authenticated partner."
+              },
+              "response": [
+                {
+                  "id": "2b63f3e9-5fe4-401b-a4ce-5188ad61cc40",
+                  "name": "List of stores.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/eats/stores?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "eats",
+                        "stores"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of stores to return.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Offset for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"stores\": [\n    {\n      \"store_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"offline\",\n      \"address\": {\n        \"street_address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip_code\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"contact_emails\": [\n        \"<email>\",\n        \"<email>\"\n      ]\n    },\n    {\n      \"store_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"offline\",\n      \"address\": {\n        \"street_address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip_code\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"contact_emails\": [\n        \"<email>\",\n        \"<email>\"\n      ]\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:22:21.000Z",
+                  "updatedAt": "2026-07-28T03:22:21.000Z",
+                  "uid": "35240-2b63f3e9-5fe4-401b-a4ce-5188ad61cc40"
+                }
+              ],
+              "createdAt": "2026-07-28T03:22:21.000Z",
+              "updatedAt": "2026-07-28T03:22:21.000Z",
+              "uid": "35240-5452abd1-c712-4d62-9bee-63f776ec6962"
+            }
+          ],
+          "id": "b015f7da-b950-4e54-876d-eebf00fe6b64",
+          "createdAt": "2026-07-28T03:22:21.000Z",
+          "updatedAt": "2026-07-28T03:22:21.000Z",
+          "uid": "35240-b015f7da-b950-4e54-876d-eebf00fe6b64"
+        }
+      ],
+      "id": "24a19ff8-5715-4767-87a3-2afea4272e0c",
+      "createdAt": "2026-07-28T03:22:21.000Z",
+      "updatedAt": "2026-07-28T03:22:21.000Z",
+      "uid": "35240-24a19ff8-5715-4767-87a3-2afea4272e0c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}

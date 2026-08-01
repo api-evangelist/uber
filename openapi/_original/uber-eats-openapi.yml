@@ -1,0 +1,508 @@
+openapi: 3.0.0
+info:
+  title: Uber Eats API
+  description: >-
+    The Uber Eats Marketplace API enables partners to programmatically manage stores,
+    menus, and orders on the Uber Eats platform. It supports real-time menu synchronization,
+    order processing, store operations, promotional campaigns, and analytics reporting.
+  version: 1.0.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+  - url: https://api.uber.com/v1
+    description: Production
+  - url: https://sandbox-api.uber.com/v1
+    description: Sandbox
+security:
+  - BearerAuth: []
+tags:
+  - name: Stores
+    description: Store management and operational status
+  - name: Menus
+    description: Menu items, modifiers, and pricing
+  - name: Orders
+    description: Order lifecycle management
+  - name: Promotions
+    description: Promotional campaigns and offers
+  - name: Reporting
+    description: Analytics and performance metrics
+paths:
+  /eats/stores:
+    get:
+      operationId: listStores
+      summary: List Stores
+      description: Returns a list of stores for the authenticated partner.
+      tags:
+        - Stores
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+          description: Number of stores to return.
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+          description: Offset for pagination.
+      responses:
+        '200':
+          description: List of stores.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stores:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Store'
+                  total:
+                    type: integer
+  /eats/stores/{store_id}:
+    get:
+      operationId: getStore
+      summary: Get Store
+      description: Returns details for a specific store.
+      tags:
+        - Stores
+      parameters:
+        - name: store_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the store.
+      responses:
+        '200':
+          description: Store details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+    patch:
+      operationId: updateStore
+      summary: Update Store
+      description: Update store details such as operating hours and status.
+      tags:
+        - Stores
+      parameters:
+        - name: store_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the store.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreUpdate'
+      responses:
+        '200':
+          description: Updated store details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+  /eats/stores/{store_id}/status:
+    put:
+      operationId: updateStoreStatus
+      summary: Update Store Status
+      description: Set the store's online or offline status.
+      tags:
+        - Stores
+      parameters:
+        - name: store_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the store.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - online
+                    - offline
+                  description: The desired store status.
+      responses:
+        '200':
+          description: Store status updated.
+  /eats/stores/{store_id}/menus:
+    get:
+      operationId: getStoreMenu
+      summary: Get Store Menu
+      description: Returns the current menu for a specific store.
+      tags:
+        - Menus
+      parameters:
+        - name: store_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the store.
+      responses:
+        '200':
+          description: Menu details for the store.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Menu'
+    put:
+      operationId: updateStoreMenu
+      summary: Update Store Menu
+      description: Replace the full menu for a specific store.
+      tags:
+        - Menus
+      parameters:
+        - name: store_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the store.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Menu'
+      responses:
+        '200':
+          description: Menu update accepted.
+  /eats/orders/{order_id}:
+    get:
+      operationId: getOrder
+      summary: Get Order
+      description: Returns order details for a specific order ID.
+      tags:
+        - Orders
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the order.
+      responses:
+        '200':
+          description: Order details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /eats/orders/{order_id}/accept_pos_order:
+    post:
+      operationId: acceptOrder
+      summary: Accept Order
+      description: Accept a pending order within the required acceptance window.
+      tags:
+        - Orders
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the order.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: Reason for accepting the order.
+      responses:
+        '200':
+          description: Order accepted successfully.
+  /eats/orders/{order_id}/deny_pos_order:
+    post:
+      operationId: denyOrder
+      summary: Deny Order
+      description: Deny a pending order and specify a reason.
+      tags:
+        - Orders
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the order.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
+                  description: Reason for denying the order.
+                reason_details:
+                  type: string
+                  description: Additional details about the denial reason.
+      responses:
+        '200':
+          description: Order denied successfully.
+  /eats/orders/{order_id}/cancel:
+    post:
+      operationId: cancelOrder
+      summary: Cancel Order
+      description: Cancel an accepted order.
+      tags:
+        - Orders
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the order.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
+                  description: Reason for cancellation.
+      responses:
+        '200':
+          description: Order cancelled successfully.
+  /eats/reports:
+    post:
+      operationId: generateReport
+      summary: Generate Report
+      description: Generate analytics and performance reports for stores.
+      tags:
+        - Reporting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '202':
+          description: Report generation initiated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  report_id:
+                    type: string
+                  status:
+                    type: string
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token
+  schemas:
+    Store:
+      type: object
+      properties:
+        store_id:
+          type: string
+          description: Unique identifier for the store.
+        name:
+          type: string
+          description: Store display name.
+        status:
+          type: string
+          enum:
+            - online
+            - offline
+          description: Current operational status.
+        address:
+          type: object
+          properties:
+            street_address:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            zip_code:
+              type: string
+            country:
+              type: string
+        contact_emails:
+          type: array
+          items:
+            type: string
+            format: email
+    StoreUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Updated store name.
+        contact_emails:
+          type: array
+          items:
+            type: string
+            format: email
+    Menu:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuCategory'
+    MenuCategory:
+      type: object
+      properties:
+        category_id:
+          type: string
+          description: Unique identifier for the category.
+        title:
+          type: object
+          properties:
+            en:
+              type: string
+              description: Category name in English.
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuItem'
+    MenuItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the menu item.
+        external_data:
+          type: string
+          description: Partner's own identifier for the item.
+        title:
+          type: object
+          properties:
+            en:
+              type: string
+        description:
+          type: object
+          properties:
+            en:
+              type: string
+        msrp:
+          type: integer
+          description: Price in minor currency units (cents).
+        quantity_info:
+          type: object
+          properties:
+            quantity:
+              type: object
+              properties:
+                min_permitted:
+                  type: integer
+                max_permitted:
+                  type: integer
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique order identifier.
+        external_reference_id:
+          type: string
+          description: Partner's order reference.
+        current_state:
+          type: string
+          enum:
+            - CREATED
+            - ACCEPTED
+            - FULFILLED
+            - DENIED
+            - CANCELLED
+          description: Current order state.
+        store:
+          type: object
+          properties:
+            name:
+              type: string
+            store_id:
+              type: string
+        cart:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  title:
+                    type: string
+                  quantity:
+                    type: integer
+                  price:
+                    type: integer
+        payment:
+          type: object
+          properties:
+            charges:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  amount:
+                    type: number
+        placed_at:
+          type: string
+          format: date-time
+          description: Timestamp when order was placed.
+    ReportRequest:
+      type: object
+      required:
+        - report_type
+        - date_range
+      properties:
+        report_type:
+          type: string
+          description: Type of report to generate.
+        store_ids:
+          type: array
+          items:
+            type: string
+          description: List of store IDs to include.
+        date_range:
+          type: object
+          properties:
+            start_date:
+              type: string
+              format: date
+            end_date:
+              type: string
+              format: date

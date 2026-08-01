@@ -1,0 +1,450 @@
+openapi: 3.0.0
+info:
+  title: Uber Vouchers API
+  description: >-
+    The Uber Vouchers API allows businesses to create and manage voucher programs
+    and codes for rides and meals. It supports program creation, code generation,
+    bulk distribution, guest management, and code redemption workflows.
+  version: 1.0.0
+  contact:
+    name: Uber Developer Support
+    url: https://developer.uber.com/support
+servers:
+  - url: https://api.uber.com/v1
+    description: Production
+  - url: https://sandbox-api.uber.com/v1
+    description: Sandbox
+security:
+  - BearerAuth: []
+tags:
+  - name: Programs
+    description: Voucher program management
+  - name: Codes
+    description: Voucher code generation and distribution
+  - name: Templates
+    description: Voucher program templates
+  - name: Redemption
+    description: Voucher code redemption
+paths:
+  /voucher-programs:
+    post:
+      operationId: createVoucherProgram
+      summary: Create Voucher Program
+      description: Create a new voucher program for rides or meals.
+      tags:
+        - Programs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoucherProgramRequest'
+      responses:
+        '201':
+          description: Voucher program created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoucherProgram'
+    get:
+      operationId: listVoucherPrograms
+      summary: List Voucher Programs
+      description: Returns all voucher programs for the authenticated account.
+      tags:
+        - Programs
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of voucher programs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  programs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoucherProgram'
+  /voucher-programs/search:
+    post:
+      operationId: searchVoucherPrograms
+      summary: Search Voucher Programs
+      description: Search for voucher programs by criteria.
+      tags:
+        - Programs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - inactive
+                    - expired
+                type:
+                  type: string
+      responses:
+        '200':
+          description: Matching voucher programs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  programs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoucherProgram'
+  /voucher-programs/{program_id}:
+    get:
+      operationId: getVoucherProgram
+      summary: Get Voucher Program
+      description: Returns details for a specific voucher program.
+      tags:
+        - Programs
+      parameters:
+        - name: program_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Voucher program details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoucherProgram'
+    patch:
+      operationId: updateVoucherProgram
+      summary: Update Voucher Program
+      description: Update an existing voucher program.
+      tags:
+        - Programs
+      parameters:
+        - name: program_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoucherProgramUpdate'
+      responses:
+        '200':
+          description: Updated voucher program.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoucherProgram'
+    delete:
+      operationId: cancelVoucherProgram
+      summary: Cancel Voucher Program
+      description: Cancel and deactivate a voucher program.
+      tags:
+        - Programs
+      parameters:
+        - name: program_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Program cancelled successfully.
+  /voucher-programs/{program_id}/codes/generate:
+    post:
+      operationId: generateVoucherCodes
+      summary: Generate Voucher Codes
+      description: Generate redemption codes for a voucher program in bulk.
+      tags:
+        - Codes
+      parameters:
+        - name: program_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - quantity
+              properties:
+                quantity:
+                  type: integer
+                  description: Number of codes to generate.
+      responses:
+        '200':
+          description: Generated voucher codes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoucherCode'
+  /voucher-programs/{program_id}/codes:
+    get:
+      operationId: listVoucherCodes
+      summary: List Voucher Codes
+      description: Returns all codes for a voucher program.
+      tags:
+        - Codes
+      parameters:
+        - name: program_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of voucher codes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoucherCode'
+  /voucher-programs/{program_id}/codes/distribute:
+    post:
+      operationId: distributeVoucherCodes
+      summary: Distribute Voucher Codes
+      description: Distribute voucher codes to a list of recipients.
+      tags:
+        - Codes
+      parameters:
+        - name: program_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - recipients
+              properties:
+                recipients:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        format: email
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+      responses:
+        '200':
+          description: Voucher codes distributed successfully.
+  /voucher-program-templates:
+    get:
+      operationId: listVoucherTemplates
+      summary: List Voucher Templates
+      description: Returns all available voucher program templates.
+      tags:
+        - Templates
+      responses:
+        '200':
+          description: List of templates.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoucherTemplate'
+    post:
+      operationId: createVoucherTemplate
+      summary: Create Voucher Template
+      description: Create a reusable voucher program template.
+      tags:
+        - Templates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoucherTemplate'
+      responses:
+        '201':
+          description: Template created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoucherTemplate'
+  /me/vouchers/redeem:
+    post:
+      operationId: redeemVoucherCode
+      summary: Redeem Voucher Code
+      description: Redeem a voucher code for the authenticated user.
+      tags:
+        - Redemption
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - code
+              properties:
+                code:
+                  type: string
+                  description: The voucher code to redeem.
+      responses:
+        '200':
+          description: Voucher redeemed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  voucher_id:
+                    type: string
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 Bearer token
+  schemas:
+    VoucherProgramRequest:
+      type: object
+      required:
+        - name
+        - type
+      properties:
+        name:
+          type: string
+          description: Program display name.
+        type:
+          type: string
+          enum:
+            - rides
+            - eats
+          description: Type of voucher program.
+        budget:
+          type: number
+          description: Total budget for the program.
+        currency_code:
+          type: string
+          description: ISO 4217 currency code.
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+    VoucherProgram:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique program identifier.
+        name:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+            - expired
+        budget:
+          type: number
+        currency_code:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    VoucherProgramUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        end_date:
+          type: string
+          format: date-time
+    VoucherCode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The voucher code string.
+        status:
+          type: string
+          enum:
+            - available
+            - distributed
+            - redeemed
+            - expired
+        created_at:
+          type: string
+          format: date-time
+    VoucherTemplate:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string

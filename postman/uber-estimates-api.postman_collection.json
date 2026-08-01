@@ -1,0 +1,295 @@
+{
+  "info": {
+    "_postman_id": "92116f7f-c4d8-4c72-ae0c-197a1c3255fa",
+    "name": "Uber for Business Codes Estimates API",
+    "description": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:21:52.000Z",
+    "updatedAt": "2026-07-28T03:21:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-92116f7f-c4d8-4c72-ae0c-197a1c3255fa"
+  },
+  "item": [
+    {
+      "name": "estimates",
+      "item": [
+        {
+          "name": "price",
+          "item": [
+            {
+              "name": "Get Price Estimates",
+              "id": "ebf91908-50b0-451b-a23f-321d22fae22a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/estimates/price?start_latitude=<double>&start_longitude=<double>&end_latitude=<double>&end_longitude=<double>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estimates",
+                    "price"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude component of start location.",
+                      "key": "start_latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) Longitude component of start location.",
+                      "key": "start_longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) Latitude component of end location.",
+                      "key": "end_latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) Longitude component of end location.",
+                      "key": "end_longitude",
+                      "value": "<double>"
+                    }
+                  ]
+                },
+                "description": "Returns an estimated price range for each product offered at a given location."
+              },
+              "response": [
+                {
+                  "id": "0ebcf629-488a-4b6d-a3a7-32803b9dfde6",
+                  "name": "An array of price estimates by product.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/estimates/price?start_latitude=<double>&start_longitude=<double>&end_latitude=<double>&end_longitude=<double>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "estimates",
+                        "price"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude component of start location.",
+                          "key": "start_latitude",
+                          "value": "<double>"
+                        },
+                        {
+                          "description": "(Required) Longitude component of start location.",
+                          "key": "start_longitude",
+                          "value": "<double>"
+                        },
+                        {
+                          "description": "(Required) Latitude component of end location.",
+                          "key": "end_latitude",
+                          "value": "<double>"
+                        },
+                        {
+                          "description": "(Required) Longitude component of end location.",
+                          "key": "end_longitude",
+                          "value": "<double>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"prices\": [\n    {\n      \"product_id\": \"<string>\",\n      \"currency_code\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"estimate\": \"<string>\",\n      \"low_estimate\": \"<number>\",\n      \"high_estimate\": \"<number>\",\n      \"surge_multiplier\": \"<number>\",\n      \"duration\": \"<integer>\",\n      \"distance\": \"<number>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"currency_code\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"estimate\": \"<string>\",\n      \"low_estimate\": \"<number>\",\n      \"high_estimate\": \"<number>\",\n      \"surge_multiplier\": \"<number>\",\n      \"duration\": \"<integer>\",\n      \"distance\": \"<number>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:21:52.000Z",
+                  "updatedAt": "2026-07-28T03:21:52.000Z",
+                  "uid": "35240-0ebcf629-488a-4b6d-a3a7-32803b9dfde6"
+                }
+              ],
+              "createdAt": "2026-07-28T03:21:52.000Z",
+              "updatedAt": "2026-07-28T03:21:52.000Z",
+              "uid": "35240-ebf91908-50b0-451b-a23f-321d22fae22a"
+            }
+          ],
+          "id": "af6a9f79-4b1b-4f93-9eb2-1633561edcb0",
+          "createdAt": "2026-07-28T03:21:52.000Z",
+          "updatedAt": "2026-07-28T03:21:52.000Z",
+          "uid": "35240-af6a9f79-4b1b-4f93-9eb2-1633561edcb0"
+        },
+        {
+          "name": "time",
+          "item": [
+            {
+              "name": "Get Time Estimates",
+              "id": "55e56efc-ad65-43ca-9096-4dce9665fc32",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/estimates/time?start_latitude=<double>&start_longitude=<double>&product_id=<string>&customer_uuid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estimates",
+                    "time"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude component of start location.",
+                      "key": "start_latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "(Required) Longitude component of start location.",
+                      "key": "start_longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "Unique identifier representing a specific product for a given location.",
+                      "key": "product_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unique customer identifier to be used for experience customization.",
+                      "key": "customer_uuid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns ETAs for all products offered at a given location."
+              },
+              "response": [
+                {
+                  "id": "f8ed46a6-f11a-483e-8a70-8f8788133460",
+                  "name": "An array of time estimates by product.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/estimates/time?start_latitude=<double>&start_longitude=<double>&product_id=<string>&customer_uuid=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "estimates",
+                        "time"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude component of start location.",
+                          "key": "start_latitude",
+                          "value": "<double>"
+                        },
+                        {
+                          "description": "(Required) Longitude component of start location.",
+                          "key": "start_longitude",
+                          "value": "<double>"
+                        },
+                        {
+                          "description": "Unique identifier representing a specific product for a given location.",
+                          "key": "product_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Unique customer identifier to be used for experience customization.",
+                          "key": "customer_uuid",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"times\": [\n    {\n      \"product_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"estimate\": \"<integer>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"estimate\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:21:52.000Z",
+                  "updatedAt": "2026-07-28T03:21:52.000Z",
+                  "uid": "35240-f8ed46a6-f11a-483e-8a70-8f8788133460"
+                }
+              ],
+              "createdAt": "2026-07-28T03:21:52.000Z",
+              "updatedAt": "2026-07-28T03:21:52.000Z",
+              "uid": "35240-55e56efc-ad65-43ca-9096-4dce9665fc32"
+            }
+          ],
+          "id": "5c6f7c14-7538-4ab3-ac9e-025871d9220b",
+          "createdAt": "2026-07-28T03:21:52.000Z",
+          "updatedAt": "2026-07-28T03:21:52.000Z",
+          "uid": "35240-5c6f7c14-7538-4ab3-ac9e-025871d9220b"
+        }
+      ],
+      "id": "4f9d25b2-3a31-430f-b796-f64c5b701c77",
+      "createdAt": "2026-07-28T03:21:52.000Z",
+      "updatedAt": "2026-07-28T03:21:52.000Z",
+      "uid": "35240-4f9d25b2-3a31-430f-b796-f64c5b701c77"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.uber.com/v1.2"
+    }
+  ]
+}
