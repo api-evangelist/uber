@@ -1,0 +1,285 @@
+{
+  "item": [
+    {
+      "id": "2fdc94d4-e9c6-4e3e-a007-958af813dcb1",
+      "name": "Estimates",
+      "description": {
+        "content": "Price and time estimates for rides",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ece821b-b30c-4bfe-b7e2-514a9c7bfdd9",
+          "name": "Get Price Estimates",
+          "request": {
+            "name": "Get Price Estimates",
+            "description": {
+              "content": "Returns an estimated price range for each product offered at a given location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "estimates",
+                "price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_latitude",
+                  "value": "<double>",
+                  "description": "(Required) Latitude component of start location."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_longitude",
+                  "value": "<double>",
+                  "description": "(Required) Longitude component of start location."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_latitude",
+                  "value": "<double>",
+                  "description": "(Required) Latitude component of end location."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_longitude",
+                  "value": "<double>",
+                  "description": "(Required) Longitude component of end location."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8fa5ccd-2e5a-46db-adc1-b4ccd1708de3",
+              "name": "An array of price estimates by product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "estimates",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "start_longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "end_latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "end_longitude",
+                      "value": "<double>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"prices\": [\n    {\n      \"product_id\": \"string\",\n      \"currency_code\": \"string\",\n      \"display_name\": \"string\",\n      \"estimate\": \"string\",\n      \"low_estimate\": 3286.4815208871023,\n      \"high_estimate\": 8366.338487083902,\n      \"surge_multiplier\": 1559.3260409996024,\n      \"duration\": 326,\n      \"distance\": 9209.458866147761\n    },\n    {\n      \"product_id\": \"string\",\n      \"currency_code\": \"string\",\n      \"display_name\": \"string\",\n      \"estimate\": \"string\",\n      \"low_estimate\": 5012.535933365411,\n      \"high_estimate\": 7030.138390725995,\n      \"surge_multiplier\": 4913.696496862748,\n      \"duration\": 1663,\n      \"distance\": 8015.671478484649\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca2c8c41-1785-442e-97da-1de8aa551534",
+          "name": "Get Time Estimates",
+          "request": {
+            "name": "Get Time Estimates",
+            "description": {
+              "content": "Returns ETAs for all products offered at a given location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "estimates",
+                "time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_latitude",
+                  "value": "<double>",
+                  "description": "(Required) Latitude component of start location."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_longitude",
+                  "value": "<double>",
+                  "description": "(Required) Longitude component of start location."
+                },
+                {
+                  "disabled": false,
+                  "key": "product_id",
+                  "value": "<string>",
+                  "description": "Unique identifier representing a specific product for a given location."
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_uuid",
+                  "value": "<string>",
+                  "description": "Unique customer identifier to be used for experience customization."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3ace516-3508-448a-94c0-8d99a92ab265",
+              "name": "An array of time estimates by product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "estimates",
+                    "time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "start_longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "product_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer_uuid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"times\": [\n    {\n      \"product_id\": \"string\",\n      \"display_name\": \"string\",\n      \"estimate\": 1661\n    },\n    {\n      \"product_id\": \"string\",\n      \"display_name\": \"string\",\n      \"estimate\": 9147\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "15d1e83f-d1f8-4600-94c9-9a459a7bc5e1",
+    "name": "Uber for Business Codes Estimates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

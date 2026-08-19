@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Estimates API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Estimates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Price Estimates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/estimates/price",
+            "params": [
+              {
+                "name": "start_latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of start location."
+              },
+              {
+                "name": "start_longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of start location."
+              },
+              {
+                "name": "end_latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of end location."
+              },
+              {
+                "name": "end_longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of end location."
+              }
+            ]
+          },
+          "docs": "Returns an estimated price range for each product offered at a given location."
+        },
+        {
+          "info": {
+            "name": "Get Time Estimates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/estimates/time",
+            "params": [
+              {
+                "name": "start_latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of start location."
+              },
+              {
+                "name": "start_longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of start location."
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier representing a specific product for a given location."
+              },
+              {
+                "name": "customer_uuid",
+                "value": "",
+                "type": "query",
+                "description": "Unique customer identifier to be used for experience customization."
+              }
+            ]
+          },
+          "docs": "Returns ETAs for all products offered at a given location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

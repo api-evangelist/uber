@@ -1,0 +1,628 @@
+{
+  "item": [
+    {
+      "id": "f9ff8c8c-9234-4612-ac03-7832a9d2d7f7",
+      "name": "Orders",
+      "description": {
+        "content": "Eats order receipts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa1453d1-c7a0-496d-81d8-59241a550541",
+          "name": "Get Order Receipt",
+          "request": {
+            "name": "Get Order Receipt",
+            "description": {
+              "content": "Get receipt information for an Uber Eats order within a business account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "business",
+                "orders",
+                ":order_id",
+                "receipt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Unique identifier for the Eats order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46ed7198-30d8-458a-92da-a13495de11ad",
+              "name": "Receipt details for the Eats order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "orders",
+                    ":order_id",
+                    "receipt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the Eats order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order_id\": \"string\",\n  \"store_name\": \"string\",\n  \"placed_at\": \"2002-04-23T04:39:02.230Z\",\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"quantity\": 5996,\n      \"price\": 7551.768079126775\n    },\n    {\n      \"name\": \"string\",\n      \"quantity\": 8215,\n      \"price\": 9804.764523331585\n    }\n  ],\n  \"subtotal\": 3279.270372843831,\n  \"delivery_fee\": 5905.730808949185,\n  \"total\": 7589.901889514779,\n  \"currency_code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a787e1bb-773f-4461-898f-9126e876a1a2",
+              "name": "Order not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "business",
+                    "orders",
+                    ":order_id",
+                    "receipt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the Eats order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fbf35ef-4afc-4e2a-8a36-00ced5786db0",
+          "name": "Get Order",
+          "request": {
+            "name": "Get Order",
+            "description": {
+              "content": "Returns order details for a specific order ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Unique identifier for the order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbfe9a53-0f88-4c92-a868-9ed0e77b0eba",
+              "name": "Order details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"external_reference_id\": \"string\",\n  \"current_state\": \"FULFILLED\",\n  \"store\": {\n    \"name\": \"string\",\n    \"store_id\": \"string\"\n  },\n  \"cart\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"quantity\": 5694,\n        \"price\": 2802\n      },\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"quantity\": 5647,\n        \"price\": 8096\n      }\n    ]\n  },\n  \"payment\": {\n    \"charges\": [\n      {\n        \"name\": \"string\",\n        \"amount\": 5073.928979062811\n      },\n      {\n        \"name\": \"string\",\n        \"amount\": 1303.656798050976\n      }\n    ]\n  },\n  \"placed_at\": \"1954-12-26T02:06:45.396Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19952901-5f13-4b42-b599-46e85b6dbafa",
+          "name": "Accept Order",
+          "request": {
+            "name": "Accept Order",
+            "description": {
+              "content": "Accept a pending order within the required acceptance window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "orders",
+                ":order_id",
+                "accept_pos_order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Unique identifier for the order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44f7f66f-268e-480a-ab73-e52145c78966",
+              "name": "Order accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "orders",
+                    ":order_id",
+                    "accept_pos_order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1b98150-0a32-4a22-85a7-1254da8d6de1",
+          "name": "Deny Order",
+          "request": {
+            "name": "Deny Order",
+            "description": {
+              "content": "Deny a pending order and specify a reason.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "orders",
+                ":order_id",
+                "deny_pos_order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Unique identifier for the order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"reason_details\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f11a98d-da79-42bf-8927-1833ac74db36",
+              "name": "Order denied successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "orders",
+                    ":order_id",
+                    "deny_pos_order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"reason_details\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9108283b-91a9-4e28-be99-83289e40426d",
+          "name": "Cancel Order",
+          "request": {
+            "name": "Cancel Order",
+            "description": {
+              "content": "Cancel an accepted order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "orders",
+                ":order_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Unique identifier for the order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29de5e62-70cd-4942-b8c1-4244ac9a98b9",
+              "name": "Order cancelled successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "orders",
+                    ":order_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9ef09537-b9a1-4962-a4de-4cbf5d6641f7",
+    "name": "Uber for Business Codes Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

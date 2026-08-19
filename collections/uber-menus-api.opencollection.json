@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Menus API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Menus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Store Menu",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/eats/stores/:store_id/menus",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the store."
+              }
+            ]
+          },
+          "docs": "Returns the current menu for a specific store."
+        },
+        {
+          "info": {
+            "name": "Update Store Menu",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.uber.com/v1.2/eats/stores/:store_id/menus",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the store."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace the full menu for a specific store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

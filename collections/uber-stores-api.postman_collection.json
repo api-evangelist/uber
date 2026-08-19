@@ -1,0 +1,473 @@
+{
+  "item": [
+    {
+      "id": "a76bd892-77e3-4f4e-8b6d-5c08bdc97f21",
+      "name": "Stores",
+      "description": {
+        "content": "Store management and operational status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "33c45e00-c5f1-4895-abd3-74f0f98238cc",
+          "name": "List Stores",
+          "request": {
+            "name": "List Stores",
+            "description": {
+              "content": "Returns a list of stores for the authenticated partner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "stores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of stores to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd2a474a-9ee0-41e7-a563-c4fd8903aa9c",
+              "name": "List of stores.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "stores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stores\": [\n    {\n      \"store_id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"offline\",\n      \"address\": {\n        \"street_address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip_code\": \"string\",\n        \"country\": \"string\"\n      },\n      \"contact_emails\": [\n        \"AY0@RCnOqPITvrBsspIqfuiqResrKoUsvqFuJ.uoyj\",\n        \"6bg9wtIj@EBSlTWeOY.nkl\"\n      ]\n    },\n    {\n      \"store_id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"offline\",\n      \"address\": {\n        \"street_address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip_code\": \"string\",\n        \"country\": \"string\"\n      },\n      \"contact_emails\": [\n        \"HaiYfI6@vUVsSeVmPnjvMMGsuMrIqDTkyjDL.bmb\",\n        \"k90x0AqlEmo73@bGOjkzCPOyK.snl\"\n      ]\n    }\n  ],\n  \"total\": 2646\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5aee6c26-710f-4448-a4a6-270c5681190a",
+          "name": "Get Store",
+          "request": {
+            "name": "Get Store",
+            "description": {
+              "content": "Returns details for a specific store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "stores",
+                ":store_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_id",
+                  "description": "(Required) Unique identifier for the store."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2c30cd6-840b-4d6b-9622-41a6c7d3ddd9",
+              "name": "Store details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "stores",
+                    ":store_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_id",
+                      "description": "(Required) Unique identifier for the store."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"store_id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"offline\",\n  \"address\": {\n    \"street_address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip_code\": \"string\",\n    \"country\": \"string\"\n  },\n  \"contact_emails\": [\n    \"i9kuzP9hWO0@UE.il\",\n    \"n5Vu5uF4wNhuD6@wYknboUjguhqbIRBtaaQfxK.bcp\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0232ff51-97d0-4349-b24e-50e645e4a571",
+          "name": "Update Store",
+          "request": {
+            "name": "Update Store",
+            "description": {
+              "content": "Update store details such as operating hours and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "stores",
+                ":store_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_id",
+                  "description": "(Required) Unique identifier for the store."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"contact_emails\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9d3d18f-33a1-4317-ae06-37dbf0080c36",
+              "name": "Updated store details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "stores",
+                    ":store_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_id",
+                      "description": "(Required) Unique identifier for the store."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contact_emails\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"store_id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"offline\",\n  \"address\": {\n    \"street_address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip_code\": \"string\",\n    \"country\": \"string\"\n  },\n  \"contact_emails\": [\n    \"i9kuzP9hWO0@UE.il\",\n    \"n5Vu5uF4wNhuD6@wYknboUjguhqbIRBtaaQfxK.bcp\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0f59410-2585-408f-a2cb-592aa3eaad87",
+          "name": "Update Store Status",
+          "request": {
+            "name": "Update Store Status",
+            "description": {
+              "content": "Set the store's online or offline status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "stores",
+                ":store_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_id",
+                  "description": "(Required) Unique identifier for the store."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0feb583d-967b-456b-bcac-e1a2e306bc56",
+              "name": "Store status updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "stores",
+                    ":store_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_id",
+                      "description": "(Required) Unique identifier for the store."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b8a63f91-d8a7-4b88-92c0-39397a3485b5",
+    "name": "Uber for Business Codes Stores API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

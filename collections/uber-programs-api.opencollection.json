@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Programs API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Programs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Voucher Programs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/voucher-programs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all voucher programs for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create Voucher Program",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1.2/voucher-programs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new voucher program for rides or meals."
+        },
+        {
+          "info": {
+            "name": "Search Voucher Programs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1.2/voucher-programs/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for voucher programs by criteria."
+        },
+        {
+          "info": {
+            "name": "Get Voucher Program",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/voucher-programs/:program_id",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific voucher program."
+        },
+        {
+          "info": {
+            "name": "Update Voucher Program",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uber.com/v1.2/voucher-programs/:program_id",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing voucher program."
+        },
+        {
+          "info": {
+            "name": "Cancel Voucher Program",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uber.com/v1.2/voucher-programs/:program_id",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel and deactivate a voucher program."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Riders API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Riders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Rider Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/me"
+          },
+          "docs": "Returns information about the Uber account of a user that has authorized with the application."
+        },
+        {
+          "info": {
+            "name": "Apply Promotion",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uber.com/v1.2/me",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply a promotional code to the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Get Ride History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/history",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to retrieve. Default is 5, maximum is 50."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the list of returned results by this amount."
+              }
+            ]
+          },
+          "docs": "Returns limited data about a user's lifetime activity with Uber."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,405 @@
+{
+  "item": [
+    {
+      "id": "5c71fdd1-95fe-4e14-9e65-bda7778f9ccb",
+      "name": "Partners",
+      "description": {
+        "content": "Driver partner profile and activity data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0dcb2501-ba9f-4bcc-8f7f-645596e9829f",
+          "name": "Get Driver Profile",
+          "request": {
+            "name": "Get Driver Profile",
+            "description": {
+              "content": "Returns information about a driver who has authorized with the application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partners",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26032404-f273-4692-aeae-adef154cc97b",
+              "name": "Driver profile information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partners",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"YKe36tKfRsNPax@BMiQcUTbgKrZqAG.aor\",\n  \"phone_number\": \"string\",\n  \"picture\": \"http://vyGWnFCOZqjyGm.xdcwYHezeRnSGehFIew,AyeusBu8QSz3PICXmAM5ZrEujOR3,g7mVCAcsSCaFx8JsrB9l\",\n  \"promo_code\": \"string\",\n  \"activation_status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "161a6f32-4714-4838-b76d-7644f3bafd55",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partners",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f206dfa6-a7d3-430f-9076-76ca44b7f548",
+          "name": "Get Driver Payments",
+          "request": {
+            "name": "Get Driver Payments",
+            "description": {
+              "content": "Returns a list of payments made to a driver over the lifetime of their account with Uber.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partners",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from_time",
+                  "value": "<integer>",
+                  "description": "Unix timestamp of the start of the query time range."
+                },
+                {
+                  "disabled": false,
+                  "key": "to_time",
+                  "value": "<integer>",
+                  "description": "Unix timestamp of the end of the query time range."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "5",
+                  "description": "Number of items to return. Default is 5, maximum is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset the list of returned results by this amount."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80c6ea96-676f-4f77-a1e0-6ce8ea9458db",
+              "name": "Payment history for the driver.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partners",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 5134,\n  \"limit\": 7404,\n  \"offset\": 9936,\n  \"payments\": [\n    {\n      \"category\": \"string\",\n      \"cash_collected\": 3618.040331519373,\n      \"breakdown\": {},\n      \"rider_fees\": {},\n      \"event_time\": 7280,\n      \"trip_id\": \"string\",\n      \"currency_code\": \"string\"\n    },\n    {\n      \"category\": \"string\",\n      \"cash_collected\": 3868.6879432749643,\n      \"breakdown\": {},\n      \"rider_fees\": {},\n      \"event_time\": 4412,\n      \"trip_id\": \"string\",\n      \"currency_code\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44cf66ad-bd36-4ff7-8d7a-74fc360cb69e",
+          "name": "Get Driver Trips",
+          "request": {
+            "name": "Get Driver Trips",
+            "description": {
+              "content": "Returns trip history for a driver partner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partners",
+                "trips"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from_time",
+                  "value": "<integer>",
+                  "description": "Unix timestamp of the start of the query time range."
+                },
+                {
+                  "disabled": false,
+                  "key": "to_time",
+                  "value": "<integer>",
+                  "description": "Unix timestamp of the end of the query time range."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "5",
+                  "description": "Number of items to return. Default is 5, maximum is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset the list of returned results by this amount."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd33d9c3-9210-41d9-88ee-0d02fd9f7488",
+              "name": "An array of trips for the authenticated driver.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partners",
+                    "trips"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4334,\n  \"limit\": 5705,\n  \"offset\": 5909,\n  \"trips\": [\n    {\n      \"uuid\": \"string\",\n      \"status\": \"string\",\n      \"distance\": 402.88916849436805,\n      \"duration\": 5116,\n      \"start_time\": 9932,\n      \"end_time\": 7252,\n      \"start_city\": {\n        \"display_name\": \"string\",\n        \"latitude\": 7841.814377555273,\n        \"longitude\": 9239.625796165592\n      }\n    },\n    {\n      \"uuid\": \"string\",\n      \"status\": \"string\",\n      \"distance\": 7777.12763258896,\n      \"duration\": 8253,\n      \"start_time\": 3194,\n      \"end_time\": 8231,\n      \"start_city\": {\n        \"display_name\": \"string\",\n        \"latitude\": 3029.505870826514,\n        \"longitude\": 6526.112283386495\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "77e844c9-a7a9-4be0-b441-f9d67810df11",
+    "name": "Uber for Business Codes Partners API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

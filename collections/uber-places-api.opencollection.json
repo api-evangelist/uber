@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Places API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Places",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Saved Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/places/:place_id",
+            "params": [
+              {
+                "name": "place_id",
+                "value": "",
+                "type": "path",
+                "description": "The name of the place (home or work)."
+              }
+            ]
+          },
+          "docs": "Returns information about a user's saved place, such as home or work."
+        },
+        {
+          "info": {
+            "name": "Update Saved Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.uber.com/v1.2/places/:place_id",
+            "params": [
+              {
+                "name": "place_id",
+                "value": "",
+                "type": "path",
+                "description": "The name of the place (home or work)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates information about a user's saved place."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Templates API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Voucher Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/voucher-program-templates"
+          },
+          "docs": "Returns all available voucher program templates."
+        },
+        {
+          "info": {
+            "name": "Create Voucher Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1.2/voucher-program-templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a reusable voucher program template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

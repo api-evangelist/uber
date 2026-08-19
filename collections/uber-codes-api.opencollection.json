@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Voucher Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1.2/voucher-programs/:program_id/codes/generate",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate redemption codes for a voucher program in bulk."
+        },
+        {
+          "info": {
+            "name": "List Voucher Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/voucher-programs/:program_id/codes",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all codes for a voucher program."
+        },
+        {
+          "info": {
+            "name": "Distribute Voucher Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1.2/voucher-programs/:program_id/codes/distribute",
+            "params": [
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Distribute voucher codes to a list of recipients."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

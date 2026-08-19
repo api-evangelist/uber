@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Stores API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Stores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/eats/stores",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of stores to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset for pagination."
+              }
+            ]
+          },
+          "docs": "Returns a list of stores for the authenticated partner."
+        },
+        {
+          "info": {
+            "name": "Get Store",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/eats/stores/:store_id",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the store."
+              }
+            ]
+          },
+          "docs": "Returns details for a specific store."
+        },
+        {
+          "info": {
+            "name": "Update Store",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uber.com/v1.2/eats/stores/:store_id",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the store."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update store details such as operating hours and status."
+        },
+        {
+          "info": {
+            "name": "Update Store Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.uber.com/v1.2/eats/stores/:store_id/status",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the store."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the store's online or offline status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

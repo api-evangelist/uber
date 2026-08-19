@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Locations API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Business Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/business-locations"
+          },
+          "docs": "Returns all business locations for the authenticated merchant."
+        },
+        {
+          "info": {
+            "name": "Create Business Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uber.com/v1.2/business-locations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new business pickup location."
+        },
+        {
+          "info": {
+            "name": "Get Business Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/business-locations/:location_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the business location."
+              }
+            ]
+          },
+          "docs": "Returns details for a specific business location."
+        },
+        {
+          "info": {
+            "name": "Delete Business Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uber.com/v1.2/business-locations/:location_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the business location."
+              }
+            ]
+          },
+          "docs": "Remove a business pickup location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

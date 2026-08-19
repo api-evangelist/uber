@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "3c1c66db-bc20-4273-bb54-2c86182610c6",
+      "name": "Reporting",
+      "description": {
+        "content": "Analytics and performance metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e78268d3-07a1-48fa-b6ee-6df5c7b0a927",
+          "name": "Generate Report",
+          "request": {
+            "name": "Generate Report",
+            "description": {
+              "content": "Generate analytics and performance reports for stores.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"report_type\": \"<string>\",\n  \"date_range\": {\n    \"start_date\": \"<date>\",\n    \"end_date\": \"<date>\"\n  },\n  \"store_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d29640b0-2d7a-40ae-b494-cc38b429b538",
+              "name": "Report generation initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"<string>\",\n  \"date_range\": {\n    \"start_date\": \"<date>\",\n    \"end_date\": \"<date>\"\n  },\n  \"store_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"report_id\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d1bc10a8-5226-420c-9df7-5e33b4751095",
+    "name": "Uber for Business Codes Reporting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

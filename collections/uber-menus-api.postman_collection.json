@@ -1,0 +1,254 @@
+{
+  "item": [
+    {
+      "id": "422a7daa-289f-476e-ad99-e4d498c5e12b",
+      "name": "Menus",
+      "description": {
+        "content": "Menu items, modifiers, and pricing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c95fdab6-940e-43c9-95c1-7cbf87e3bd65",
+          "name": "Get Store Menu",
+          "request": {
+            "name": "Get Store Menu",
+            "description": {
+              "content": "Returns the current menu for a specific store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "stores",
+                ":store_id",
+                "menus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_id",
+                  "description": "(Required) Unique identifier for the store."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c104c53-5932-4874-8974-9b75974a1cde",
+              "name": "Menu details for the store.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "stores",
+                    ":store_id",
+                    "menus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_id",
+                      "description": "(Required) Unique identifier for the store."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"categories\": [\n    {\n      \"category_id\": \"string\",\n      \"title\": {\n        \"en\": \"string\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"string\",\n          \"external_data\": \"string\",\n          \"title\": {\n            \"en\": \"string\"\n          },\n          \"description\": {\n            \"en\": \"string\"\n          },\n          \"msrp\": 1688,\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": 3690,\n              \"max_permitted\": 436\n            }\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"external_data\": \"string\",\n          \"title\": {\n            \"en\": \"string\"\n          },\n          \"description\": {\n            \"en\": \"string\"\n          },\n          \"msrp\": 9973,\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": 568,\n              \"max_permitted\": 4424\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"category_id\": \"string\",\n      \"title\": {\n        \"en\": \"string\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"string\",\n          \"external_data\": \"string\",\n          \"title\": {\n            \"en\": \"string\"\n          },\n          \"description\": {\n            \"en\": \"string\"\n          },\n          \"msrp\": 2787,\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": 9682,\n              \"max_permitted\": 6331\n            }\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"external_data\": \"string\",\n          \"title\": {\n            \"en\": \"string\"\n          },\n          \"description\": {\n            \"en\": \"string\"\n          },\n          \"msrp\": 2740,\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": 8744,\n              \"max_permitted\": 7451\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2198a56-51f0-4a29-b3b0-d7d2d696873e",
+          "name": "Update Store Menu",
+          "request": {
+            "name": "Update Store Menu",
+            "description": {
+              "content": "Replace the full menu for a specific store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "stores",
+                ":store_id",
+                "menus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_id",
+                  "description": "(Required) Unique identifier for the store."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categories\": [\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d0e3361-079f-443c-889f-adf700693f32",
+              "name": "Menu update accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "stores",
+                    ":store_id",
+                    "menus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_id",
+                      "description": "(Required) Unique identifier for the store."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"categories\": [\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"category_id\": \"<string>\",\n      \"title\": {\n        \"en\": \"<string>\"\n      },\n      \"entities\": [\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"external_data\": \"<string>\",\n          \"title\": {\n            \"en\": \"<string>\"\n          },\n          \"description\": {\n            \"en\": \"<string>\"\n          },\n          \"msrp\": \"<integer>\",\n          \"quantity_info\": {\n            \"quantity\": {\n              \"min_permitted\": \"<integer>\",\n              \"max_permitted\": \"<integer>\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "77a4d3c7-4baa-4d2f-beba-b81244e57af8",
+    "name": "Uber for Business Codes Menus API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

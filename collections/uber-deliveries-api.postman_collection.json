@@ -1,0 +1,479 @@
+{
+  "item": [
+    {
+      "id": "3b0eb0e6-1df3-4d84-85d2-57f849acd15d",
+      "name": "Deliveries",
+      "description": {
+        "content": "Delivery creation and management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "61aa13ae-e327-4714-907e-df73371688d3",
+          "name": "Create Delivery",
+          "request": {
+            "name": "Create Delivery",
+            "description": {
+              "content": "Create a new delivery request using Uber's courier network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "deliveries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pickup_name\": \"<string>\",\n  \"pickup_address\": \"<string>\",\n  \"dropoff_name\": \"<string>\",\n  \"dropoff_address\": \"<string>\",\n  \"pickup_phone_number\": \"<string>\",\n  \"pickup_notes\": \"<string>\",\n  \"dropoff_phone_number\": \"<string>\",\n  \"dropoff_notes\": \"<string>\",\n  \"manifest_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"size\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"size\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e89fc0f4-984e-4dc2-8b5e-434a2e579099",
+              "name": "Delivery created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup_name\": \"<string>\",\n  \"pickup_address\": \"<string>\",\n  \"dropoff_name\": \"<string>\",\n  \"dropoff_address\": \"<string>\",\n  \"pickup_phone_number\": \"<string>\",\n  \"pickup_notes\": \"<string>\",\n  \"dropoff_phone_number\": \"<string>\",\n  \"dropoff_notes\": \"<string>\",\n  \"manifest_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"size\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"size\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"quote_id\": \"string\",\n  \"status\": \"delivered\",\n  \"tracking_url\": \"https://cLjCooimlmoXyoFGJ.whmhfF3wJbaUtyUSJd5EfqeqFwH\",\n  \"courier\": {\n    \"name\": \"string\",\n    \"vehicle_type\": \"string\",\n    \"phone_number\": \"string\",\n    \"latitude\": 5587.185614240749,\n    \"longitude\": 2539.6726196491095,\n    \"img_href\": \"http://AfBJcvMqvKCBGzqbZuQgtqpb.dupj8MZA,naF5wVzR9KcLxJrzSClq,PCoD4tCYUW-we\"\n  },\n  \"created\": \"1972-04-11T16:34:02.077Z\",\n  \"updated\": \"2011-06-28T18:27:47.634Z\",\n  \"pickup_eta\": \"2016-03-16T08:17:21.293Z\",\n  \"dropoff_eta\": \"1951-05-27T06:18:57.240Z\",\n  \"fee\": 5380,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "154618a5-dc2d-44d0-bf3b-eaeacf102265",
+              "name": "Invalid delivery request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup_name\": \"<string>\",\n  \"pickup_address\": \"<string>\",\n  \"dropoff_name\": \"<string>\",\n  \"dropoff_address\": \"<string>\",\n  \"pickup_phone_number\": \"<string>\",\n  \"pickup_notes\": \"<string>\",\n  \"dropoff_phone_number\": \"<string>\",\n  \"dropoff_notes\": \"<string>\",\n  \"manifest_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"size\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"size\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fce2307d-193e-4a32-8dda-f5b23d76b789",
+          "name": "Get Delivery Status",
+          "request": {
+            "name": "Get Delivery Status",
+            "description": {
+              "content": "Returns the current status of a delivery order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "deliveries",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Unique identifier for the delivery order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3b6fdf9-3924-477b-9294-6af5e2edffbf",
+              "name": "Delivery details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "deliveries",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the delivery order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"quote_id\": \"string\",\n  \"status\": \"delivered\",\n  \"tracking_url\": \"https://cLjCooimlmoXyoFGJ.whmhfF3wJbaUtyUSJd5EfqeqFwH\",\n  \"courier\": {\n    \"name\": \"string\",\n    \"vehicle_type\": \"string\",\n    \"phone_number\": \"string\",\n    \"latitude\": 5587.185614240749,\n    \"longitude\": 2539.6726196491095,\n    \"img_href\": \"http://AfBJcvMqvKCBGzqbZuQgtqpb.dupj8MZA,naF5wVzR9KcLxJrzSClq,PCoD4tCYUW-we\"\n  },\n  \"created\": \"1972-04-11T16:34:02.077Z\",\n  \"updated\": \"2011-06-28T18:27:47.634Z\",\n  \"pickup_eta\": \"2016-03-16T08:17:21.293Z\",\n  \"dropoff_eta\": \"1951-05-27T06:18:57.240Z\",\n  \"fee\": 5380,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fa17456-1446-49a5-bd78-6e2d52ae83dd",
+          "name": "Cancel Delivery",
+          "request": {
+            "name": "Cancel Delivery",
+            "description": {
+              "content": "Cancel an active delivery order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "deliveries",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Unique identifier for the delivery order."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98333d58-1f34-49a2-8171-b921d1b51f86",
+              "name": "Delivery cancelled successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "deliveries",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Unique identifier for the delivery order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26078b2a-6d30-421a-a4b1-3f1c8a437f36",
+          "name": "Get Delivery Quote",
+          "request": {
+            "name": "Get Delivery Quote",
+            "description": {
+              "content": "Get a price quote for a delivery before creating the order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eats",
+                "deliveries",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pickup_address\": \"<string>\",\n  \"dropoff_address\": \"<string>\",\n  \"pickup_latitude\": \"<number>\",\n  \"pickup_longitude\": \"<number>\",\n  \"dropoff_latitude\": \"<number>\",\n  \"dropoff_longitude\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe865f41-2532-406f-8701-3f576490ab27",
+              "name": "Delivery quote details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eats",
+                    "deliveries",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup_address\": \"<string>\",\n  \"dropoff_address\": \"<string>\",\n  \"pickup_latitude\": \"<number>\",\n  \"pickup_longitude\": \"<number>\",\n  \"dropoff_latitude\": \"<number>\",\n  \"dropoff_longitude\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"created\": \"1952-12-31T17:22:50.319Z\",\n  \"expires\": \"1988-08-21T09:24:30.419Z\",\n  \"fee\": 3748,\n  \"currency\": \"string\",\n  \"duration\": 1948\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "203c7768-daa4-4ba9-bbd5-f56eb8545ac0",
+    "name": "Uber for Business Codes Deliveries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

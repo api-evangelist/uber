@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uber for Business Codes Products API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/products",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of location."
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of location."
+              }
+            ]
+          },
+          "docs": "Returns information about the Uber products offered at a given location."
+        },
+        {
+          "info": {
+            "name": "Get Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uber.com/v1.2/products/:product_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier representing a specific product for a given location."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific Uber product."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

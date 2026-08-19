@@ -1,0 +1,393 @@
+{
+  "item": [
+    {
+      "id": "5d8d79d7-eb97-4fc4-97d2-cb357ca82d6a",
+      "name": "Codes",
+      "description": {
+        "content": "Voucher code generation and distribution",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "802fb0d9-f405-43ff-b981-7884d8958b0b",
+          "name": "Generate Voucher Codes",
+          "request": {
+            "name": "Generate Voucher Codes",
+            "description": {
+              "content": "Generate redemption codes for a voucher program in bulk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "voucher-programs",
+                ":program_id",
+                "codes",
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe3edaf9-61d5-4832-8af4-e29baf1a3141",
+              "name": "Generated voucher codes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voucher-programs",
+                    ":program_id",
+                    "codes",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantity\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"codes\": [\n    {\n      \"code\": \"string\",\n      \"status\": \"available\",\n      \"created_at\": \"1947-12-29T18:19:05.337Z\"\n    },\n    {\n      \"code\": \"string\",\n      \"status\": \"expired\",\n      \"created_at\": \"2004-03-17T09:20:24.566Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c2a0046-811a-495d-bd33-3c1a26d991b1",
+          "name": "List Voucher Codes",
+          "request": {
+            "name": "List Voucher Codes",
+            "description": {
+              "content": "Returns all codes for a voucher program.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "voucher-programs",
+                ":program_id",
+                "codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "020c427e-5135-46b6-ad14-c4774cbe03c5",
+              "name": "List of voucher codes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voucher-programs",
+                    ":program_id",
+                    "codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"codes\": [\n    {\n      \"code\": \"string\",\n      \"status\": \"available\",\n      \"created_at\": \"1947-12-29T18:19:05.337Z\"\n    },\n    {\n      \"code\": \"string\",\n      \"status\": \"expired\",\n      \"created_at\": \"2004-03-17T09:20:24.566Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4619f0b-2ee7-468c-aa9d-7895249e3e3c",
+          "name": "Distribute Voucher Codes",
+          "request": {
+            "name": "Distribute Voucher Codes",
+            "description": {
+              "content": "Distribute voucher codes to a list of recipients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "voucher-programs",
+                ":program_id",
+                "codes",
+                "distribute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipients\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed46e090-db68-4376-bc1b-bcfcdd63e8e8",
+              "name": "Voucher codes distributed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voucher-programs",
+                    ":program_id",
+                    "codes",
+                    "distribute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipients\": [\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uber.com/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3585f33e-b353-4039-b9bc-b2b9dd9487de",
+    "name": "Uber for Business Codes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.\n\nContact Support:\n Name: Uber Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
