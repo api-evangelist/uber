@@ -4,6 +4,11 @@ apis:
 - aid: uber:uber-guest-rides
   name: Uber Guest Rides API
   tags:
+  - Ridesharing
+  - Guest
+  - Trips
+  - Transportation
+  tags_raw:
   - Ride-Sharing
   - Guest
   - Trips
@@ -704,6 +709,8 @@ apis:
   humanURL: https://developer.uber.com/docs/riders/introduction
   baseURL: https://api.uber.com/v1.2
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -840,6 +847,8 @@ apis:
   humanURL: https://developer.uber.com/docs/riders/introduction
   baseURL: https://api.uber.com/v1.2
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -1248,6 +1257,8 @@ apis:
   humanURL: https://developer.uber.com/docs/riders/introduction
   baseURL: https://api.uber.com/v1.2
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -1520,6 +1531,8 @@ apis:
   humanURL: https://developer.uber.com/docs/riders/introduction
   baseURL: https://api.uber.com/v1.2
   tags:
+  - Redemptions
+  tags_raw:
   - Redemption
   properties:
   - type: OpenAPI
@@ -2604,6 +2617,14 @@ apis:
     url: json-schema/uber-tripsresponse-schema.json
 name: Uber
 tags:
+- Ridesharing
+- Rides
+- Taxis
+- Transportation
+- Food Delivery
+- Delivery
+- Logistics
+tags_raw:
 - Ride-Sharing
 - Rides
 - Taxis
