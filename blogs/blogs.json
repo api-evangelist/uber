@@ -3,14 +3,10 @@
   "feeds": [
     {
       "source": "https://www.uber.com/legal/en/document/?name=privacy-notice",
-      "feed_url": "https://www.uber.com/legal/en/document/?name=privacy-notice",
-      "title": "",
-      "saved": 0,
-      "method": "none",
-      "error": "fetch_failed: HTTPError"
+      "error": "URLError"
     }
   ],
   "post_count": 2,
-  "fetched": "2026-08-15T12:11:08Z",
+  "fetched": "2026-08-22T20:20:02Z",
   "agent_pulled": "2026-06-27"
 }
