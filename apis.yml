@@ -2682,6 +2682,9 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.23'
 common:
+- type: CapabilityMap
+  url: capabilities/uber-capability-edges.yml
+  name: Uber Business Capability Map
 - type: IssueTracker
   url: https://github.com/uber/uber-direct-sdk/issues
 - type: CodeOfConduct

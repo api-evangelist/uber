@@ -1,0 +1,48 @@
+slug: uber
+provider: Uber
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Deliveries
+  spec_file: uber-deliveries-api-openapi.yml
+  capability_id: BC-2420.40
+  capability_id_l1: BC-2420
+  capability_name: Last-Mile Delivery Operations Management
+  confidence: 0.8
+  evidence: POST /eats/deliveries createDelivery; GET /eats/deliveries/{order_id} "Get Delivery Status";
+    DELETE "Cancel Delivery"; POST /eats/deliveries/quote "Get Delivery Quote"
+  reason: Operations create, quote, track and cancel on-demand courier deliveries — final-leg delivery
+    execution. The 'Uber for Business' title/description is a refine artefact; the operations are Eats
+    delivery dispatch.
+- tag: Programs
+  spec_file: uber-programs-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.7
+  evidence: 'POST /voucher-programs createVoucherProgram Create Voucher Program; schemas: VoucherProgram,
+    VoucherProgramRequest'
+  reason: Full lifecycle of voucher programmes (create, search, update, cancel) — sponsored/promotional
+    ride credit offers. This is promotion and discount programme administration rather than transport
+    execution. Some ambiguity with loyalty/benefit programmes keeps confidence at 0.7.
+- tag: Requests
+  spec_file: uber-requests-api-openapi.yml
+  capability_id: BC-2400.40
+  capability_id_l1: BC-2400
+  capability_name: Booking and Reservation Management
+  confidence: 0.7
+  evidence: POST /requests/estimate Create Ride Estimate; POST /requests createRideRequest Create Ride
+    Request; DELETE /requests/{request_id} cancelRideRequest Cancel Ride Request
+  reason: Estimate, create, modify and cancel a ride against available supply — acceptance, modification
+    and cancellation of transport bookings. Passenger ride-hailing rather than freight, so the fit to
+    the freight-oriented sub-capability is analogical, hence 0.7.
