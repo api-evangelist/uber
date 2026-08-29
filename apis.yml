@@ -2640,6 +2640,20 @@ properties:
   type: Vocabulary
 - url: json-ld/uber-context.jsonld
   type: JSONLDContext
+deliveryModel:
+  model: open-core
+  license: Apache-2.0
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -2668,6 +2682,10 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.23'
 common:
+- type: IssueTracker
+  url: https://github.com/uber/uber-direct-sdk/issues
+- type: CodeOfConduct
+  url: https://github.com/uber/.github/blob/master/CODE_OF_CONDUCT.md
 - type: License
   name: Apache-2.0
   url: https://github.com/uber/uber-direct-sdk/blob/main/LICENSE
