@@ -4,7 +4,7 @@ apis:
 - aid: uber:uber-guest-rides
   name: Uber Guest Rides API
   tags:
-  - Ridesharing
+  - Ride-Sharing
   - Guest
   - Trips
   - Transportation
@@ -1531,7 +1531,7 @@ apis:
   humanURL: https://developer.uber.com/docs/riders/introduction
   baseURL: https://api.uber.com/v1.2
   tags:
-  - Redemptions
+  - Redemption
   tags_raw:
   - Redemption
   properties:
@@ -2617,7 +2617,7 @@ apis:
     url: json-schema/uber-tripsresponse-schema.json
 name: Uber
 tags:
-- Ridesharing
+- Ride-Sharing
 - Rides
 - Taxis
 - Transportation
