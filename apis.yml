@@ -2656,22 +2656,23 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: enterprise
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Enterprise · Self-serve signup
-  confidence: high
+  label: Enterprise
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/uber.png
 access: 3rd-Party
 created: '2025-02-06'
 modified: '2026-06-03'
-position: Consumer
+position: Consuming
 description: Uber is a global technology platform offering transportation, food delivery,
   and logistics services. Its developer platform provides APIs for integrating ride
   requests, food ordering, on-demand delivery, voucher programs, and business travel
