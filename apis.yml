@@ -20,9 +20,8 @@ apis:
     type: Documentation
   - url: https://developer.uber.com/docs/guest-rides/about/u4b-api-introduction
     type: Documentation
-  description: >-
-    The Uber Guest Rides API enables businesses to allow their users to request rides from Uber without
-    requiring an Uber account. Uses OAuth 2.0 with the guest.rides scope for authentication.
+  description: The Uber Guest Rides API enables businesses to allow their users to request rides from
+    Uber without requiring an Uber account. Uses OAuth 2.0 with the guest.rides scope for authentication.
 - aid: uber:uber-codes-api
   name: Uber Codes API
   description: Voucher code generation and distribution
@@ -2671,18 +2670,19 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/uber.png
 access: 3rd-Party
 created: '2025-02-06'
-modified: '2026-06-03'
+modified: '2026-09-16'
 position: Consuming
-description: Uber is a global technology platform offering transportation, food delivery,
-  and logistics services. Its developer platform provides APIs for integrating ride
-  requests, food ordering, on-demand delivery, voucher programs, and business travel
-  management into third-party applications. APIs use OAuth 2.0 authentication with
-  scope-based access controls and support both production and sandbox environments.
+description: Uber is a global technology platform offering transportation, food delivery, and logistics
+  services. Its developer platform provides APIs for integrating ride requests, food ordering, on-demand
+  delivery, voucher programs, and business travel management into third-party applications. APIs use OAuth
+  2.0 authentication with scope-based access controls and support both production and sandbox environments.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 specificationVersion: '0.23'
 common:
+- type: Website
+  url: https://uber.com
 - type: CapabilityMap
   url: capabilities/uber-capability-edges.yml
   name: Uber Business Capability Map
@@ -2730,49 +2730,46 @@ common:
 - type: Features
   data:
   - name: OAuth 2.0 Authorization
-    description: All Uber developer APIs authenticate with OAuth 2.0 bearer tokens
-      using scope-based access controls for both client-credentials (server-to-server)
-      and authorization-code (on behalf of a user) flows.
+    description: All Uber developer APIs authenticate with OAuth 2.0 bearer tokens using scope-based access
+      controls for both client-credentials (server-to-server) and authorization-code (on behalf of a user)
+      flows.
   - name: Sandbox Environment
-    description: Most APIs offer a sandbox for simulating rides, deliveries, and orders
-      without dispatching real couriers or charging real payment methods.
+    description: Most APIs offer a sandbox for simulating rides, deliveries, and orders without dispatching
+      real couriers or charging real payment methods.
   - name: Webhooks
-    description: Uber Direct and Uber Eats publish real-time event webhooks for delivery
-      status, courier updates, shopping progress, refunds, and order lifecycle changes.
+    description: Uber Direct and Uber Eats publish real-time event webhooks for delivery status, courier
+      updates, shopping progress, refunds, and order lifecycle changes.
   - name: Courier Delivery Network
-    description: Uber Direct exposes Uber's on-demand courier network so merchants
-      can quote, create, track, and manage last-mile deliveries from their own storefronts.
+    description: Uber Direct exposes Uber's on-demand courier network so merchants can quote, create,
+      track, and manage last-mile deliveries from their own storefronts.
   - name: Marketplace Integration
-    description: Uber Eats Marketplace APIs let restaurants and POS partners synchronize
-      stores, menus, and orders with the Uber Eats consumer marketplace in real time.
+    description: Uber Eats Marketplace APIs let restaurants and POS partners synchronize stores, menus,
+      and orders with the Uber Eats consumer marketplace in real time.
 - type: UseCases
   data:
   - name: Restaurant Delivery Fulfillment
-    description: Restaurants and food brands use Uber Direct to dispatch couriers
-      for delivery of orders placed on their own websites and apps, bypassing the
-      Uber Eats marketplace fee structure.
+    description: Restaurants and food brands use Uber Direct to dispatch couriers for delivery of orders
+      placed on their own websites and apps, bypassing the Uber Eats marketplace fee structure.
   - name: Menu And Order Synchronization
-    description: POS and online-ordering platforms integrate Uber Eats APIs to keep
-      store hours, menus, pricing, and order status in sync between their systems
-      and the Uber Eats marketplace.
+    description: POS and online-ordering platforms integrate Uber Eats APIs to keep store hours, menus,
+      pricing, and order status in sync between their systems and the Uber Eats marketplace.
   - name: Corporate Travel And Meals
-    description: Enterprises use Uber for Business and Vouchers to provision rides
-      and meals for employees and guests with centralized billing, expense reporting,
-      and policy controls.
+    description: Enterprises use Uber for Business and Vouchers to provision rides and meals for employees
+      and guests with centralized billing, expense reporting, and policy controls.
   - name: Guest Ride Provisioning
-    description: Healthcare, hospitality, and service businesses use Guest Rides to
-      request trips on behalf of customers who do not have an Uber account.
+    description: Healthcare, hospitality, and service businesses use Guest Rides to request trips on behalf
+      of customers who do not have an Uber account.
 - type: Integrations
   data:
   - name: Point Of Sale Systems
-    description: Uber Eats integrates with restaurant POS platforms for automated
-      order injection and menu management.
+    description: Uber Eats integrates with restaurant POS platforms for automated order injection and
+      menu management.
   - name: E-Commerce And Ordering Platforms
-    description: Uber Direct integrates with online ordering and e-commerce checkout
-      flows to add same-day local delivery.
+    description: Uber Direct integrates with online ordering and e-commerce checkout flows to add same-day
+      local delivery.
   - name: Expense And Travel Management
-    description: Uber for Business integrates with expense management and corporate
-      travel platforms via receipts and invoices.
+    description: Uber for Business integrates with expense management and corporate travel platforms via
+      receipts and invoices.
 - type: JSONStructure
   url: json-structure/uber-structure.json
 - type: Plans
