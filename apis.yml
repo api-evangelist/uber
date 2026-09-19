@@ -436,6 +436,8 @@ apis:
   humanURL: https://developer.uber.com/docs/riders/introduction
   baseURL: https://api.uber.com/v1.2
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
