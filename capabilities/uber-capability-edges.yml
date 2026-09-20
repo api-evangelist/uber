@@ -11,8 +11,18 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 3
+edge_count: 5
 edges:
+- tag: Partners
+  spec_file: uber-partners-api-openapi.yml
+  capability_id: BC-3490.40
+  capability_id_l1: BC-3490
+  capability_name: Driver and Provider Operations
+  confidence: 0.85
+  evidence: GET /partners/me  getDriverProfile; GET /partners/payments  getDriverPayments; GET /partners/trips  getDriverTrips
+  reason: Surface exposes driver profile, driver earnings/payments and driver trip history for a ride-hailing
+    platform — squarely driver/provider operations for mobility services.
+  recovered_from: vertical-automotive-mobility-edges.json
 - tag: Deliveries
   spec_file: uber-deliveries-api-openapi.yml
   capability_id: BC-2420.40
@@ -24,6 +34,16 @@ edges:
   reason: Operations create, quote, track and cancel on-demand courier deliveries — final-leg delivery
     execution. The 'Uber for Business' title/description is a refine artefact; the operations are Eats
     delivery dispatch.
+- tag: Riders
+  spec_file: uber-riders-api-openapi.yml
+  capability_id: BC-3490.50
+  capability_id_l1: BC-3490
+  capability_name: Rider Operations
+  confidence: 0.75
+  evidence: GET /me  getRiderProfile  Get Rider Profile; GET /history  getRideHistory
+  reason: Rider account profile and ride history for the end customer of a ride-hailing service — rider-side
+    operations. Some overlap with generic customer data management, hence moderate confidence.
+  recovered_from: vertical-automotive-mobility-edges.json
 - tag: Programs
   spec_file: uber-programs-api-openapi.yml
   capability_id: BC-440.30
