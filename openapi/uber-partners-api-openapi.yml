@@ -1,15 +1,15 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Uber for Business Codes Partners API
-  description: The Uber for Business API enables organizations to automate workflows within their enterprise Uber accounts. Provides access to trip invoices, receipts, and business travel data for expense management and reporting.
-  version: 1.2.0
+  title: Uber Drivers Partners API
+  description: The Uber Drivers API allows partners to access driver profile information, payment history, and trip records. Provides data on driver earnings, completed trips, and partner program data.
+  version: 1.0.0
   contact:
     name: Uber Developer Support
     url: https://developer.uber.com/support
 servers:
-- url: https://api.uber.com/v1.2
+- url: https://api.uber.com/v1
   description: Production
-- url: https://sandbox-api.uber.com/v1.2
+- url: https://sandbox-api.uber.com/v1
   description: Sandbox
 security:
 - BearerAuth: []
@@ -117,39 +117,30 @@ paths:
                 $ref: '#/components/schemas/TripsResponse'
 components:
   schemas:
-    DriverTrip:
+    Payment:
       type: object
       properties:
-        uuid:
+        category:
           type: string
-          description: Unique trip identifier.
-        status:
-          type: string
-          description: Status of the trip.
-        distance:
+          description: Payment category type.
+        cash_collected:
           type: number
-          description: Distance of the trip in miles.
-        duration:
-          type: integer
-          description: Duration of the trip in seconds.
-        start_time:
-          type: integer
-          description: Unix timestamp of trip start.
-        end_time:
-          type: integer
-          description: Unix timestamp of trip end.
-        start_city:
+          description: Cash amount collected from rider.
+        breakdown:
           type: object
-          properties:
-            display_name:
-              type: string
-              description: Display name of the city.
-            latitude:
-              type: number
-              description: Latitude of the city.
-            longitude:
-              type: number
-              description: Longitude of the city.
+          description: Breakdown of payment components.
+        rider_fees:
+          type: object
+          description: Fees charged to the rider.
+        event_time:
+          type: integer
+          description: Unix timestamp of when the payment event occurred.
+        trip_id:
+          type: string
+          description: Associated trip identifier.
+        currency_code:
+          type: string
+          description: ISO 4217 currency code.
     DriverProfile:
       type: object
       properties:
@@ -195,6 +186,39 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DriverTrip'
+    DriverTrip:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique trip identifier.
+        status:
+          type: string
+          description: Status of the trip.
+        distance:
+          type: number
+          description: Distance of the trip in miles.
+        duration:
+          type: integer
+          description: Duration of the trip in seconds.
+        start_time:
+          type: integer
+          description: Unix timestamp of trip start.
+        end_time:
+          type: integer
+          description: Unix timestamp of trip end.
+        start_city:
+          type: object
+          properties:
+            display_name:
+              type: string
+              description: Display name of the city.
+            latitude:
+              type: number
+              description: Latitude of the city.
+            longitude:
+              type: number
+              description: Longitude of the city.
     PaymentsResponse:
       type: object
       properties:
@@ -211,32 +235,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Payment'
-    Payment:
-      type: object
-      properties:
-        category:
-          type: string
-          description: Payment category type.
-        cash_collected:
-          type: number
-          description: Cash amount collected from rider.
-        breakdown:
-          type: object
-          description: Breakdown of payment components.
-        rider_fees:
-          type: object
-          description: Fees charged to the rider.
-        event_time:
-          type: integer
-          description: Unix timestamp of when the payment event occurred.
-        trip_id:
-          type: string
-          description: Associated trip identifier.
-        currency_code:
-          type: string
-          description: ISO 4217 currency code.
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
-      description: OAuth 2.0 Bearer token with business.receipts scope
+      description: OAuth 2.0 Bearer token
