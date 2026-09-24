@@ -74,8 +74,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -210,8 +208,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -346,8 +342,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -484,8 +478,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -620,8 +612,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -758,8 +748,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -896,8 +884,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -1032,8 +1018,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -1168,8 +1152,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -1306,8 +1288,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -1442,8 +1422,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -1580,8 +1558,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -1716,8 +1692,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -1852,8 +1826,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -1988,8 +1960,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -2124,8 +2094,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -2260,8 +2228,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -2396,8 +2362,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -2532,8 +2496,6 @@ apis:
     url: json-schema/uber-activities-schema.json
   - type: JSONStructure
     url: json-structure/uber-riders-structure.json
-  - type: GraphQL
-    url: graphql/uber-graphql.md
   - type: Documentation
     url: https://developer.uber.com/docs/drivers/references/api
   - type: JSONSchema
@@ -2625,6 +2587,7 @@ tags:
 - Food Delivery
 - Delivery
 - Logistics
+- Mobility
 tags_raw:
 - Ride-Sharing
 - Rides
@@ -2633,6 +2596,7 @@ tags_raw:
 - Food Delivery
 - Delivery
 - Logistics
+- Mobility
 type: Index
 properties:
 - url: rules/uber-rules.yml
