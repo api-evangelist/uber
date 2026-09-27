@@ -117,30 +117,38 @@ paths:
                 $ref: '#/components/schemas/TripsResponse'
 components:
   schemas:
-    Payment:
+    TripsResponse:
       type: object
       properties:
-        category:
-          type: string
-          description: Payment category type.
-        cash_collected:
-          type: number
-          description: Cash amount collected from rider.
-        breakdown:
-          type: object
-          description: Breakdown of payment components.
-        rider_fees:
-          type: object
-          description: Fees charged to the rider.
-        event_time:
+        count:
           type: integer
-          description: Unix timestamp of when the payment event occurred.
-        trip_id:
-          type: string
-          description: Associated trip identifier.
-        currency_code:
-          type: string
-          description: ISO 4217 currency code.
+          description: Total number of trips.
+        limit:
+          type: integer
+          description: Number of trips per page.
+        offset:
+          type: integer
+          description: Offset of the current page.
+        trips:
+          type: array
+          items:
+            $ref: '#/components/schemas/DriverTrip'
+    PaymentsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of payments.
+        limit:
+          type: integer
+          description: Number of payments per page.
+        offset:
+          type: integer
+          description: Offset of the current page.
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
     DriverProfile:
       type: object
       properties:
@@ -170,22 +178,30 @@ components:
         activation_status:
           type: string
           description: Driver activation status.
-    TripsResponse:
+    Payment:
       type: object
       properties:
-        count:
+        category:
+          type: string
+          description: Payment category type.
+        cash_collected:
+          type: number
+          description: Cash amount collected from rider.
+        breakdown:
+          type: object
+          description: Breakdown of payment components.
+        rider_fees:
+          type: object
+          description: Fees charged to the rider.
+        event_time:
           type: integer
-          description: Total number of trips.
-        limit:
-          type: integer
-          description: Number of trips per page.
-        offset:
-          type: integer
-          description: Offset of the current page.
-        trips:
-          type: array
-          items:
-            $ref: '#/components/schemas/DriverTrip'
+          description: Unix timestamp of when the payment event occurred.
+        trip_id:
+          type: string
+          description: Associated trip identifier.
+        currency_code:
+          type: string
+          description: ISO 4217 currency code.
     DriverTrip:
       type: object
       properties:
@@ -219,22 +235,6 @@ components:
             longitude:
               type: number
               description: Longitude of the city.
-    PaymentsResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Total number of payments.
-        limit:
-          type: integer
-          description: Number of payments per page.
-        offset:
-          type: integer
-          description: Offset of the current page.
-        payments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payment'
   securitySchemes:
     BearerAuth:
       type: http
