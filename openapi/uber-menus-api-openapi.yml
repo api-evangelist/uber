@@ -78,13 +78,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MenuItem'
-    Menu:
-      type: object
-      properties:
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/MenuCategory'
     MenuItem:
       type: object
       properties:
@@ -117,6 +110,13 @@ components:
                   type: integer
                 max_permitted:
                   type: integer
+    Menu:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuCategory'
   securitySchemes:
     BearerAuth:
       type: http

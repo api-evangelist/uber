@@ -88,29 +88,6 @@ paths:
                 $ref: '#/components/schemas/Activities'
 components:
   schemas:
-    Activities:
-      type: object
-      properties:
-        offset:
-          type: integer
-          description: Position in pagination.
-        limit:
-          type: integer
-          description: Number of items to retrieve.
-        count:
-          type: integer
-          description: Total number of items available.
-        history:
-          type: array
-          items:
-            type: object
-            properties:
-              uuid:
-                type: string
-                description: Unique activity identifier.
-              status:
-                type: string
-                description: Status of the activity.
     RiderProfile:
       type: object
       properties:
@@ -134,6 +111,29 @@ components:
         uuid:
           type: string
           description: Unique identifier of the Uber user.
+    Activities:
+      type: object
+      properties:
+        offset:
+          type: integer
+          description: Position in pagination.
+        limit:
+          type: integer
+          description: Number of items to retrieve.
+        count:
+          type: integer
+          description: Total number of items available.
+        history:
+          type: array
+          items:
+            type: object
+            properties:
+              uuid:
+                type: string
+                description: Unique activity identifier.
+              status:
+                type: string
+                description: Status of the activity.
   securitySchemes:
     BearerAuth:
       type: http

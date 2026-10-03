@@ -166,33 +166,6 @@ paths:
           description: Program cancelled successfully.
 components:
   schemas:
-    VoucherProgramRequest:
-      type: object
-      required:
-      - name
-      - type
-      properties:
-        name:
-          type: string
-          description: Program display name.
-        type:
-          type: string
-          enum:
-          - rides
-          - eats
-          description: Type of voucher program.
-        budget:
-          type: number
-          description: Total budget for the program.
-        currency_code:
-          type: string
-          description: ISO 4217 currency code.
-        start_date:
-          type: string
-          format: date-time
-        end_date:
-          type: string
-          format: date-time
     VoucherProgramUpdate:
       type: object
       properties:
@@ -225,6 +198,33 @@ components:
           type: string
           format: date-time
         updated_at:
+          type: string
+          format: date-time
+    VoucherProgramRequest:
+      type: object
+      required:
+      - name
+      - type
+      properties:
+        name:
+          type: string
+          description: Program display name.
+        type:
+          type: string
+          enum:
+          - rides
+          - eats
+          description: Type of voucher program.
+        budget:
+          type: number
+          description: Total budget for the program.
+        currency_code:
+          type: string
+          description: ISO 4217 currency code.
+        start_date:
+          type: string
+          format: date-time
+        end_date:
           type: string
           format: date-time
   securitySchemes:
