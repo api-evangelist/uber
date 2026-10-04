@@ -2581,7 +2581,6 @@ apis:
 name: Uber
 tags:
 - Ridesharing
-- Rides
 - Taxis
 - Transportation
 - Food Delivery
@@ -2590,7 +2589,6 @@ tags:
 - Mobility
 tags_raw:
 - Ride-Sharing
-- Rides
 - Taxis
 - Transportation
 - Food Delivery
@@ -2744,3 +2742,5 @@ common:
   url: rate-limits/uber-rate-limits.yml
 - type: FinOps
   url: finops/uber-finops.yml
+x-tags-removed:
+- Rides
