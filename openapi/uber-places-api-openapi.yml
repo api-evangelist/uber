@@ -73,6 +73,12 @@ paths:
                 $ref: '#/components/schemas/Place'
 components:
   schemas:
+    Place:
+      type: object
+      properties:
+        address:
+          type: string
+          description: The formatted address of the saved place.
     PlaceUpdate:
       type: object
       required:
@@ -81,12 +87,6 @@ components:
         address:
           type: string
           description: The formatted address of the place to save.
-    Place:
-      type: object
-      properties:
-        address:
-          type: string
-          description: The formatted address of the saved place.
   securitySchemes:
     BearerAuth:
       type: http

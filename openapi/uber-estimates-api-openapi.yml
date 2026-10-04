@@ -114,18 +114,6 @@ paths:
                       $ref: '#/components/schemas/TimeEstimate'
 components:
   schemas:
-    TimeEstimate:
-      type: object
-      properties:
-        product_id:
-          type: string
-          description: Unique identifier representing a specific product for a given location.
-        display_name:
-          type: string
-          description: Display name of product.
-        estimate:
-          type: integer
-          description: ETA for the product in seconds.
     PriceEstimate:
       type: object
       properties:
@@ -156,6 +144,18 @@ components:
         distance:
           type: number
           description: Expected activity distance in miles.
+    TimeEstimate:
+      type: object
+      properties:
+        product_id:
+          type: string
+          description: Unique identifier representing a specific product for a given location.
+        display_name:
+          type: string
+          description: Display name of product.
+        estimate:
+          type: integer
+          description: ETA for the product in seconds.
   securitySchemes:
     BearerAuth:
       type: http

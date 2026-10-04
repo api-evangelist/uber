@@ -134,17 +134,6 @@ paths:
           description: Store status updated.
 components:
   schemas:
-    StoreUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Updated store name.
-        contact_emails:
-          type: array
-          items:
-            type: string
-            format: email
     Store:
       type: object
       properties:
@@ -173,6 +162,17 @@ components:
               type: string
             country:
               type: string
+        contact_emails:
+          type: array
+          items:
+            type: string
+            format: email
+    StoreUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Updated store name.
         contact_emails:
           type: array
           items:

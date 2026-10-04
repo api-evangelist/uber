@@ -92,6 +92,21 @@ paths:
           description: Location deleted successfully.
 components:
   schemas:
+    BusinessLocation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique location identifier.
+        name:
+          type: string
+          description: Location display name.
+        address:
+          type: string
+          description: Full address of the location.
+        phone_number:
+          type: string
+          description: Contact phone number.
     BusinessLocationRequest:
       type: object
       required:
@@ -110,21 +125,6 @@ components:
         instructions:
           type: string
           description: Special pickup instructions.
-    BusinessLocation:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique location identifier.
-        name:
-          type: string
-          description: Location display name.
-        address:
-          type: string
-          description: Full address of the location.
-        phone_number:
-          type: string
-          description: Contact phone number.
   securitySchemes:
     BearerAuth:
       type: http
