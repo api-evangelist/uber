@@ -1,24 +1,45 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/uber-businesses-openapi.yml, openapi/uber-direct-openapi.yml, openapi/uber-drivers-openapi.yml,
-  openapi/uber-eats-openapi.yml, openapi/uber-riders-openapi.yml, openapi/uber-vouchers-openapi.yml
+source: openapi/uber-codes-api-openapi.yml, openapi/uber-deliveries-api-openapi.yml, openapi/uber-estimates-api-openapi.yml,
+  openapi/uber-locations-api-openapi.yml, openapi/uber-menus-api-openapi.yml, openapi/uber-orders-api-openapi.yml,
+  openapi/uber-organizations-api-openapi.yml, openapi/uber-partners-api-openapi.yml, openapi/uber-places-api-openapi.yml,
+  openapi/uber-products-api-openapi.yml, openapi/uber-programs-api-openapi.yml, openapi/uber-redemption-api-openapi.yml,
+  openapi/uber-refunds-api-openapi.yml, openapi/uber-reporting-api-openapi.yml, openapi/uber-requests-api-openapi.yml,
+  openapi/uber-riders-api-openapi.yml, openapi/uber-stores-api-openapi.yml, openapi/uber-templates-api-openapi.yml,
+  openapi/uber-trips-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 57
   by_action_class:
-    connected: 30
-    acting: 27
+    acting: 25
+    connected: 32
   by_consequence:
-    read: 30
-    write: 22
+    write: 20
+    read: 32
     physical: 5
   human_in_the_loop_required: 0
 operations:
-- path: /business/trips/{trip_id}/invoice_urls
+- path: /voucher-programs/{program_id}/codes/generate
+  method: post
+  operationId: generateVoucherCodes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /voucher-programs/{program_id}/codes
   method: get
-  operationId: getTripInvoiceUrls
+  operationId: listVoucherCodes
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -26,36 +47,22 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /business/trips/{trip_id}/receipt
-  method: get
-  operationId: getTripReceipt
+- path: /voucher-programs/{program_id}/codes/distribute
+  method: post
+  operationId: distributeVoucherCodes
   x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
     token:
-      max-ttl: 3600
-    audit: none
-- path: /business/trips/{trip_id}/receipt/pdf_url
-  method: get
-  operationId: getTripReceiptPdfUrl
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /business/orders/{order_id}/receipt
-  method: get
-  operationId: getOrderReceipt
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /eats/deliveries
   method: post
   operationId: createDelivery
@@ -104,21 +111,15 @@ operations:
   method: post
   operationId: getDeliveryQuote
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /organizations
+      max-ttl: 3600
+    audit: none
+- path: /estimates/price
   method: get
-  operationId: listOrganizations
+  operationId: getPriceEstimates
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -126,9 +127,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /organizations/{organization_id}
+- path: /estimates/time
   method: get
-  operationId: getOrganization
+  operationId: getTimeEstimates
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -136,24 +137,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /eats/refunds
-  method: post
-  operationId: createRefund
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /business-locations
   method: get
   operationId: listBusinessLocations
@@ -206,88 +189,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /partners/me
-  method: get
-  operationId: getDriverProfile
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /partners/payments
-  method: get
-  operationId: getDriverPayments
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /partners/trips
-  method: get
-  operationId: getDriverTrips
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /eats/stores
-  method: get
-  operationId: listStores
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /eats/stores/{store_id}
-  method: get
-  operationId: getStore
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /eats/stores/{store_id}
-  method: patch
-  operationId: updateStore
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /eats/stores/{store_id}/status
-  method: put
-  operationId: updateStoreStatus
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /eats/stores/{store_id}/menus
   method: get
   operationId: getStoreMenu
@@ -314,6 +215,16 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /business/orders/{order_id}/receipt
+  method: get
+  operationId: getOrderReceipt
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /eats/orders/{order_id}
   method: get
   operationId: getOrder
@@ -378,9 +289,69 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /eats/reports
-  method: post
-  operationId: generateReport
+- path: /organizations
+  method: get
+  operationId: listOrganizations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizations/{organization_id}
+  method: get
+  operationId: getOrganization
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /partners/me
+  method: get
+  operationId: getDriverProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /partners/payments
+  method: get
+  operationId: getDriverPayments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /partners/trips
+  method: get
+  operationId: getDriverTrips
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /places/{place_id}
+  method: get
+  operationId: getPlace
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /places/{place_id}
+  method: put
+  operationId: updatePlace
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -414,39 +385,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /estimates/price
-  method: get
-  operationId: getPriceEstimates
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /estimates/time
-  method: get
-  operationId: getTimeEstimates
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /me
-  method: get
-  operationId: getRiderProfile
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /me
-  method: patch
-  operationId: applyPromotion
+- path: /voucher-programs
+  method: post
+  operationId: createVoucherProgram
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -460,9 +401,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /history
+- path: /voucher-programs
   method: get
-  operationId: getRideHistory
+  operationId: listVoucherPrograms
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -470,9 +411,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /places/{place_id}
-  method: get
-  operationId: getPlace
+- path: /voucher-programs/search
+  method: post
+  operationId: searchVoucherPrograms
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -480,9 +421,85 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /places/{place_id}
-  method: put
-  operationId: updatePlace
+- path: /voucher-programs/{program_id}
+  method: get
+  operationId: getVoucherProgram
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /voucher-programs/{program_id}
+  method: patch
+  operationId: updateVoucherProgram
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /voucher-programs/{program_id}
+  method: delete
+  operationId: cancelVoucherProgram
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /me/vouchers/redeem
+  method: post
+  operationId: redeemVoucherCode
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /eats/refunds
+  method: post
+  operationId: createRefund
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /eats/reports
+  method: post
+  operationId: generateReport
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -590,25 +607,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /voucher-programs
-  method: post
-  operationId: createVoucherProgram
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /voucher-programs
+- path: /me
   method: get
-  operationId: listVoucherPrograms
+  operationId: getRiderProfile
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -616,35 +617,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /voucher-programs/search
-  method: post
-  operationId: searchVoucherPrograms
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /voucher-programs/{program_id}
-  method: get
-  operationId: getVoucherProgram
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /voucher-programs/{program_id}
+- path: /me
   method: patch
-  operationId: updateVoucherProgram
+  operationId: applyPromotion
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -658,41 +633,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /voucher-programs/{program_id}
-  method: delete
-  operationId: cancelVoucherProgram
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /voucher-programs/{program_id}/codes/generate
-  method: post
-  operationId: generateVoucherCodes
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /voucher-programs/{program_id}/codes
+- path: /history
   method: get
-  operationId: listVoucherCodes
+  operationId: getRideHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -700,9 +643,45 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /voucher-programs/{program_id}/codes/distribute
-  method: post
-  operationId: distributeVoucherCodes
+- path: /eats/stores
+  method: get
+  operationId: listStores
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /eats/stores/{store_id}
+  method: get
+  operationId: getStore
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /eats/stores/{store_id}
+  method: patch
+  operationId: updateStore
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /eats/stores/{store_id}/status
+  method: put
+  operationId: updateStoreStatus
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -742,19 +721,33 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /me/vouchers/redeem
-  method: post
-  operationId: redeemVoucherCode
+- path: /business/trips/{trip_id}/invoice_urls
+  method: get
+  operationId: getTripInvoiceUrls
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
+- path: /business/trips/{trip_id}/receipt
+  method: get
+  operationId: getTripReceipt
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /business/trips/{trip_id}/receipt/pdf_url
+  method: get
+  operationId: getTripReceiptPdfUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

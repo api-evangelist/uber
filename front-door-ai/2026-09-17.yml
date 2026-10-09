@@ -7,14 +7,17 @@ front_door_ai:
   probed_at: '2026-09-17'
   host: uber.com
   final_host: www.uber.com
-  ownership: inherited
+  ownership: own
   owner: uber
   shares_host_with: null
-  inherited_from: www.uber.com
+  inherited_from: null
+  alias_of: www.uber.com
   verdict: scored
-  score: null
+  score: 1
+  band: 2
+  band_label: trace
   host_score: 1
-  density: null
+  density: 1.58
   words: 633
   tiers:
     agentic: 0
