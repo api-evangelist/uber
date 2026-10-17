@@ -62,6 +62,29 @@ paths:
           description: Menu update accepted.
 components:
   schemas:
+    Menu:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuCategory'
+    MenuCategory:
+      type: object
+      properties:
+        category_id:
+          type: string
+          description: Unique identifier for the category.
+        title:
+          type: object
+          properties:
+            en:
+              type: string
+              description: Category name in English.
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuItem'
     MenuItem:
       type: object
       properties:
@@ -94,29 +117,6 @@ components:
                   type: integer
                 max_permitted:
                   type: integer
-    Menu:
-      type: object
-      properties:
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/MenuCategory'
-    MenuCategory:
-      type: object
-      properties:
-        category_id:
-          type: string
-          description: Unique identifier for the category.
-        title:
-          type: object
-          properties:
-            en:
-              type: string
-              description: Category name in English.
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/MenuItem'
   securitySchemes:
     BearerAuth:
       type: http

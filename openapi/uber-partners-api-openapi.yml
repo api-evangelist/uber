@@ -117,6 +117,51 @@ paths:
                 $ref: '#/components/schemas/TripsResponse'
 components:
   schemas:
+    DriverProfile:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the driver.
+        first_name:
+          type: string
+          description: First name of the driver.
+        last_name:
+          type: string
+          description: Last name of the driver.
+        email:
+          type: string
+          format: email
+          description: Email address of the driver.
+        phone_number:
+          type: string
+          description: Phone number of the driver.
+        picture:
+          type: string
+          format: uri
+          description: Profile picture URL for the driver.
+        promo_code:
+          type: string
+          description: Driver's referral promo code.
+        activation_status:
+          type: string
+          description: Driver activation status.
+    PaymentsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of payments.
+        limit:
+          type: integer
+          description: Number of payments per page.
+        offset:
+          type: integer
+          description: Offset of the current page.
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
     Payment:
       type: object
       properties:
@@ -157,22 +202,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DriverTrip'
-    PaymentsResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Total number of payments.
-        limit:
-          type: integer
-          description: Number of payments per page.
-        offset:
-          type: integer
-          description: Offset of the current page.
-        payments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payment'
     DriverTrip:
       type: object
       properties:
@@ -206,35 +235,6 @@ components:
             longitude:
               type: number
               description: Longitude of the city.
-    DriverProfile:
-      type: object
-      properties:
-        uuid:
-          type: string
-          description: Unique identifier for the driver.
-        first_name:
-          type: string
-          description: First name of the driver.
-        last_name:
-          type: string
-          description: Last name of the driver.
-        email:
-          type: string
-          format: email
-          description: Email address of the driver.
-        phone_number:
-          type: string
-          description: Phone number of the driver.
-        picture:
-          type: string
-          format: uri
-          description: Profile picture URL for the driver.
-        promo_code:
-          type: string
-          description: Driver's referral promo code.
-        activation_status:
-          type: string
-          description: Driver activation status.
   securitySchemes:
     BearerAuth:
       type: http

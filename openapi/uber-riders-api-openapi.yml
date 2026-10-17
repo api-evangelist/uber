@@ -88,29 +88,6 @@ paths:
                 $ref: '#/components/schemas/Activities'
 components:
   schemas:
-    RiderProfile:
-      type: object
-      properties:
-        first_name:
-          type: string
-          description: First name of the Uber user.
-        last_name:
-          type: string
-          description: Last name of the Uber user.
-        email:
-          type: string
-          format: email
-          description: Email address of the Uber user.
-        picture:
-          type: string
-          format: uri
-          description: Image URL of the Uber user.
-        promo_code:
-          type: string
-          description: Promo code of the Uber user.
-        uuid:
-          type: string
-          description: Unique identifier of the Uber user.
     Activities:
       type: object
       properties:
@@ -134,6 +111,29 @@ components:
               status:
                 type: string
                 description: Status of the activity.
+    RiderProfile:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: First name of the Uber user.
+        last_name:
+          type: string
+          description: Last name of the Uber user.
+        email:
+          type: string
+          format: email
+          description: Email address of the Uber user.
+        picture:
+          type: string
+          format: uri
+          description: Image URL of the Uber user.
+        promo_code:
+          type: string
+          description: Promo code of the Uber user.
+        uuid:
+          type: string
+          description: Unique identifier of the Uber user.
   securitySchemes:
     BearerAuth:
       type: http

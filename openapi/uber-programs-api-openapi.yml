@@ -166,14 +166,6 @@ paths:
           description: Program cancelled successfully.
 components:
   schemas:
-    VoucherProgramUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        end_date:
-          type: string
-          format: date-time
     VoucherProgram:
       type: object
       properties:
@@ -198,6 +190,14 @@ components:
           type: string
           format: date-time
         updated_at:
+          type: string
+          format: date-time
+    VoucherProgramUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        end_date:
           type: string
           format: date-time
     VoucherProgramRequest:
