@@ -4,7 +4,7 @@ apis:
 - aid: uber:uber-guest-rides
   name: Uber Guest Rides API
   tags:
-  - Ridesharing
+  - Ride Hailing
   - Guest
   - Trips
   - Transportation
@@ -13,6 +13,7 @@ apis:
   - Guest
   - Trips
   - Transportation
+  - Ridesharing
   humanURL: https://developer.uber.com/docs/guest-rides/introduction
   baseURL: https://api.uber.com/v1
   properties:
@@ -2580,7 +2581,7 @@ apis:
     url: json-schema/uber-tripsresponse-schema.json
 name: Uber
 tags:
-- Ridesharing
+- Ride Hailing
 - Taxis
 - Transportation
 - Food Delivery
@@ -2595,6 +2596,7 @@ tags_raw:
 - Delivery
 - Logistics
 - Mobility
+- Ridesharing
 type: Index
 properties:
 - url: rules/uber-rules.yml
