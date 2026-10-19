@@ -38,3 +38,47 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: uber-ondc-open-network-for-digital-commerce
+  label: ONDC (Open Network for Digital Commerce)
+  partner_name: ONDC (Open Network for Digital Commerce)
+  category: ONDC network participant (India Stack)
+  type: contract
+  channel: regulator-register
+  evidence: https://prod.registry.ondc.org/lookup
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ONDC production network registry (prod.registry.ondc.org/lookup)
+    standard: ONDC network protocol (Beckn) participant subscription
+    spec_file: null
+    role: ondc-network-participant
+    registered_name: Uber India
+    register_id: logistics-ondc-gateway.uber.com
+    subscriber_ids:
+    - logistics-ondc-gateway.uber.com
+    - metro-ondc-gateway.uber.com
+    matched_domain: uber.com
+    matched_by: domain+verified
+    identity_source: 'hand-verified 2026-10-19: the registry carries no entity name; logistics + metro gateways;
+      uber-direct is a product repo on the same domain'
+    network_domains:
+    - ONDC:LOG10
+    - ONDC:LOG11
+    - ONDC:TRV11
+    - nic2004:60232
+    certified_products:
+    - product: ONDC buyer-app
+      role: BAP
+      lapsed: false
+      valid_until: '2099-01-01T12:00:00.101Z'
+    - product: ONDC seller-app
+      role: BPP
+      lapsed: false
+      valid_until: '2099-10-24T05:10:56.562Z'
+    signal_note: certified_products = one per ROLE (buyer-app / seller-app / gateway); a SUBSCRIBED record follows
+      ONDC pre-production log validation; lapsed when no record of that role is SUBSCRIBED and in validity. Network
+      domains and subscriber counts are context, never counted
+    detected_by: sweep-india-stack.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
