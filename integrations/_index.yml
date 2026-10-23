@@ -109,3 +109,16 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: uber-xero-own
+  label: Xero (own)
+  partner: xero
+  partner_name: Xero (own)
+  category: Bills and expenses
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/uber
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

@@ -103,6 +103,25 @@ edges:
     detected: '2026-10-21'
   detected_by: sweep-vc-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: Xero (own)
+  partner: xero
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.xero.com/nz/app/uber
+  mirror_of: xero/integrations/xero-integration-edges.yml
+  apps:
+  - Uber
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Bills and expenses
+  features:
+  - Sign Up with Xero
 generated: '2026-10-15'
 method: searched
 source:
@@ -121,3 +140,4 @@ checked:
 - https://www.indexventures.com/companies/
 - https://www.sequoiacap.com/our-companies/
 - https://www.sequoiacap.com/sitemap.xml
+- xero/integrations/xero-integration-edges.yml
